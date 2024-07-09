@@ -1,0 +1,85 @@
+Include "../engine/noise.bb"
+CreateWindow 1920,1080,"Minecraft",256
+Const chunk_size = 64
+
+camera = CreatePerspectiveCamera()
+MoveEntity camera,chunk_size/2,chunk_size/2,chunk_size/2
+light = CreateDirectionalLight()
+TurnEntity light,-30,10,0
+light2 = CreateDirectionalLight()
+TurnEntity light2,30,10,0
+SetAmbientLightColor 1,1,1,1
+
+fabric18_material = LoadPBRMaterial("D:\blender\pbr_materials\Fabric018_1K-JPG")
+fabric18_block_mesh = CreateBoxMesh(-0.5,-0.5,-0.5,0.5,0.5,0.5,fabric18_material)
+
+
+Dim chunk(chunk_size,chunk_size,chunk_size)
+xo# = 345
+For x = 0 To chunk_size	
+	zo# = 789
+	xo = xo + 0.02
+	For z = 0 To chunk_size
+		zo = zo + 0.02
+		h=Floor(noise(xo,zo) * chunk_size) 		
+		For y = 0 To h	
+			chunk(x,y,z) = CreateModel(fabric18_block_mesh)
+			MoveEntity chunk(x,y,z),x,y,z
+		Next 		
+	Next 		
+Next 		
+
+fabric20_material = LoadPBRMaterial("D:\blender\pbr_materials\Fabric020_1K-JPG")
+fabric20_block_mesh = CreateBoxMesh(-0.5,-0.5,-0.5,0.5,0.5,0.5,fabric20_material)
+fabric20_block = CreateModel(fabric20_block_mesh)
+MoveEntity fabric20_block,1,0,0
+
+loop = True 
+While loop
+	e=PollEvents()
+	If (e=1 Or IsKeyDown(256)) Then loop = False	
+	KeyboardInputFirstPerson camera
+	UnrealMouseInput camera 
+	If IsKeyHit(32) Then 
+		newblock = CreateModel(fabric20_block_mesh)		
+		SetEntityPosition newblock,Floor(GetEntityX(camera)),Floor(GetEntityY(camera)),Floor(GetEntityZ(camera))
+		TurnEntity newblock,0,GetEntityRY(camera),0
+		MoveEntity newblock,0,0,3
+	End If 		
+	RenderScene()
+	Clear2D()
+	Draw2DText "Camera Location : " + GetEntityX(camera) + "  " + GetEntityY(camera) + " " + GetEntityZ(camera),5,5 
+	Draw2DText "Block Location : " + GetEntityX(fabric20_block) + "  " + GetEntityY(fabric20_block) + " " + GetEntityZ(fabric20_block),5,25
+	Draw2DText GetFPS(),5,GetWindowHeight() - 25
+	Present()
+Wend 
+End 
+
+
+Function KeyBoardInputFirstPerson(e,camspeed#=0.2)	
+	If (IsKeyDown(340) Or IsKeyDown(344)) Then sprint#=0.3 Else sprint#=0.0 ; SHIFT to sprint
+	If (IsKeyDown(87) Or IsKeyDown(265)) Then MoveEntity e, 0, 0, camspeed + sprint ; w or up
+	If (IsKeyDown(83) Or IsKeyDown(264)) Then MoveEntity e, 0, 0, -(camspeed + sprint) ; s or down 
+   	If (IsKeyDown(65) Or IsKeyDown(263)) Then MoveEntity e, -(camspeed + sprint), 0, 0 ; a or left
+	If (IsKeyDown(68) Or IsKeyDown(262)) Then MoveEntity e, camspeed+sprint, 0, 0 ; d or right
+	
+	; add support for moving cam up / down with the keys Q / E or Pageup / Pagedown	
+	If (IsKeyDown(81) Or IsKeyDown(266)) Then MoveEntity e, 0, camspeed + sprint, 0 ; Q or Pageup
+	If (IsKeyDown(69) Or IsKeyDown(267)) Then MoveEntity e, 0, -(camspeed+sprint), 0 ; E or Pagedown
+End Function 
+
+Function UnrealMouseInput(e,move_speed#=0.02,turn_speed#=0.2)			
+		
+	If (IsMouseButtonDown(1) And IsMouseButtonDown(0)) ; both are held down 
+		SetMouseCursorMode 3 ; hide and lock the cursor
+		MoveEntity e, GetMouseVX() * move_speed, -GetMouseVY() * move_speed, 0		
+	ElseIf IsMouseButtonDown(1) ; only right mouse button is down
+		SetMouseCursorMode 3
+		TurnEntity e, -GetMouseVY() * turn_speed, -GetMouseVX() * turn_speed, 0	
+	Else 
+		SetMouseCursorMode 1 ; set the mouse cursor to normal
+	End If
+		
+	; fixx roll
+	If (GetEntityRZ(e) < 0 Or GetEntityRZ(e) > 0) Then SetEntityRotation e, GetEntityRX(e), GetEntityRY(e), 0	
+End Function

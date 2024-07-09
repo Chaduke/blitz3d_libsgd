@@ -1,0 +1,56 @@
+; testing_features.bb
+; by Chaduke 
+; 20240525
+
+Include "palletes.bb"
+
+Type GUI
+	Field title$
+	Field width# 
+	Field height#	
+	Field posx# 
+	Field posy#
+	Field posz#
+	Field visible
+	Field selected
+End Type
+
+Function CreateGUI.GUI(title$,width#,height#,posx#,posy#,posz#=0,visible=True,selected=False)
+	Local g.GUI = New GUI
+	g\width = width
+	g\height = height
+	g\posx = posx
+	g\posy	= posy
+	g\posz = posz
+	g\visible = visible
+	g\selected = selected
+	Return g
+End Function
+
+Function DrawGUI(g.GUI)
+	If g\visible Then 
+		Set2DFillColor .5,.5,.5,1	
+		Draw2DRect g\posx-g\width/2,g\posy-g\height/2,g\posx+g\width/2,g\posy+g\height/2
+	End If	
+End Function 
+
+CreateWindow 1366,768,"Testing Features",6
+CreateScene()
+
+myGUI.GUI = CreateGUI("My GUI",100,100,100,100)
+SetPalette()
+
+loop = True 
+While loop 
+	e = PollEvents()
+	If e = 1 Then loop = False
+	If KeyHit(256) Then loop = False	
+	RenderScene()
+	For g.GUI = Each GUI
+		DrawGUI g
+	Next 	
+	Present()
+Wend 
+End 
+
+

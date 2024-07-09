@@ -1,0 +1,44 @@
+Global blip_sound
+
+Include "../platformer/dialogue.bb"
+
+; create window and scene
+CreateWindow(1280,720,"Dialogue Test",0)
+CreateScene()
+
+blip_sound = LoadSound("../platformer/assets/sounds/blip.wav")
+digital_font30 = LoadFont("../platformer/assets/fonts/digital-7.ttf",30)
+digital_font60 = LoadFont("../platformer/assets/fonts/digital-7.ttf",60)
+
+Set2DOutlineColor 0.8,0,0,1
+Set2DOutlineEnabled True
+
+loop=True
+While(loop) 
+	e = PollEvents()
+	If e=1 Then loop=False ; window close clicked
+	If KeyHit(256) Then loop = False	
+	RenderScene()
+	
+	; start 2D 	
+	Clear2D()	
+	Set2DFont digital_font30
+	EditDialogue()		
+	Set2DTextColor 0.8,0,0,1
+	Set2DFillColor 0.1,0,0,0.1
+	start_left = WindowWidth()-150
+	start_top = WindowHeight()-100
+	Draw2DRect start_left,start_top,start_left + 140,start_top + 90
+	Draw2DLine start_left + 71,start_top, start_left + 71, start_top + 90
+	Draw2DLine start_left,start_top + 35, start_left + 140, start_top + 35
+	Draw2DText "BANK  SLOT",start_left + 5,start_top + 5
+	Set2DTextColor 1,1,0,1
+	Draw2DText "Dialogue",start_left + 15,start_top-62
+	Draw2DText "PRESETS",start_left + 17,start_top-35
+	Set2DFont digital_font60
+	Draw2DText "0",start_left + 20,start_top + 38
+	Draw2DText "0",start_left + 92,start_top + 38
+	; end 2D 		
+	Present()
+Wend
+End

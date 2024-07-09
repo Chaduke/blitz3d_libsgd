@@ -1,0 +1,95 @@
+; math3d.bb
+; by Chaduke
+; 20240517
+
+; helper functions for simple 3D collisions and responses
+
+Type Cylinder 
+	Field height#
+	Field radius#
+	Field model
+End Type
+
+Type AABB
+	Field width# 
+	Field height# 	
+	Field depth#
+	Field model
+End Type 	
+
+Function GetCollisionMaterial()
+	Local collision_material = CreatePBRMaterial()
+	collision_texture = LoadTexture("../engine/assets/textures/misc/yellow_grid.png",3,20)
+	SetMaterialTexture collision_material,"albedoTexture",collision_texture
+	SetMaterialFloat collision_material,"roughnessFactor1f",0.2
+	SetMaterialBlendMode collision_material,2	
+	Return collision_material
+End Function 
+
+Function CreateCylinder.Cylinder(height#,radius#)
+	Local c.Cylinder = New Cylinder
+	c\height = height 
+	c\radius = radius	
+	Local m = GetCollisionMaterial()	
+	Local mesh = CreateCylinderMesh(height,radius,16,m)
+	c\model = CreateModel(mesh)
+	Return c
+End Function 
+
+Function CreateAABB.AABB(width#,height,depth#)
+	Local a.AABB = New AABB
+	Local m = GetCollisionMaterial()
+	Local mesh = CreateBoxMesh(-width/2,-height/2,-depth/2,width/2,height/2,depth/2,m)
+	Return a 
+End Function 
+
+Function AABBsCollided(a1.AABB,a2.AABB)
+	
+End Function 
+
+Function CylindersCollided(c1.Cylinder,c2.Cylinder) 
+	; first check the height difference
+	c1top# = GetEntityY(c1\model) + (c1\height# / 2)
+	c1bottom# = GetEntityY(c1\model) - (c1\height# / 2)
+	c2top# = GetEntityY(c2\model) + (c2\height# / 2)
+	c2bottom# = GetEntityY(c2\model) - (c2\height# / 2)
+	
+	If (c1top > c2bottom And c1bottom < c2top) Then 
+		; check the circle collisions 
+		c1x# = GetEntityX(c1\model)
+		c1y# = GetEntityZ(c1\model)
+		c2x# = GetEntityX(c2\model)
+		c2y# = GetEntityZ(c2\model)				
+		If CirclesCollided(c1x,c1y,c1\radius,c2x,c2y,c2\radius) Then Return True Else Return False		
+	Else 		
+		Return False
+	End If				
+End Function 
+
+; calculates the distance between 2 3D points
+Function Dist3D#(x1#,y1#,z1#,x2#,y2#,z2#)
+	Return Sqr((x2-x1) * (x2-x1) + (y2-y1) * (y2-y1) + (z2-z1) * (z2-z1))
+End Function 
+
+; Lerp Function 3D for use with Vec3
+; creating this for a follow cam
+
+Function FollowEntity(follower,followed,speed#=0.2)
+	; first get the 3D distance between the two
+	Local frx# = GetEntityX(follower)
+	Local fry# = GetEntityY(follower)
+	Local frz# = GetEntityZ(follower)
+	Local fdx# = GetEntityX(followed)
+	Local fdy# = GetEntityY(followed)
+	Local fdz# = GetEntityZ(followed)
+		
+	Local xd# = fdx - frx 
+	Local yd# = fdy - fry
+	Local zd# = fdz - frz
+		
+	Local incx# = xd# * speed
+	Local incy# = yd# * speed
+	Local incz# = zd# * speed
+	
+	SetEntityPosition follower,frx + incx,fry + incy,frz + incz
+End Function 

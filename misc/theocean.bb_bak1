@@ -1,0 +1,126 @@
+; theocean.bb
+; by Chaduke
+; 20240521
+
+; a retro style adventure game demo 
+; with an ocean theme
+; testing 2D, sound, and printing characters in a sequence 
+; it doesn't really do much at this point
+; press SPACE to cycle through messages
+
+Include "../platformer/noise.bb"
+Include "../beginner/hextofloat.bb"
+Const segment_width# = 25
+
+TheOcean()
+
+Function DrawVerticalLineWithSquares(square_size#,x#,ystart#,yend#,r#,g#,b#)
+	Local y# = ystart#
+	Local halfsize# = square_size# / 2
+	While y# <= yend#+halfsize#
+		Local c# = y/yend
+		Set2DFillColor (r# * c#),(g#*c#),(b# * c#),1	
+		Draw2DRect x#-halfsize#,y#-halfsize#,x#+halfsize#,y#+halfsize#
+		y# = y# + square_size
+	Wend 	
+End Function 
+
+Global msgindex# = 0
+Global lastindex
+Global blip 
+
+Function DisplayMessage(msg$,x#,y#)
+	Local msglen = Len(msg$)
+	If msgindex > msglen Then 
+		output$ = msg$ 
+	Else 
+		lastindex = Floor(msgindex)
+		output$ = Left$(msg$,lastindex)
+		msgindex = msgindex + Rnd(1) * 0.6
+	End If		
+	Draw2DText output$,x#,y#	
+	If (Floor(msgindex) > lastindex And msgindex < msglen) Then PlaySound blip
+End Function 
+
+Function TheOcean()	
+	CreateWindow(1920,1080,"The Ocean",1)  
+	CreateScene()	
+	ocean_waves = LoadSound("oceanwaves.wav")	
+	blip = LoadSound("blipSelect.wav")
+	PlaySound ocean_waves	
+	
+	; boat 
+	boatWidth# = 100
+	boatHeight# = 30
+	boatX# = WindowWidth() / 2 - boatWidth / 2
+	
+	; player 
+	player_head_size = 15	
+	
+	start_offset# = 777		
+	segments = WindowWidth() / segment_width
+	start_millisecs = MilliSecs()
+	Read nextmessage$		
+	loop = True	
+	While loop
+		e=PollEvents()
+		If e=1 Then loop = False
+		If KeyHit(256) Then loop = False
+		If KeyHit(32) Then 
+			If nextmessage$<>"END" Then 
+				Read nextmessage$
+				If 	nextmessage$<>"END" msgindex=0			
+			End If					
+		End If	
+		start_offset# = start_offset# + 0.01
+		offset# = start_offset#		
+		RenderScene()
+		Clear2D()
+		For x=0 To WindowWidth()+segment_width Step segment_width
+			offset = offset + 0.02
+			y# = noise(offset) * WindowHeight()/2 + WindowHeight()/2
+			; draw the sky
+			DrawVerticalLineWithSquares segment_width,x,0,y,0.6,0.8,0.9	
+			; draw the water
+			DrawVerticalLineWithSquares segment_width,x,y,WindowHeight(),0.2,0.3,1			
+		Next	
+		offset# = start_offset	
+		offset = offset + (segments / 2) * 0.02
+		boatY# = 	(noise(offset) * WindowHeight()/2 + WindowHeight()/2) - boatHeight
+		
+		; draw the player		
+		Set2DFillColorHex("623A18")
+		Draw2DOval boatX-player_head_size+10,boatY-player_head_size,boatX+player_head_size+10,boatY+player_head_size
+		
+		; draw the boat			
+		Set2DFillColorHex("3F2818")
+		Draw2DRect boatX,boatY,boatX + boatWidth,boatY+boatHeight
+		
+		elapsed = MilliSecs() - start_millisecs
+		If elapsed > 20000 Then			
+			start_millisecs = MilliSecs()
+			PlaySound ocean_waves
+		End If	
+		Draw2DText "fps " + FPS(),10,WindowHeight()-20	
+		If nextmessage$ <> "END" Then DisplayMessage nextmessage$,10,15	
+		Present()
+	Wend 
+	End 
+End Function 
+
+.intro
+Data "You've been at sea for a very long time..."
+Data "You feel dizzy."
+Data "Your vision is very blurry."
+Data "You're not sure how much longer you can hold out..."
+
+.scene1
+Data "Your skiff has crashed into an island..."
+Data "You step out and look around..." 
+Data "There are plenty of coconut and palm trees.."
+Data "Lot's of crabs walking on the shore and seagulls flying about.."
+Data "and what appears to be a LEMON PERSON wearing cowboy boots and a hat."
+Data "he greets you at the shore..." 
+Data "The End"
+Data "Press ESCAPE to Exit"
+Data "END"

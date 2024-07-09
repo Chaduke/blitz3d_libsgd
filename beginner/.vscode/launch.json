@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "blitz3d",
+            "request": "launch",
+            "name": "Debug blitz program",
+            "bbfile": "${file}"
+        }        
+    ]
+}

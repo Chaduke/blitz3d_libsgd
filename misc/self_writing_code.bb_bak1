@@ -1,0 +1,28 @@
+Function WriteBBCode(f$)	
+	If FileType(f$) = 1 Then 		
+		DeleteFile f$
+	End If			
+	fileout = WriteFile(f$)
+	WriteLine fileout,"CreateWindow 1280,720," + Chr$(34) + "Test Program" + Chr$(34) + ",0"
+	WriteLine fileout,"CreateScene()"
+	WriteLine fileout,"loop=True"
+	WriteLine fileout,"while loop"
+	WriteLine fileout,"e = pollevents()"
+	WriteLine fileout,"if e=1 then loop = False"
+	WriteLine fileout,"if KeyHit(256) then loop = False"
+	WriteLine fileout,"RenderScene()"
+	WriteLine fileout,"Present()"
+	WriteLine fileout,"Wend"
+	WriteLine fileout,"End"	
+	CloseFile fileout	
+End Function 
+
+
+WriteBBCode "include.bb"
+x = 1
+
+If x = 1 Then 
+	Include "include.bb"
+End If
+	
+		

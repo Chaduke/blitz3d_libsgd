@@ -1,0 +1,61 @@
+; Get2DTextWidth_bug.bb
+; by Chaduke
+; 20240602
+
+; this function uses FontTextWidth
+Function DisplayTextCenter(msg$,offsetY#,font)
+	Local centerX# = GetWindowWidth()/2
+	Local centerY# = GetWindowHeight()/2
+	Local mhw# = GetTextWidth(font,msg$) / 2 ; message half width
+	Set2DTextColor 1,1,1,1
+	Draw2DText msg$,centerX#-mhw#,centerY# + offsetY
+End Function 
+
+; this function uses Get2DTextWidth
+; after msg$ gets to be around 15 or so characters things get weird
+Function DisplayTextTop(msg$,offsetY#)
+	Local centerX# = GetWindowWidth()/2	
+	Local mhw# = Get2DTextWidth(msg$) / 2 ; message half width
+	Set2DTextColor 1,1,1,1
+	Draw2DText msg$,centerX#-mhw#,offsetY
+	Draw2DText mhw,centerX,offsetY + 30 ; show the value changing 
+End Function 
+
+; initialize a game window and a scene
+CreateWindow 1280,720,"2D Text Width Bug Example", 0
+
+; load fonts / images / etc
+constan_font = LoadFont("c:\windows\fonts\constan.ttf",26)
+; consola_font = LoadFont ("c:\windows\fonts\consola.ttf",26)
+
+Set2DFont constan_font 
+
+; MAIN LOOP
+loop = True 
+quit = True
+While loop 
+	e = PollEvents()		
+	If (e = 1 Or IsKeyHit(256)) Then 
+		If quit = False Then
+			quit = True 
+		Else 
+			quit = False
+		End If 	
+	End If
+	
+	If (quit = True And IsKeyHit(89)) Then ; Y was pressed
+		loop = False
+	End If		
+	
+	RenderScene()
+	; draw 2D overlay	
+	Clear2D()
+	If quit = True Then 
+		DisplayTextCenter "Really Quit ?? (Y to Confirm, Escape to Cancel)",0,constan_font
+		DisplayTextTop "Really Quit ?? (Y to Confirm, Escape to Cancel)",10
+		DisplayTextTop "Short Example",80
+	End If	
+	Present()
+Wend 
+End 
+ 

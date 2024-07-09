@@ -1,0 +1,28 @@
+; test_polygons.bb
+; by Chaduke
+; 20240705 
+
+Include "../engine/testapp.bb"
+
+ta.TestApp = CreateTestApp(True)
+p.Polygon = CreatePolygon()
+
+While ta\loop
+	BeginFrame ta	
+	If IsMouseButtonHit(0) Then 
+		pt.Point = CreatePoint(GetMouseX(),GetMouseY())
+		AddPolygonPoint p,pt
+	End If 	
+	If IsMouseButtonHit(1) Then 
+		p.Polygon = CreatePolygon()
+	End If 	
+	EndFrame ta
+	Set2DFillColor 1,1,1,1
+	Set2DOutlineColor 1,0,0,1
+	For pl.Polygon = Each Polygon 		
+		DrawPolygon pl 
+	Next 	
+	Draw2DText "Number of polygon points : " + p\numpoints,5,5	
+	Draw2DText "Polygon Point 0 : " + p\points[0]\x + " " + p\points[0]\y,5,25
+	Present()
+Wend 	 

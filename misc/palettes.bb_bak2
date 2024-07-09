@@ -1,0 +1,69 @@
+; palettes.bb 
+; by Chaduke
+; 20240525 
+
+; color palettes for use with the functions in hextofloat.bb
+
+Include "hextofloat.bb"
+
+Type palette
+	Field name$
+	Field color1$
+	Field color2$ 
+	Field color3$
+	Field color4$ 
+	Field color5$
+End Type 
+
+Function GetPalette.palette(name$="palette1")
+	Restore palettes	
+	Local p.palette = New palette	
+	While p\name$ <> name$	
+		Read p\name$			
+		If p\name$ = "END" Then 
+			Alert "Could not find the palette requested in GetPalette()"
+			Return Null
+		End If	
+		
+		; we're not at the end so read the 5 values
+		Read p\color1$,p\color2$,p\color3$,p\color4$,p\color5$				
+	Wend 
+	; we found our palette
+	Return p
+End Function
+
+Function GetPaletteColor$(p.palette,number)
+	Local c$
+	Select number
+		Case 1
+			c$ = p\color1$
+		Case 2
+			c$ = p\color2$
+		Case 3
+			c$ = p\color3$ 
+		Case 4 
+			c$ = p\color4$
+		Case 5
+			c$ = p\color5$
+	End Select 
+	Return c$
+End Function
+
+Function SetPalette(p.palette,clearcolor=5,textcolor=1,fillcolor=2,outlinecolor=3)
+	SetSceneClearColorHex GetPaletteColor$(p,clearcolor)
+	Set2DTextColorHex GetPaletteColor$(p,textcolor)
+	Set2DFillColorHex GetPaletteColor$(p,fillcolor)
+	Set2DOutlineColorHex GetPaletteColor$(p,outlinecolor)
+End Function 
+
+.palettes
+Data "palette1", "EE4540", "C72C41", "801336", "510A32", "2D142C"
+Data "palette2", "8FB9A8", "FEFAD4", "FCD0BA", "F1828D", "765D69"
+Data "palette3", "FCBB6D", "D8737F", "AB6C82", "685D79", "475C7A"
+Data "palette4", "F18C8E", "F0B7A4", "F1D1B5", "568EA6", "305F72"
+Data "palette5", "CC2A49", "F99E4C", "F36F38", "EF4648", "582841"
+Data "palette6", "F26627", "F9A26C", "EFEEEE", "9BD7D1", "325D79"
+Data "palette7", "DDA5B6", "F2CC8C", "F1E6C1", "3F6A8A", "4D5E72"
+Data "palette8", "EF3D59", "E17A47", "EFC958", "4AB19D", "344E5C"
+Data "palette9", "FFFFFF", "000000", "FF0000", "005500", "0000FF"
+Data "END"

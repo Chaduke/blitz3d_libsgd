@@ -1,0 +1,228 @@
+; disc_golf.bb
+; by Chaduke
+; 20240615
+
+; INITIAL SETUP
+; includes 
+Include "../platformer/vec3.bb"
+Include "../platformer/noise.bb"
+Include "../platformer/terrain.bb"
+Include "../platformer/navigation.bb"
+Include "../platformer/math2d.bb" ; for Distance2D() and CirclesCollided()
+Include "../platformer/math3d.bb" ; for Type Cylinder and CylindersCollided()
+
+; CONSTANTS
+; game states 
+Const GAME_STATE_START_MENU = 0
+Const GAME_STATE_STORY = 1
+Const GAME_STATE_SANDBOX = 2
+Const GAME_STATE_TUTORIAL = 3
+Const GAME_STATE_OPTIONS = 4
+
+; keys 
+Const KEY_ESCAPE = 256
+Const KEY_Y = 89
+
+; GLOBALS
+Global ground_size = 64
+Global game_state = GAME_STATE_STORY
+
+; initialize a game window and a scene
+CreateWindow 1280,720,"3D Game",0
+CreateScene()
+
+; create a camera
+pivot = CreateModel(O)
+camera=CreatePerspectiveCamera()
+SetEntityParent camera,pivot
+MoveEntity pivot,0,1.5,-4
+TurnEntity camera,-10,0,0
+
+; load fonts
+Global tahoma_font = LoadFont("c:\windows\fonts\tahomabd.ttf",120)
+Global constan_font = LoadFont("c:\windows\fonts\constan.ttf",26)
+
+Set2DFont constan_font
+
+LoadingMessage "Loading Please Wait",constan_font
+
+; create sky environment 
+sky_texture = LoadTexture("C:\Users\chadu\OneDrive\Projects\blitz3d\platformer\assets\images\skyboxsun25degtest.png",4,56)
+SetSceneEnvTexture sky_texture
+skybox = CreateSkybox(sky_texture)
+SetSkyboxRoughness skybox,0.2
+
+LoadingMessage "Loading Please Wait",constan_font
+
+; create lights
+dl = CreateDirectionalLight()
+TurnEntity dl,-30,0,0
+SetSceneAmbientLightColor 1,1,1,0.2
+
+light = CreatePointLight()
+MoveEntity light, -2,3,0
+SetLightCastsShadow light,True
+
+LoadingMessage "Loading Please Wait",constan_font
+
+; create ground
+ground_material = LoadPBRMaterial("d:/blender/pbr_materials/Concrete031_1K-JPG")
+ground_mesh = CreateBoxMesh(-ground_size,-0.1,-ground_size,ground_size,0,ground_size,ground_material)
+TransformMeshTexCoords ground_mesh,16,16,0,0
+ground_model = CreateModel(ground_mesh)
+
+; load larry lemon
+larry_mesh=LoadMesh("assets/models/larry_dg.glb")
+SetMeshCastsShadow larry_mesh,True
+larry = CreateModel(larry_mesh)
+MoveEntity larry,-1.7,0,0
+TurnEntity larry,0,45,0
+
+; load disc
+disc = LoadModel("assets/models/disc.glb")
+MoveEntity disc,0,1,0
+
+; setup disc 
+disc_vel.Vec3 = New Vec3
+disc_vel\name$ = "Disc Velocity"
+
+disc_vel\x = 0
+disc_vel\y = 0
+disc_vel\z = 0
+
+; mouse stuff
+SetMouseZ(-5)
+SetMouseCursorMode 3 ; lock and hide
+
+; MAIN LOOP
+loop=True
+quit = False
+
+While loop 
+	; get user input 
+	e=PollEvents()	
+	
+	If (e = 1 Or KeyHit(KEY_ESCAPE)) Then 
+		If quit = False Then quit = True Else quit = False		
+	End If
+	
+	If (quit = True And KeyHit(KEY_Y)) Then loop = False
+	
+	; create branches based on game state
+	Select game_state 
+		Case 0				
+		; main menu
+		If quit = False Then					
+			Set2DTextColor 0,0,0,1
+			DisplayTextCenter "Larry Lemon's",constan_font,-260,-170
+			DisplayTextCenter "Disc Golf",tahoma_font,-252,-2
+			Set2DTextColor 0.5,1,0,1
+			DisplayTextCenter "Disc Golf",tahoma_font,-250
+			
+			If (MouseCollidedRect(400,WindowHeight() / 2 - 60,WindowWidth()-400,WindowHeight() / 2 - 30)) Then
+				If MouseButtonHit(0) Then game_state = GAME_STATE_STORY				 
+				Set2DTextColor 1,1,0,1 
+			Else 
+				Set2DTextColor 1,1,1,1
+			End If			
+			DisplayTextCenter "Story Mode",constan_font,-60
+			
+			If (MouseCollidedRect(400,WindowHeight() / 2 - 30,WindowWidth()-400,WindowHeight() / 2)) Then 
+				If MouseButtonHit(0) Then game_state = GAME_STATE_SANDBOX
+				Set2DTextColor 1,1,0,1 
+			Else 
+				Set2DTextColor 1,1,1,1
+			End If 			
+			DisplayTextCenter "Sandbox Mode",constan_font,-30
+			
+			If (MouseCollidedRect(400,WindowHeight() / 2,WindowWidth()-400,WindowHeight() / 2 + 30)) Then 
+				If MouseButtonHit(0) Then game_state = GAME_STATE_TUTORIAL
+				Set2DTextColor 1,1,0,1 
+			Else 
+				Set2DTextColor 1,1,1,1				
+			End If			
+			DisplayTextCenter "Tutorial",constan_font
+			
+			If (MouseCollidedRect(400,WindowHeight() / 2 + 30,WindowWidth()-400,WindowHeight() / 2 + 60)) Then 
+				If MouseButtonHit(0) Then game_state = GAME_STATE_OPTIONS
+				Set2DTextColor 1,1,0,1 
+			Else 
+				Set2DTextColor 1,1,1,1
+			End If 
+			DisplayTextCenter "Options",constan_font,30			
+		End If	
+				
+		Case 1	
+			; ---------------	
+			; STORY MODE
+			; ---------------
+			
+			ThirdPersonMouseInputEditor 0.2,0.1
+			KeyBoardInputThirdPerson disc,0.1
+			ClampEntityPitch(pivot,70,-70)		
+			SetEntityPosition pivot,EntityX(disc),EntityY(disc)+0.1,EntityZ(disc)
+			
+			If MouseButtonHit(0) Then
+				If thrown = False  
+					disc_vel\z = disc_vel\z + 1
+					thrown = True 
+				End If	
+			End If				
+			MoveEntity disc,disc_vel\x,disc_vel\y,disc_vel\z 
+			If thrown Then 
+				disc_vel\z = disc_vel\z - 0.01
+				If disc_vel\z < 0 Then disc_vel\z = 0				
+				disc_vel\y = disc_vel\y - 0.001
+				If EntityY(disc) < 0 Then	
+					SetEntityPosition disc,0,0.1,0					
+					disc_vel\y = 0
+					disc_vel\z = 0
+					thrown = False
+				End If 				
+			End If		
+			;-----------------
+			; END STORY MODE
+			;-----------------
+		Case 2		
+		; sandbox mode
+		UnrealMouseInput pivot
+		Case 3 
+		; tutorial
+		Case 4		
+		; options
+	End Select 	
+	 
+	
+	; update objects and data structures based on user input
+	
+	; perform corrections / implement constraints / apply game rules
+	
+	; render 
+	RenderScene()
+		
+	; draw 2D overlay	
+	Clear2D()
+	If quit = True Then
+		DisplayTextCenter "Really Quit ?? (Y to Confirm, Escape to Cancel)",constan_font
+	End If	
+
+	Present()
+Wend 
+End 
+
+; HELPER FUNCTIONS
+Function DisplayTextCenter(msg$,font,offsetY#=0,offsetX#=0)
+	Local centerX# = WindowWidth()/2
+	Local centerY# = WindowHeight()/2
+	Local mhw# = FontTextWidth(font,msg$) / 2 ; message half width
+	Set2DFont font	
+	Draw2DText msg$,centerX#-mhw#+offsetX,centerY# + offsetY
+End Function 
+
+Function LoadingMessage(msg$,font)
+	PollEvents()
+	RenderScene()
+	Clear2D()
+	DisplayTextCenter(msg$,font)
+	Present()
+End Function 

@@ -1,0 +1,72 @@
+; crc.bb 
+; by Chaduke
+; 20240606
+
+; converted to Blitz3D from the example shown in the PNG specification 
+; https://www.w3.org/TR/png-3/#D-CRCAppendix
+
+; PNG files use CRC for error checking 
+; https://en.wikipedia.org/wiki/Cyclic_redundancy_check
+
+
+; Table of CRCs of all 8-bit messages. 
+Dim crc_table(255)
+Global crc_table_computed = False
+
+; I have To make the buffer Global since it doesnt look 
+; like I can pass an array to a function in Blitz
+Dim buffer(0)
+
+Function TestCRC()
+	Dim buffer(3)
+	buffer(0) = htob("49") ; I
+	buffer(1) = htob("45") ; E 
+	buffer(2) = htob("4E") ; N
+	buffer(3) = htob("44") ; D
+	Alert GetCRC(4) 
+End Function 
+
+TestCRC()
+
+; Make the table For a fast CRC. 
+Function make_crc_table()
+	Local c
+	Local n
+	Local k
+	
+	For n =0 To 255 
+		c = n
+		For k = 0 To 7 
+			If (c And 1) 
+				c = -306674912 Xor (c Shr 1)
+			Else 
+				c = c Shr 1 
+			End If 
+		Next
+		crc_table(n) = c
+	Next
+	crc_table_computed = True 		
+End Function
+
+; Update a running CRC with the bytes buf(0..Len-1) --the CRC
+; should be initialized To all 1's, And the transmitted value
+; is the 1's complement of the final running CRC (see the
+; GetCRC%() routine below) 
+
+Function update_crc(crc_val%,length)
+  Local c% = crc_val
+  Local n%
+
+  If Not crc_table_computed Then make_crc_table()
+  For n = 0 To length-1
+	 b% = buffer(n)
+    c = crc_table((c Xor b) And 255) Xor (c Shr 8)
+  Next 
+  Return c
+End Function
+
+; Return the CRC of the bytes buffer(0..length-1)
+Function GetCRC%(length)
+	Local r% = update_crc(-1,length) Xor -1
+	Return r  
+End Function 

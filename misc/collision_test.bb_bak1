@@ -1,0 +1,59 @@
+; collision_test.bb
+; by Chaduke 
+; 20240525
+
+; trying out the new collsions in version 0.06
+
+CreateWindow 1920,1080, "Collisions Test",1
+CreateScene()
+
+camera = CreatePerspectiveCamera()
+MoveEntity camera,0,2,-5
+
+light = CreateDirectionalLight()
+TurnEntity light,-30,0,0
+SetSceneAmbientLightColor 1,1,1,0.1
+
+scenelight = CreatePointLight() 
+SetLightRange scenelight,10
+SetLightCastsShadow scenelight,True
+MoveEntity scenelight,0,5,0
+
+ground_material = LoadPBRMaterial("sgd://materials/Tiles093_1K-JPG")
+ground_mesh = CreateBoxMesh(-16,-1,-16,16,0,16,ground_material)
+TransformMeshTexCoords ground_mesh,16,16,0,0
+ground_model = CreateModel(ground_mesh)
+CreateMeshCollider ground_model,1,ground_mesh
+
+ball_material = LoadPBRMaterial("sgd://materials/Fabric048_1K-JPG")
+ball_mesh = CreateSphereMesh(0.5,32,32,ball_material)
+SetMeshCastsShadow ball_mesh,True 
+ball_model = CreateModel(ball_mesh)
+MoveEntity ball_model,0,3,0
+ball_collider = CreateSphereCollider(ball_model,1,0.5)
+SetColliderRadius ball_collider,0.5
+
+slope_material = LoadPBRMaterial("sgd://materials/Bricks076C_1K-JPG")
+slope_mesh = CreateBoxMesh(-2,1,-1,2,1.5,0,slope_material)
+SetMeshCastsShadow slope_mesh,True
+TransformMeshTexCoords slope_mesh,4,0.5,0,0
+slope_model = CreateModel(slope_mesh)
+CreateMeshCollider slope_model,1,slope_mesh
+TurnEntity slope_model,0,0,15
+
+EnableCollisions 1,1,2
+zr# = 0.0
+loop = True 
+While loop 
+	e = PollEvents()
+	If e = 1 Then loop = False
+	If KeyHit(256) Then loop = False
+	MoveEntity ball_model,0,-0.05,0
+	; SetEntityRotation ball_model,0,0,zr#
+	zr# = zr# + 0.3
+	UpdateColliders()
+	
+	RenderScene()
+	Present()	
+Wend
+End 

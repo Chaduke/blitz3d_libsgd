@@ -1,0 +1,80 @@
+; av_test_person.bb
+; by Chaduke
+; 20240520
+
+; demonstrates animation capability in LibSGD
+; as of version 0.06.1
+; hold down keys 0 or 1 to play the different animations
+
+; uses a simple model I created called 
+; test_person_animated.glb
+
+; blender exports at 30 fps
+; which equals 0.03333 seconds per frame
+; multiply this by the number of frames 
+; and you get the total time of the animation sequence
+; sequence 2 has 276 frames 
+; so the total time is 276 * 0.0333
+
+; here are the names and frame counts of each animation sequence 
+
+; sequence# | frames |	description 
+; ---------	 ------   -----------
+; 0				 276	 	ninja_idle
+; 1 			 32 		walk	 	  			
+
+Global seq 
+Global seqname$
+Global atime# 
+Global frame#
+Global tframes
+Global ttime# 
+
+Function ChangeSequence()	
+	For k = 48 To 49
+		If KeyDown(k) Then 
+			s = k-48			
+			If seq <> s Then 
+				seq = s
+				atime = 0.0
+			End If		
+			atime = atime + 0.02			
+		End If			
+	Next	
+		
+	Select seq
+		Case 0
+			tframes = 276
+			seqname$ = "ninja_idle"
+		Case 1
+			tframes = 32
+			seqname$ = "walk"		
+	End Select
+	ttime = tframes * 0.0333 ; get the total time of the animation				
+	frame = Ceil(atime / 0.0333) ; get the current frame	
+	If atime > ttime Then atime = 0.0		
+End Function 
+
+CreateWindow 800,600,"Animation Viewer",256
+CreateScene()
+camera = CreatePerspectiveCamera()
+MoveEntity camera,0,1,-4
+light = CreateDirectionalLight()
+TurnEntity light,-35,0,0
+model = LoadBonedModel ("test_person_animated.glb",True)
+
+loop = True 
+While loop
+	e = PollEvents()
+	If e = 1 Then loop = False
+	If KeyHit(256) Then loop = False
+	ChangeSequence()		
+	AnimateModel model,seq,atime,1,1	
+	RenderScene()
+	Clear2D()
+	Draw2DText "Animation Sequence : " + seq + " - " + seqname$,10,10
+	Draw2DText "Time : " + atime,10,30
+	Draw2DText "Frame : " + frame + " of " + tframes,10,50
+	Present()
+Wend 
+End 

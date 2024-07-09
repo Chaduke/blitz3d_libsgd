@@ -1,0 +1,27 @@
+; text_helpers.bb
+; by Chaduke
+; 20240616
+
+Function DisplayTextCenter(msg$,font,offsetY#=0,offsetX#=0)
+	Local centerX# = GetWindowWidth()/2
+	Local centerY# = GetWindowHeight()/2
+	Local mhw# = GetTextWidth(font,msg$) / 2 ; message half width
+	Set2DFont font	
+	Draw2DText msg$,centerX#-mhw#+offsetX,centerY# + offsetY
+End Function 
+
+Function DisplayTextRight(msg$,font,offsetY#=0,offsetX#=-10)	
+	Local mw# = GetTextWidth(font,msg$) ; message width
+	Set2DFont font	
+	Draw2DText msg$,GetWindowWidth()-mw+offsetX,offsetY
+End Function 
+
+Function DisplayLoadingMessage(msg$,image=0)
+	Clear2D()
+	If image<>0 Then Draw2DImage image,0,0,1
+	Set2DTextColor 1,1,0,1
+	Draw2DText msg$,10,10
+	PollEvents()
+	RenderScene()
+	Present()
+End Function

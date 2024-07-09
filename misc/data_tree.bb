@@ -1,0 +1,51 @@
+; data_tree.bb
+; by Chaduke
+; 20240609
+
+; this is my attempt at creating a tree structure 
+; using a custom type called Node 
+; and representing all the common nomenclature 
+; of a tree data structure 
+
+
+; root, children, siblings, leaves, parents
+
+Type Node 
+	Field value
+	Field parent.Node
+	Field child1.Node 
+	Field child2.Node
+End Type 
+
+Global fileout = WriteFile("treelog.txt")
+
+Function CreateNode(p.Node)	
+	If p\value > 1 Then 
+		WriteLine fileout, "Creating child 1 node of value " + p\value
+		Local c1.Node = New Node		
+		c1\parent = p	
+		c1\value = p\value / 2
+		p\child1 = c1
+		CreateNode c1	
+		WriteLine fileout, "Creating child 2 node of value " + p\value
+		Local c2.Node = New Node		
+		c2\parent = p	
+		c2\value = p\value / 2
+		p\child2 = c2
+		CreateNode c2	
+		Return True
+	Else 
+		WriteLine fileout, "Finished creating nodes"	
+		Return False	
+	End If	
+End Function 
+
+root.Node = New Node
+root\value = 1000
+root\child1 = Null
+root\child2 = Null
+CreateNode root
+CloseFile fileout
+End 
+	
+	

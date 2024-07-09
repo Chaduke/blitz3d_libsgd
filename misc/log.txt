@@ -1,0 +1,62 @@
+Initializing lookup and counts table...
+The message to be encoded is as follows :
+Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.
+Message Length 176
+Total unique characters counted 27
+Counts Table :
+Index	Char	Count	Val
+0		F		1		70
+1		o		14		111
+2		u		4		117
+3		r		11		114
+4		 		29		32
+5		s		6		115
+6		c		6		99
+7		e		18		101
+8		a		13		97
+9		n		14		110
+10		d		7		100
+11		v		2		118
+12		y		2		121
+13		g		2		103
+14		f		2		102
+15		t		15		116
+16		h		6		104
+17		b		2		98
+18		i		9		105
+19		,		3		44
+20		w		1		119
+21		L		1		76
+22		p		2		112
+23		l		3		108
+24		m		1		109
+25		q		1		113
+26		.		1		46
+Index : 0 Sort index : 4 Value : 29
+Index : 1 Sort index : 7 Value : 18
+Index : 2 Sort index : 15 Value : 15
+Index : 3 Sort index : 1 Value : 14
+Index : 4 Sort index : 9 Value : 14
+Index : 5 Sort index : 8 Value : 13
+Index : 6 Sort index : 3 Value : 11
+Index : 7 Sort index : 18 Value : 9
+Index : 8 Sort index : 10 Value : 7
+Index : 9 Sort index : 5 Value : 6
+Index : 10 Sort index : 6 Value : 6
+Index : 11 Sort index : 16 Value : 6
+Index : 12 Sort index : 2 Value : 4
+Index : 13 Sort index : 19 Value : 3
+Index : 14 Sort index : 23 Value : 3
+Index : 15 Sort index : 11 Value : 2
+Index : 16 Sort index : 12 Value : 2
+Index : 17 Sort index : 13 Value : 2
+Index : 18 Sort index : 14 Value : 2
+Index : 19 Sort index : 17 Value : 2
+Index : 20 Sort index : 22 Value : 2
+Index : 21 Sort index : 20 Value : 1
+Index : 22 Sort index : 21 Value : 1
+Index : 23 Sort index : 24 Value : 1
+Index : 24 Sort index : 25 Value : 1
+Index : 25 Sort index : 26 Value : 1
+Index : 26 Sort index : 26 Value : 0
+Job completed in 2 milliseconds.

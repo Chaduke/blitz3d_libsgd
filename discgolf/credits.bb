@@ -1,0 +1,3 @@
+; credits.bb
+
+; "Oak tree" (https://skfb.ly/6VQwr) by massive-graphisme is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).

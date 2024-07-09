@@ -1,0 +1,1534 @@
+Creating child 1 node of value 1000
+Creating child 1 node of value 500
+Creating child 1 node of value 250
+Creating child 1 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 250
+Creating child 1 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 500
+Creating child 1 node of value 250
+Creating child 1 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 250
+Creating child 1 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 1000
+Creating child 1 node of value 500
+Creating child 1 node of value 250
+Creating child 1 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 250
+Creating child 1 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 500
+Creating child 1 node of value 250
+Creating child 1 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 250
+Creating child 1 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 125
+Creating child 1 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 62
+Creating child 1 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 31
+Creating child 1 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 15
+Creating child 1 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes
+Creating child 2 node of value 7
+Creating child 1 node of value 3
+Finished creating nodes
+Creating child 2 node of value 3
+Finished creating nodes

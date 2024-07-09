@@ -1,0 +1,31 @@
+Type Particle 
+	Field sprite 
+	Field acc.Vec3 ; acceleration 
+	Field vel.Vec3 ; velocity	
+End Type 
+
+Function CreateParticle.Particle(image)
+	Local p.Particle = New Particle 
+	p\sprite = CreateSprite(image)
+	MoveEntity p\sprite,Rand(0,128),128,Rand(0,128)	
+	Local sc# = Rnd(0.1,0.3)
+	SetEntityScale p\sprite,sc,sc,sc
+	p\acc = CreateVec3("Particle Acceleration",0,-0.01,0)
+	p\vel = CreateVec3("Particle Velocity",0,0,0)	
+	Return p
+End Function 
+
+Function UpdateParticle(p.Particle)
+	AddToVec3 p\vel,p\acc
+	MoveEntity p\sprite,p\vel\x,p\vel\y,p\vel\z
+	If GetEntityY(p\sprite) < 0 Then 
+		DestroyEntity p\sprite
+		Delete p
+	End If 	
+End Function 
+
+Function UpdateParticles()
+	For p.Particle = Each Particle
+		UpdateParticle p
+	Next 
+End Function 

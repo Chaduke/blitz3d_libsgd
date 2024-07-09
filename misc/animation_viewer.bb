@@ -1,0 +1,185 @@
+; animation_viewer.bb
+; by Chaduke
+; 20240519
+
+; demonstrates animation capability in LibSGD
+; as of version 0.06.1
+; hold down key codes 0-9 to play the different animations
+; hold down semicolon to play animation 10
+
+; uses a simple model I created called 
+; base_male_animated.glb
+
+; blender exports at 30 fps
+; which equals 0.03333 seconds per frame
+; multiply this by the number of frames 
+; and you get the total time of the animation sequence
+; sequence 5 has 21 frames 
+; so the total time is 21 * 0.0333
+
+; here are the names and frame counts of each animation sequence 
+
+; sequence# | frames |	description 
+; ---------	 ------   -----------
+; 0				 72 	 	death
+; 1				 117		freehang_climb
+; 2 			 142		hanging_idle	
+; 3 			 60 		idle	
+; 4     		 27 	   jump
+; 5 		    42			left_shimmy
+; 6 			 43	 		right_shimmy		 		
+; 7 			 17			run_fast
+; 8				 21 		run_left
+; 9 			 21			run_right
+; 10 			 23 		run_slow
+; 11			 226      shuffle
+; 12 			 36 		standard_walk
+; 13 			 32 		walk_left
+; 14 		    29			walk_right				 	  			
+
+Global current_seq = 3
+Global previous_seq = 3
+Global s = 3
+
+Global current_seqname$
+Global previous_seqname$
+
+Global current_seq_atime# 
+Global previous_seq_atime#
+
+Global current_seq_frame#
+Global previous_seq_frame#
+
+Global current_seq_tframes
+Global previous_seq_tframes
+
+Global current_seq_ttime# 
+Global previous_seq_ttime#
+
+Global current_seq_weight# = 0
+Global previous_seq_weight# = 1
+
+Function ChangeSequence()	
+	keypressed = False	
+	; KEYS 0 THRU 9
+	For k = 48 To 57
+		If KeyDown(k) Then 
+			s = k-48	
+			keypressed = True
+		End If				
+	Next
+	; KEYS A THRU E
+	For k = 65 To 69
+		If KeyDown(k) Then
+			s = k-55		
+			keypressed = True
+		End If		
+	Next
+	
+	If current_seq <> s Then 
+		; sequence just switched
+		previous_seq = current_seq ; sequence number 
+		previous_seqname$ = current_seqname$ 
+		previous_seq_atime = current_seq_atime ; animation time 
+		previous_seq_frame = current_seq_frame ; frame number
+		previous_seq_tframes = current_seq_tframes ; total frames
+		previous_seq_ttime = current_seq_ttime ; total time
+		previous_seq_weight = current_seq_weight ; blend weight
+		current_seq = s
+		current_seq_atime = 0.0
+		current_seq_weight= 0.0
+	End If	
+	
+	If keypressed Then 	
+		current_seq_atime = current_seq_atime + 0.02	
+		previous_seq_atime = previous_seq_atime + 0.02	
+		current_seq_weight = current_seq_weight + 0.02
+		If current_seq_weight > 1 Then current_seq_weight = 1	
+		previous_seq_weight = previous_seq_weight -0.02	
+		If previous_seq_weight < 0.0 Then previous_seq_weight = 0.0
+	End If	
+		
+	Select current_seq
+		Case 0
+			current_seq_tframes = 72
+			current_seqname$ = "death"
+		Case 1
+			current_seq_tframes = 117
+			current_seqname$ = "freehang_climb"
+		Case 2
+			current_seq_tframes = 142
+			seqname$ = "hanging_idle"
+		Case 3
+			current_seq_tframes = 60
+			current_seqname$ = "idle"
+		Case 4
+			current_seq_tframes = 27
+			current_seqname$ = "jump"
+		Case 5
+			current_seq_tframes = 42
+			current_seqname$ = "left_shimmy"	
+		Case 6
+			current_seq_tframes = 43
+			current_seqname$ = "right_shimmy"	
+		Case 7
+			current_seq_tframes = 17
+			current_seqname$ = "run_fast"		
+		Case 8 
+			current_seq_tframes = 21
+			current_seqname$ = "run_left"
+		Case 9 
+			current_seq_tframes = 21
+			current_seqname$ = "run_right"
+		Case 10 
+			current_seq_tframes = 23
+			current_seqname$ = "run_slow"
+		Case 11
+			current_seq_tframes = 226
+			current_seqname$ = "shuffle"	
+		Case 12
+		 	current_seq_tframes = 36
+			current_seqname$ = "standard_walk"	
+		Case 13
+			current_seq_tframes = 32
+			current_seqname$ = "walk_left"
+		Case 14 
+			current_seq_tframes = 29	
+			current_seqname$ = "walk_right"	
+	End Select
+	current_seq_ttime = current_seq_tframes * 0.0333 ; get the total time of the animation				
+	current_seq_frame = Ceil(current_seq_atime / 0.0333) ; get the current frame	
+	If current_seq_atime > current_seq_ttime Then current_seq_atime = 0.0	
+	If previous_seq_atime > previous_seq_ttime Then previous_seq_atime = 0.0	
+End Function 
+
+CreateWindow 1280,768,"Animation Viewer",256
+CreateScene()
+camera = CreatePerspectiveCamera()
+MoveEntity camera,0,1,-5
+light = CreateDirectionalLight()
+TurnEntity light,-35,0,0
+model = LoadBonedModel ("base_male_animated.glb",True)
+
+loop = True 
+While loop
+	e = PollEvents()
+	If e = 1 Then loop = False
+	If KeyHit(256) Then loop = False
+	ChangeSequence()		
+	AnimateModel model,previous_seq,previous_seq_atime,1,previous_seq_weight#
+	AnimateModel model,current_seq,current_seq_atime,1,current_seq_weight#	
+	
+	RenderScene()
+	Clear2D()
+	Draw2DText "Current Sequence : " + current_seq + " - " + current_seqname$,10,10
+	Draw2DText "Previous Sequence : " + previous_seq + " - " + previous_seqname$,10,30
+	Draw2DText "Current Sequence Time : " + current_seq_atime,10,50
+	Draw2DText "Previous Sequence Time : " + previous_seq_atime,10,70
+	Draw2DText "Current Sequence Frame : " + current_seq_frame + " of " + current_seq_tframes,10,90
+	Draw2DText "Previous Sequence Frame : " + previous_seq_frame + " of " + previous_seq_tframes,10,110
+	Draw2DText "Current Sequence Weight : " + current_seq_weight,10,130
+	Draw2DText "Previous Sequence Weight : " + previous_seq_weight,10,150
+	Present()
+Wend 
+End 
+

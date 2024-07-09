@@ -1,0 +1,38 @@
+; test_scene.bb
+; by Chaduke
+; 20240704
+
+Type TestScene	
+	Field directional_light	
+	Field ambient_red# 
+	Field ambient_green#
+	Field ambient_blue# 
+	Field ambient_alpha# 	
+	Field sky_texture
+	Field sky_roughness
+	Field skybox 		
+End Type
+
+Function CreateTestScene.TestScene()
+	Local t.TestScene = New TestScene
+	
+	SetCSMTextureSize 2048
+	SetCSMSplitDistances 8,32,64,128
+	t\directional_light = CreateDirectionalLight()
+	SetLightShadowMappingEnabled t\directional_light,True 
+	TurnEntity t\directional_light,-45,0,0	
+	t\ambient_red = 1.0
+	t\ambient_green = 1.0
+	t\ambient_blue = 1.0
+	t\ambient_alpha = 0.1
+	SetAmbientLightColor t\ambient_red,t\ambient_green,t\ambient_blue,t\ambient_alpha	
+	DisplayLoadingMessage "Creating Sky",t
+	t\sky_texture = LoadTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
+	SetEnvTexture t\sky_texture
+	t\skybox = CreateSkybox(t\sky_texture)	
+	t\sky_roughness = 0.2
+	SetSkyboxRoughness t\skybox,t\sky_roughness
+	
+	Return t											
+End Function 
+
