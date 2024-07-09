@@ -22,7 +22,6 @@ Include "hextofloat.bb"
 ; as well as use other people's code in your own projects
 
 CreateWindow 1024,768,"Hello Step 6!",0
-CreateScene() 
 light = CreateDirectionalLight() ; creates a light so we can see things, otherwise it would pitch black
 TurnEntity light,-45,0,0 ; turns the directional light downward 45 degrees so we can see the top of the cube
 camera = CreatePerspectiveCamera() ; creates a camera to look at things in the scene

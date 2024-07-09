@@ -409,10 +409,10 @@ Type TestShape
 	Field name$
 	; 0 = oval, 1 = rect  
 	Field shape_type 
-	Field posx 
-	Field posy 
-	Field width 
-	Field height 
+	Field posx# 
+	Field posy# 
+	Field width# 
+	Field height# 
 End Type 
 
 Function DrawAllTestShapes()
@@ -521,10 +521,10 @@ Function GUITest2D()
 			t.TestShape = New TestShape
 			t\name$ = "Shape #" + shape_count
 			t\shape_type = 1
-			t\posx = rects_x\val_float
-			t\posy = rects_y\val_float
-			t\width = rects_width\val_float
-			t\height = rects_height\val_float			
+			t\posx = rects_x\val_float#
+			t\posy = rects_y\val_float#
+			t\width = rects_width\val_float#
+			t\height = rects_height\val_float#			
 			rects_generate\click_handled = True 	
 			shape_count = shape_count + 1		
 		End If

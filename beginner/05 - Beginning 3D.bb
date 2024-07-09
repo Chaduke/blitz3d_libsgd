@@ -5,7 +5,6 @@
 ; press F5 first and see what we're creating here with all this new code
 
 CreateWindow 1024,768,"Hello Step 5!",0
-CreateScene() 
 light = CreateDirectionalLight() ; creates a light so we can see things, otherwise it would pitch black
 camera = CreatePerspectiveCamera() ; creates a camera to look at things in the scene
 MoveEntity camera,0,1,-5 ; moves the camera 1 unit upwards, and 5 units backward, away from the screen towards you

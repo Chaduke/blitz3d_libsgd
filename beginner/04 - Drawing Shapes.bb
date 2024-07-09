@@ -1,7 +1,7 @@
 ; Step 4 - Drawing Shapes
 
 CreateWindow 640,480,"Hello Step 4!",0
-CreateScene() ; creates a scene to draw on
+
 Repeat 
 	Clear2D() ; clears the screen first
 	Draw2DText "Hello Step 4!!",10,10 ; prints the string to the screen at 10,10
