@@ -129,9 +129,23 @@ Function CreateEditor.Editor(g.GameApp)
 	Return e	
 End Function 
 
-Function UpdateEditorGUIs()
-	GuiDragCheck()
-	DrawAllGUIs()		
+Function UpdateEditorGUIs(b.BasicScene,e.Editor)
+	; show/hide guis
+	If IsKeyHit(KEY_F1) Then ShowHideGUIWindow e\environment_settings
+	If IsKeyHit(KEY_F2) Then ShowHideGUIWindow e\terrain_settings
+	If IsKeyHit(KEY_F3) Then ShowHideGUIWindow e\outliner	
+	If IsKeyHit(KEY_F4) Then ShowHideGUIWindow e\actor_settings		
+
+	Local r = GuiDragCheck()
+	If r Then 
+		; check to see if a widget is dragged and update accordingly
+		Local w.Widget
+		For w = Each Widget
+			If (w\dragged And w\title$ = "Sky Roughness") Then SetSkyboxRoughness b\skybox,w\val_float#
+		Next 	
+	End If 	
+	DrawAllGUIs()
+	Return r		
 End Function 
 
 Function UpdateEditorNavigation(g.GameApp,b.BasicScene)

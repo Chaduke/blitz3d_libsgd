@@ -2,9 +2,7 @@
 ; by Chaduke
 ; 20240704
 
-Type BasicScene
-	Field camera 
-	Field pivot
+Type BasicScene	
 	Field directional_light	
 	Field ambient_red# 
 	Field ambient_green#
@@ -22,14 +20,12 @@ End Type
 
 Function CreateBasicScene.BasicScene(g.GameApp,blankscene=False)
 	Local b.BasicScene = New BasicScene
-	b\camera = CreatePerspectiveCamera()
-	b\pivot = CreateModel(0)
-	SetEntityParent b\camera,b\pivot 
+	
 	SetCSMTextureSize 2048
 	SetCSMSplitDistances 8,32,64,128
 	b\directional_light = CreateDirectionalLight()
 	SetLightShadowMappingEnabled b\directional_light,True 
-	TurnEntity b\directional_light,-45,0,0	
+	TurnEntity b\directional_light,-25,0,0	
 	b\ambient_red = 1.0
 	b\ambient_green = 1.0
 	b\ambient_blue = 1.0
@@ -54,9 +50,7 @@ Function CreateBasicScene.BasicScene(g.GameApp,blankscene=False)
 		DisplayLoadingMessageWithTitle "Adding Grass",g
 		GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/grass1.png"
 		GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/weeds.png"		
-		PlaceEntityOnTerrain b\pivot,b\trn,1	
+		PlaceEntityOnTerrain g\pivot,b\trn,1	
 	End If 	
 	Return b												
 End Function 
-
-

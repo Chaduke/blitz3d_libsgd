@@ -19,6 +19,7 @@ Include "../engine/sprites.bb"
 Include "../engine/text_helpers.bb"
 Include "../engine/file_browser.bb"
 Include "../engine/sound.bb"
+Include "../start_menu.bb"
 
 Type GameApp
 	Field title$
@@ -37,6 +38,9 @@ Type GameApp
 	Field camera
 	Field pivot 
 	Field editor_loaded
+	Field options_loaded
+	Field story_loaded 
+	Field tutorial_loaded
 	Field start_menu.StartMenu
 End Type 
 
@@ -94,11 +98,11 @@ End Function
 Function DrawTitle(g.GameApp)
 	Draw2DImage g\loading_screen,0,0,1
 	Set2DTextColor .5,0,0.5,1
-	DisplayTextCenter g\subtitle$,g\subtitle_font,-282,-222
-	DisplayTextCenter g\title$,g\title_font,-253,-3
+	DisplayTextCenter g\subtitle$,g\start_menu\subtitle_font,-282,-222
+	DisplayTextCenter g\title$,g\start_menu\title_font,-253,-3
 	Set2DTextColor 0.5,1,0,1
-	DisplayTextCenter g\subtitle$,g\subtitle_font,-280,-220
-	DisplayTextCenter g\title$,g\title_font,-250,0	
+	DisplayTextCenter g\subtitle$,g\start_menu\subtitle_font,-280,-220
+	DisplayTextCenter g\title$,g\start_menu\title_font,-250,0	
 End Function 
 
 Function DisplayLoadingMessageWithTitle(msg$,g.GameApp)	

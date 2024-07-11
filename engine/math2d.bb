@@ -90,11 +90,11 @@ Function CirclesCollided(x1#,y1#,r1#,x2#,y2#,r2#)
 	End If				
 End Function 
 
-Function RectsCollided(l1,t1,r1,b1,l2,t2,r2,b2)
+Function RectsCollided(l1#,t1#,r1#,b1#,l2#,t2#,r2#,b2#)
 	Return (l1 < r2 And t1 < b2 And r1 > l2 And b1 > t2)
 End Function 
 
-Function GetCollisionType(l1,t1,r1,b1,l2,t2,r2,b2) ; left, top, right, bottom
+Function GetCollisionType(l1#,t1#,r1#,b1#,l2#,t2#,r2#,b2#) ; left, top, right, bottom
 	; 0 = no collision 
 	; 1 = right / left collision 
 	; 2 = bottom / top collision 
@@ -102,10 +102,10 @@ Function GetCollisionType(l1,t1,r1,b1,l2,t2,r2,b2) ; left, top, right, bottom
 	; 4 = top / bottom collision	
 					
 	Local c = 0
-	d1 = r2 - l1
-	d2 = b2 - t1
-	d3 = r1 - l2
-	d4 = b1 - t2	
+	local d1# = r2 - l1
+	local d2# = b2 - t1
+	local d3# = r1 - l2
+	local d4# = b1 - t2	
 	
 	; display these 4 amounts for debugging purposes
 	; DisplayTextCenter d1,-150,constan_font

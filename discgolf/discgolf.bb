@@ -19,6 +19,7 @@ Include "ob_area.bb"
 Include "story.bb"
 Include "tutorial.bb"
 Include "options.bb"
+Include "../engine/dialogue.bb"
 
 ga.GameApp = CreateGameApp("Disc Golf", "Chaduke's")
 
@@ -39,9 +40,9 @@ While ga\loop
 		Case GAME_STATE_STORY
 		; story mode	
 		If Not ga\story_loaded Then
-			s.Story = CreateStory()
+			st.Story = CreateStory(ga)
 		Else 
-			RunStory s
+			if not ga\quit then RunStory(st)
 		End If
 		
 		Case GAME_STATE_SANDBOX
@@ -52,8 +53,8 @@ While ga\loop
 			bs.BasicScene = CreateBasicScene(ga,False)
 		Else 
 			If Not ga\quit Then 
-				UpdateEditorGUIS()
-				UpdateEditorNavigation ga,bs
+				Local r = UpdateEditorGUIS(bs,ed)
+				If Not r Then UpdateEditorNavigation ga,bs
 			End If 		
 		End If			
 		

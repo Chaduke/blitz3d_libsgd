@@ -25,11 +25,11 @@ Function CreateBasicScene.BasicScene(g.GameApp,blankscene=False)
 	SetCSMSplitDistances 8,32,64,128
 	b\directional_light = CreateDirectionalLight()
 	SetLightShadowMappingEnabled b\directional_light,True 
-	TurnEntity b\directional_light,-45,0,0	
-	b\ambient_red = 1.0
-	b\ambient_green = 1.0
+	TurnEntity b\directional_light,-25,-15,0	
+	b\ambient_red = 0.7
+	b\ambient_green = 0.5
 	b\ambient_blue = 1.0
-	b\ambient_alpha = 0.1
+	b\ambient_alpha = 0.8
 	SetAmbientLightColor b\ambient_red,b\ambient_green,b\ambient_blue,b\ambient_alpha
 	If blankscene = False Then 
 		DisplayLoadingMessageWithTitle "Creating Sky",g
@@ -46,7 +46,7 @@ Function CreateBasicScene.BasicScene(g.GameApp,blankscene=False)
 		DisplayLoadingMessageWithTitle "Creating Rock Fence",g	
 		GenerateRockFence b\trn,"../engine/assets/models/disc_golf/rock.glb"	
 		DisplayLoadingMessageWithTitle "Adding Trees", g
-		GenerateTrees b\trn,100
+		GenerateTrees b\trn,200
 		DisplayLoadingMessageWithTitle "Adding Grass",g
 		GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/grass1.png"
 		GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/weeds.png"		
@@ -54,4 +54,3 @@ Function CreateBasicScene.BasicScene(g.GameApp,blankscene=False)
 	End If 	
 	Return b												
 End Function 
-

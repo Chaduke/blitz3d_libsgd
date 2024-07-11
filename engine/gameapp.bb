@@ -19,6 +19,8 @@ Include "../engine/sprites.bb"
 Include "../engine/text_helpers.bb"
 Include "../engine/file_browser.bb"
 Include "../engine/sound.bb"
+Include "../engine/start_menu.bb"
+Include "../engine/basic_scene.bb"
 
 Type GameApp
 	Field title$

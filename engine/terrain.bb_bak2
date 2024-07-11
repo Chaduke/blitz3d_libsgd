@@ -85,8 +85,7 @@ Function Min(v1,v2)
 	If v1 < v2 Then Return v1 Else Return v2
 End Function 
 
-Function CreateTerrain.Terrain(t.Terrain)	
-	
+Function CreateTerrain.Terrain(t.Terrain)		
 	; create the noisemap
 	Dim noisemap#(t\width,t\depth)	
 	zoffset#=t\start_offset

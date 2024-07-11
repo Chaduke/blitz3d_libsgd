@@ -31,7 +31,7 @@ Function KeepTreeInsideLevel(t.Terrain)
 	
 	; check for zero trees
 	If current_tree = Null Then 
-		my_palm_tree = LoadMesh("assets/models/my_palm_tree.glb")
+		my_palm_tree = LoadMesh("../engine/assets/models/trees/my_palm_tree.glb")
 		AddOneTree "Our First Palm Tree",my_palm_tree,tw/2,GetTerrainHeight(tw/2,td/2,t),td/2,1
 		current_tree = First Tree
 	End If 	
@@ -58,7 +58,7 @@ End Function
 
 Function EditTrees(t.Terrain)
 
-	ThirdPersonMouseInputEditor()
+	ThirdPersonMouseInputEditor(camera,pivot)
 	ClampEntityPitch(pivot,70,-70)
 	KeepTreeInsideLevel(t)
 	KeyboardInputThirdPerson(current_tree\model,0.05)	
@@ -106,7 +106,7 @@ Function EditTrees(t.Terrain)
 		For i.Tree = Each Tree
 			count = count + 1
 		Next 	
-		my_palm_tree = LoadMesh("assets/models/my_palm_tree.glb")
+		my_palm_tree = LoadMesh("../engine/assets/models/trees/my_palm_tree.glb")
 		Local n$ = "Tree Number " + (count + 1)
 		AddOneTree n$, my_palm_tree, GetEntityX(pivot)+1, GetEntityY(pivot), GetEntityZ(pivot),1
 		current_tree = Last Tree
@@ -119,7 +119,7 @@ Function EditTrees(t.Terrain)
 		; check for zero trees		
 		current_tree = Last Tree
 		If current_tree = Null Then 
-			my_palm_tree = LoadMesh("assets/models/my_palm_tree.glb")
+			my_palm_tree = LoadMesh("../engine/assets/models/trees/my_palm_tree.glb")
 			; get our terrain values			
 			Local tw = t\width
 			Local td = t\depth
@@ -172,7 +172,7 @@ End Function
 
 
 Function GenerateSolidTrees(t.Terrain,numtrees,material)
-	tree_mesh = LoadMesh("assets/models/tree1.glb")
+	tree_mesh = LoadMesh("../engine/assets/models/trees/tree1.glb")
 	SetMeshShadowCastingEnabled tree_mesh,True
 	For i = 0 To numtrees 
 		Local tx# = Rand(2,t\width-2)

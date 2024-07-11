@@ -20,7 +20,7 @@ Type SolidTree
 	Field trunk_cyl.Cylinder
 End Type	
 
-Dim treeMeshes(3)
+Dim treeMeshes(4)
 
 ; make sure we are not outside the terrain limits
 Function KeepTreeInsideLevel(t.Terrain)
@@ -186,8 +186,6 @@ Function GenerateTrees(t.Terrain,numtrees,plus_fence = False)
 	Local tw=t\width
 	Local td=t\depth
 
-	; DisplayLoadingMessage "Adding Trees..."	
-	; my_palm_tree = LoadMesh("assets/models/my_palm_tree.glb")
 	treeMeshes(0) = LoadMesh("sgd://models/tree1.glb")
 	SetMeshShadowCastingEnabled treeMeshes(0),True
 	treeMeshes(1) = LoadMesh("sgd://models/tree1.glb")

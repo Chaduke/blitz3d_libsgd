@@ -20,6 +20,7 @@ Include "../engine/gui.bb"
 Include "../engine/file_browser.bb"
 Include "../engine/sound.bb"
 Include "../engine/test_scene.bb"
+Include "../engine/dialogue.bb"
 
 Type TestApp	 
 	Field loop

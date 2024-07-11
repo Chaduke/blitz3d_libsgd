@@ -18,10 +18,10 @@ Const numspheres = 10 : Const step_value = 360 / numspheres
 Type GUIWindow
 	Field id
 	Field title$
-	Field l ; left
-	Field t ; top 
-	Field r ; right
-	Field b ; bottom	
+	Field l# ; left
+	Field t# ; top 
+	Field r# ; right
+	Field b# ; bottom	
 	Field v ; visible flag
 	Field s ; selected flag	
 	Field dragged 	
@@ -60,8 +60,8 @@ Function GUISizeAdjust(g.GUIWindow)
 	Local th = g\vs + g\vs / 2
 	For w.Widget = Each Widget
 		If w\gui_id = g\id Then 
-			Local ww = w\textboxwidth + GetTextWidth(g\font,w\title$) + 15
-			Local tw = GetTextWidth(g\font,w\title$) + 15 + GetTextWidth(g\font,w\val_string$)
+			Local ww# = w\textboxwidth + GetTextWidth(g\font,w\title$) + 15
+			Local tw# = GetTextWidth(g\font,w\title$) + 15 + GetTextWidth(g\font,w\val_string$)
 			If tw > ww Then ww = tw
 			If g\r - g\l < ww Then g\r = g\l + ww	
 			th = th + g\vs
@@ -75,7 +75,7 @@ Function AddWidget.Widget(g.GUIWindow,title$="New Value",widget_type=0,value$="0
 	w\gui_id = g\id
 	w\title$ = title$
 	w\widget_type = widget_type
-	w\val_float# = value$	
+	w\val_float# = Float(value$)
 	w\val_string$ = value$	
 	w\val_low = vl
 	w\val_high = vh
@@ -203,14 +203,14 @@ Function GUIDroppedCollisionCheck(g.GUIWindow)
 	For og.GUIWindow = Each GUIWindow 
 		If (og <> g And RectsCollided(og\l,og\t,og\r,og\b,g\l,g\t,g\r,g\b)) Then 
 			Local c = GetCollisionType(og\l,og\t,og\r,og\b,g\l,g\t,g\r,g\b)	
-			Local gw = g\r - g\l	
-			Local gh = g\b - g\t 
+			Local gw# = g\r - g\l	
+			Local gh# = g\b - g\t 
 			If c = 1 Then 
-				d = g\r - og\l				 
+				local d# = g\r - og\l				 
 				g\l = g\l - d 
 				g\r = g\l + gw
 			End If 	
-			If c = 2 	Then 
+			If c = 2 Then 
 				d = g\b - og\t
 				g\t = g\t - d
 				g\b = g\t + gh
