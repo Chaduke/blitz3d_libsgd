@@ -9,6 +9,8 @@ Type Player
 	Field pivot
 	Field vel.Vec3	
 	Field acc.Vec3
+	Field collider
+	Field collider_model
 	Field anim
 	Field anim_time#
 	Field light
@@ -26,6 +28,7 @@ Function CreatePlayer.Player()
 	SetEntityParent p\model,p\pivot 	
 	p\vel = CreateVec3("Player Velocity",0,0,-0.1)
 	p\acc = CreateVec3("Player Acceleration",0,0,0)
+	p\collider = CreateEllipsoidCollider(p\model,0,0.57,.91)
 	p\running = True 
 	p\anim = 1 ; running
 	p\anim_time = 0.0	

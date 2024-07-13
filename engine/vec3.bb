@@ -22,6 +22,10 @@ Function CreateVec3.Vec3(name$="Vector 3",x#=0,y#=0,z#=0)
 	Return v
 End Function 
 
+Function MoveEntityVec3(e,v.Vec3)
+	MoveEntity e,v\x,v\y,v\z
+End Function 
+
 ; calculates the distance between 2 Vec3s
 Function distVec3#(v1.Vec3,v2.Vec3)
 	Local diff.Vec3 = New Vec3

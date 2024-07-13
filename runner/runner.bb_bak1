@@ -18,9 +18,12 @@ PlaceEntityOnTerrain p\pivot,rs\trn,0,False,False,16,16
 SetEntityPosition p\model,0,0,0
 If ga\debug = False Then 
 	SetEntityPosition ga\pivot,0,0.75,0
-	TurnEntity ga\pivot,-10,-90,0
+	TurnEntity ga\pivot,-10,-100,0
 	SetMouseZ -10	
 End If 
+
+EnableCollisions 1,0,2
+; EnableCollisions 0,1,1
 
 While ga\loop
 	BeginFrame ga	
@@ -30,6 +33,7 @@ While ga\loop
 		SetEntityPosition ga\camera,5,0,GetMouseZ()		
 	End If 	
 	UpdatePlayer p,rs\trn	
+	UpdateColliders()
 	EndFrameCustom ga,p	
 Wend
 End 

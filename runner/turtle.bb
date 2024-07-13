@@ -6,13 +6,13 @@
 
 Type Turtle 
 	Field model 
-	Field collider.AABB
+	Field collider
 End Type 
 
 Function CreateTurtle.Turtle(mesh)
 	Local t.Turtle = New Turtle 
 	t\model = CreateModel(mesh)
-	t\collider = CreateAABB(1,1,1)
+	t\collider = CreateEllipsoidCollider(t\model,1,1.6, 1.5)
 	Return t		
 End Function 	
 

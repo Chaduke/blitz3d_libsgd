@@ -22,6 +22,9 @@ If ga\debug = False Then
 	SetMouseZ -10	
 End If 
 
+; EnableCollisions 1,0,2
+; EnableCollisions 0,1,1
+
 While ga\loop
 	BeginFrame ga	
 	If ga\debug Then 
@@ -30,6 +33,7 @@ While ga\loop
 		SetEntityPosition ga\camera,5,0,GetMouseZ()		
 	End If 	
 	UpdatePlayer p,rs\trn	
+	UpdateColliders()
 	EndFrameCustom ga,p	
 Wend
 End 

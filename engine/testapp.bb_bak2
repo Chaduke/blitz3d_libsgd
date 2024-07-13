@@ -14,12 +14,12 @@ Include "../engine/navigation.bb"
 Include "../engine/math2d.bb" ; for Distance2D() and CirclesCollided()
 Include "../engine/math3d.bb" ; for Type Cylinder and CylindersCollided()
 Include "../engine/trees.bb"
-Include "../engine/actors.bb"
 Include "../engine/sprites.bb"
 Include "../engine/gui.bb"
 Include "../engine/file_browser.bb"
 Include "../engine/sound.bb"
 Include "../engine/test_scene.bb"
+Include "../engine/dialogue.bb"
 
 Type TestApp	 
 	Field loop
@@ -30,6 +30,8 @@ Type TestApp
 	Field ts.TestScene	
 	Field logfile
 	Field help_visible
+	Field camera
+	Field pivot 
 End Type
 
 Function CreateTestApp.TestApp(fullscreen = False,name$="Test App")
@@ -50,9 +52,30 @@ Function CreateTestApp.TestApp(fullscreen = False,name$="Test App")
 	t\browser_font = LoadFont("../engine/assets/fonts/bb.ttf",18)
 	t\loop = True 
 	t\quit = False	
-	t\ts = CreateTestScene(t)
-	; t\logfile = WriteFile("../engine/debuglog.txt")	
+	t\ts = CreateTestScene()
+	; t\logfile = WriteFile("../engine/debuglog.txt")
+	t\camera = CreatePerspectiveCamera()
+	t\pivot = CreateModel(0)
+	SetEntityParent t\camera,t\pivot	
+	MoveEntity t\pivot,0,1,0
 	Return t
+End Function 
+
+Function CreateGround()
+	DisplayLoadingMessage "Creating Ground"
+	Local ground_material = LoadPBRMaterial("../engine/assets/materials/Moss002_1K-JPG")
+	Local ground_mesh = CreateBoxMesh(-128,-0.1,-128,128,0,128,ground_material)
+	TFormMeshTexCoords ground_mesh,16,16,0,0
+	Local ground_model = CreateModel(ground_mesh)
+	Return ground_model
+End Function 
+
+Function GetColliderMaterial()
+	Local collider_texture = LoadTexture("../engine/assets/textures/misc/yellow_grid.png",4,18)
+	Local collider_material = CreatePBRMaterial()
+	SetMaterialTexture collider_material,"albedoTexture",collider_texture
+	SetMaterialBlendMode collider_material,3
+	Return collider_material
 End Function 
 
 Function BeginFrame(t.TestApp)	
@@ -74,6 +97,7 @@ Function EndFrame(t.TestApp)
 	msg$ = msg$ + " | RPS : " + GetRPS()
 	msg$ = msg$ + " | MouseZ " + GetMouseZ()
 	Draw2DText msg$,5,GetWindowHeight() - 20	
+	Present()
 End Function
 
 Function LogEntry(t.TestApp,msg$)

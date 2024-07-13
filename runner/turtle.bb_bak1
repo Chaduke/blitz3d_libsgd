@@ -6,13 +6,13 @@
 
 Type Turtle 
 	Field model 
-	Field collider.AABB
+	Field collider
 End Type 
 
 Function CreateTurtle.Turtle(mesh)
 	Local t.Turtle = New Turtle 
 	t\model = CreateModel(mesh)
-	t\collider = CreateAABB(1,1,1)
+	t\collider = CreateEllipsoidCollider(t\model, 2,1.6, 1.5)
 	Return t		
 End Function 	
 
@@ -24,7 +24,7 @@ Function GetRandomX#(t.Turtle,rangelow#,rangehigh#,z#)
 	While loop
 		; check the distance between the passed in turtle and the indexed one 
 		; also make sure they aren't the same		 
-		If (Abs(Distance2D(x,z,GetEntityX(i\model),GetEntityZ(i\model)) < 3.2 And i <> t)) Then 
+		If (Abs(Distance2D(x,z,GetEntityX(i\model),GetEntityZ(i\model)) < 6 And i <> t)) Then 
 			; we need to repick x
 			; AND restart the loop
 			x# = Rnd(rangelow#,rangehigh#)
@@ -46,7 +46,7 @@ Function GetRandomZ#(t.Turtle,rangelow#,rangehigh#,x#)
 	While loop
 		; check the distance between the passed in turtle and the indexed one 
 		; also make sure they aren't the same		 
-		If (Abs(Distance2D(x,z,GetEntityX(i\model),GetEntityZ(i\model)) < 5 And i <> t)) Then 
+		If (Abs(Distance2D(x,z,GetEntityX(i\model),GetEntityZ(i\model)) < 6 And i <> t)) Then 
 			; we need to repick z
 			z# = Rnd(rangelow#,rangehigh#)
 			i = First turtle
