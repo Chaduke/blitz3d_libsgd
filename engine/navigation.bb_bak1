@@ -168,10 +168,10 @@ Function ThirdPersonMouseInputEditor(cam,piv,mz#=1.0,ts#=0.2)
 	CorrectEntityRoll(piv)	
 End Function
 
-Function NavigationMode(t.Terrain)
+Function NavigationMode(e,t.Terrain)
 	
-	KeyboardInputFirstPerson camera 	
-	UnrealMouseInput camera
-	StandardEntityAdjustments camera,t 
+	KeyboardInputFirstPerson e
+	UnrealMouseInput e
+	StandardEntityAdjustments e,t 
 	
 End Function 

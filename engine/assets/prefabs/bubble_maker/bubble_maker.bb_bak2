@@ -40,6 +40,12 @@ Function UpdateBubbleMaker(b.BubbleMaker)
 	End If	
 End Function 
 
+Function UpdateBubbleMakers()
+	For b.BubbleMaker = Each BubbleMaker
+		UpdateBubbleMaker b
+	Next 	
+End Function 
+
 ; bubbles
 Type Bubble
 	Field sprite

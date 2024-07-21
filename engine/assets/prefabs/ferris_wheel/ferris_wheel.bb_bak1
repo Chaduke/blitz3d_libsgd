@@ -63,7 +63,7 @@ End Function
 
 Function RemovePassenger(f.FerrisWheel,passenger,t.Terrain)
 	SetEntityParent passenger,0
-	PlaceEntityOnTerrain passenger,t,0,False,True
+	PlaceEntityOnTerrain passenger,t,1,False,True
 	AimEntityAtEntity passenger,f\wheel_pivot,0
 End Function 
 

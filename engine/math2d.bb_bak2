@@ -76,6 +76,11 @@ Function Distance2D#(x1#,y1#,x2#,y2#)
 	Return Sqr(dx * dx + dy * dy)
 End Function 
 
+Function GetEntityDistanceFlat#(e1,e2)
+	Local d# = Distance2D(GetEntityX(e1),GetEntityZ(e1),GetEntityX(e2),GetEntityZ(e2)
+	Return d
+End Function 
+
 Function CirclesCollided(x1#,y1#,r1#,x2#,y2#,r2#) 
 	If Distance2D(x1,y1,x2,y2) < r1 + r2 Then 
 		Return True 

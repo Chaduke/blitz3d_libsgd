@@ -20,7 +20,7 @@ Type SolidTree
 	Field trunk_cyl.Cylinder
 End Type	
 
-Dim treeMeshes(3)
+Dim treeMeshes(4)
 
 ; make sure we are not outside the terrain limits
 Function KeepTreeInsideLevel(t.Terrain)

@@ -17,9 +17,6 @@ Global cam_move_speed_keyboard# = 0.2
 Global cam_move_speed_mouse# = 0.02
 Global sprint# = 0.0
 
-Global camera
-Global pivot 
-
 Function UnrealMouseInput(e,move_speed#=0.02,turn_speed#=0.2)						
 	If IsMouseButtonDown(0) ; left mouse button down
 		SetMouseCursorMode 3 ; hide and lock the cursor

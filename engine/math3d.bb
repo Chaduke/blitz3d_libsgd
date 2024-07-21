@@ -17,7 +17,7 @@ Type AABB
 	Field model
 End Type 	
 
-Function GetCollisionMaterial()
+Function GetCollisionMaterial%()
 	Local collision_material = CreatePBRMaterial()
 	collision_texture = LoadTexture("../engine/assets/textures/misc/yellow_grid.png",3,20)
 	SetMaterialTexture collision_material,"albedoTexture",collision_texture
@@ -86,12 +86,16 @@ Function CylindersCollided(c1.Cylinder,c2.Cylinder)
 End Function 
 
 ; calculates the distance between 2 3D points
-Function Dist3D#(x1#,y1#,z1#,x2#,y2#,z2#)
+Function Distance3D#(x1#,y1#,z1#,x2#,y2#,z2#)
 	Return Sqr((x2-x1) * (x2-x1) + (y2-y1) * (y2-y1) + (z2-z1) * (z2-z1))
 End Function 
 
-; Lerp Function 3D for use with Vec3
-; creating this for a follow cam
+Function EntityDistance#(e1,e2)
+	Local x1# = GetEntityX(e1) : Local y1# = GetEntityY(e1) : Local z1# = GetEntityZ(e1)
+	Local x2# = GetEntityX(e2) : Local y2# = GetEntityY(e2) : Local z2# = GetEntityZ(e2) 
+	
+	Return Distance3D(x1,y1,z1,x2,y2,z2)
+End Function
 
 Function FollowEntity(follower,followed,speed#=0.2)
 	; first get the 3D distance between the two

@@ -1,0 +1,9 @@
+Include "../engine/gameapp.bb"
+
+g.GameApp=CreateGameApp()
+
+While g\loop
+	BeginFrame g
+	EndFrame g
+Wend 
+End 

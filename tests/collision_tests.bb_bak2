@@ -3,6 +3,8 @@
 ; 20240711
 
 Include "../engine/testapp.bb"
+Include "../engine/assets/prefabs/ferris_wheel/ferris_wheel.bb"
+Include "../runner/turtle.bb"
 
 Type Environment
 	Field gui.GUIWindow
@@ -107,7 +109,7 @@ ground1_collider = CreateMeshCollider(ground1,0,GetModelMesh(ground1))
 AddTrees ground1
 AddRocks ground1
 ; AddGrass ground1
-AddTurtles ground1
+; AddTurtles ground1
 MoveEntity ground1,0,0,256
 
 ground2 = CreateGround()
@@ -115,22 +117,20 @@ ground2_collider = CreateMeshCollider(ground2,0,GetModelMesh(ground2))
 AddTrees ground2
 AddRocks ground2
 ; AddGrass ground2
-AddTurtles ground2
+; AddTurtles ground2
 
 ground3 = CreateGround()
 ground3_collider = CreateMeshCollider(ground3,0,GetModelMesh(ground3))
 AddTrees ground3
 AddRocks ground3
 ; AddGrass ground3
-AddTurtles ground3
+; AddTurtles ground3
 MoveEntity ground3,0,0,-256
 
 p.Player = CreatePlayer()
 SetEntityVisible p\collision_model,False
-
-; SetEntityParent t\pivot,p\pivot
-; SetEntityPosition t\pivot,0,0,0 : SetEntityRotation t\pivot,0,0,0 ; clear out any position and rotation inherited from parent
-
+f.FerrisWheel = CreateFerrisWheel()
+MoveEntity f\base_pivot,0,0,200
 EnableCollisions 1,0,2
 
 SetMouseZ -8
@@ -156,21 +156,23 @@ While t\loop
 		If IsMouseButtonDown(0) = False Then 			
 			SetEntityRotation p\pivot,0,GetEntityRY(t\pivot)-180,0	
 		End If 	
-	End If 
-	
-	; as we approach the edge of ground1 or ground2 
-	; we need to move one of them from the back to the front
-	; in order to create an endless ground to run on
-	
-	; test the distance of player z location with ground1	and ground2
-	; if > 128 move the ground 
+	End If 	
+
+	; in order to create an endless ground to run on	
+	; test the distance of player z location with ground 1,2 and 3
+	; if > 384 or < -384 move the ground 768 units
 		
 	distance1# = GetEntityZ(p\pivot) - GetEntityZ(ground1) 
 	If 	distance1 < -384 Then MoveEntity ground1,0,0,-768
+	If 	distance1 > 384 Then MoveEntity ground1,0,0,768
+
 	distance2# = GetEntityZ(p\pivot) - GetEntityZ(ground2)
 	If 	distance2 < -384 Then MoveEntity ground2,0,0,-768
+	If 	distance2 > 384 Then MoveEntity ground2,0,0,768
+	
 	distance3# = GetEntityZ(p\pivot) - GetEntityZ(ground3) 
 	If 	distance3 < -384 Then MoveEntity ground3,0,0,-768
+	If 	distance3 > 384 Then MoveEntity ground3,0,0,768
 				
 	UpdateColliders()	
 	c = GetCollisionCount(p\collider)
@@ -230,8 +232,12 @@ While t\loop
 			End If		
 		End If	
 	End If 		
-				
+	UpdateFerrisWheel f			
 	ProcessPlayerAnimation p
+	
+	For tt.Turtle = Each Turtle 
+		UpdateTurtle tt
+	Next 
 	CustomEndFrame t	
 
 	; collider stuff	
@@ -291,12 +297,14 @@ Function CustomEndFrame(t.TestApp)
 	Draw2DText msg$,5,GetWindowHeight() - 20		
 End Function
 
-Function AddGrassClump(ground,tree,images[4])
+Function AddGrassClump(ground,tree,images[5])
 	; create a clump of grass / weeds around it 
 	For j = 0 To 18	 
 		Local r# = Rnd(1)
-		If r# > 0.95 Then 
-			i = 4
+		If r# > 0.97 Then 
+			i = 5
+		Else If r# > 0.94 Then 
+			i = 4	
 		Else If r# > 0.9 Then 
 			i = 3	
 		Else If r# > 0.7 Then  	
@@ -323,12 +331,13 @@ Function AddTrees(ground)
 	Local birch_mesh = LoadMesh("../engine/assets/models/trees/birch_tree1.glb")
 	SetMeshShadowCastingEnabled birch_mesh,True
 	
-	Local images[4]	
+	Local images[5]	
 	images[0] = LoadImage("../engine/assets/textures/foliage/grass1.png",1)
 	images[1] = LoadImage("../engine/assets/textures/foliage/grass2.png",1)
 	images[2] = LoadImage("../engine/assets/textures/foliage/weeds.png",1)
 	images[3] = LoadImage("../engine/assets/textures/foliage/daisies.png",1)
 	images[4] = LoadImage("../engine/assets/textures/foliage/wildflower_blue.png",1)
+	images[5] = LoadImage("../engine/assets/textures/foliage/wildflower_red.png",1)
 	
 	; For i = 0 To 3
 	; 	SetImageSpriteViewMode images[i],3
@@ -365,19 +374,15 @@ Function AddTrees(ground)
 End Function
 
 Function AddTurtles(ground)
-	DisplayLoadingMessage "Adding Turtles..."	
-	Local turtle_mesh=LoadMesh("../engine/assets/models/runner/turtle.glb")	
-	SetMeshShadowCastingEnabled turtle_mesh,True
-	
-	Local turtle
+	DisplayLoadingMessage "Adding Turtles..."		
+	Local t.Turtle
 	Local i
-	For i = 0 To 10
-		turtle = CreateModel(turtle_mesh)	
-		SetEntityParent turtle,ground	
+	For i = 0 To 2
+		t = CreateTurtle(ground)			
 		SetEntityPosition turtle,Rnd(-64,64),0,Rnd(-128,128)
-		rs# = Rnd(1) + 0.5
-		SetEntityScale turtle,rs,rs,rs
-		TurnEntity turtle,0,Rand(360),0		
+		; rs# = Rnd(1) + 0.5
+		; SetEntityScale turtle,rs,rs,rs
+		; TurnEntity turtle,0,Rand(360),0		
 	Next		
 End Function  
 

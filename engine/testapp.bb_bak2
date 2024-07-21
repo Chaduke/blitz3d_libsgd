@@ -63,7 +63,7 @@ End Function
 
 Function CreateGround()
 	DisplayLoadingMessage "Creating Ground"
-	Local ground_material = LoadPBRMaterial("../engine/assets/materials/Moss002_1K-JPG")
+	Local ground_material = LoadPBRMaterial("../engine/assets/materials/Ground048_1K-JPG")
 	Local ground_mesh = CreateBoxMesh(-128,-0.1,-128,128,0,128,ground_material)
 	TFormMeshTexCoords ground_mesh,16,16,0,0
 	Local ground_model = CreateModel(ground_mesh)

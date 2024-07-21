@@ -1,0 +1,6 @@
+CreateWindow 1280,720,"Sphere Nothing",0
+
+While loop
+
+Wend 
+End 

@@ -39,6 +39,8 @@ Function CreatePlayer.Player()
 	p\new_hole = False
 	p\release_height# = 1.2
 	p\model = CreateModel(0) ; will be fixed later	
+	p\pivot = CreateModel(0)
+	SetEntityParent p\model,p\pivot
 	Return p
 End Function 
 

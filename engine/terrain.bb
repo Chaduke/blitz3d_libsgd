@@ -23,9 +23,9 @@ End Type
 
 Function SetTerrainDefaults(t.Terrain)
 	t\material_path$ = "../engine/assets/materials/Ground037_1K-JPG"
-	t\width# = 512
-	t\height# = 16
-	t\depth# = 512
+	t\width# = 128
+	t\height# = 4
+	t\depth# = 128
 	t\start_offset# = 777
 	t\offset_inc# = 0.02
 	t\calc_normals = True	
@@ -85,7 +85,7 @@ Function Min(v1,v2)
 	If v1 < v2 Then Return v1 Else Return v2
 End Function 
 
-Function CreateTerrain.Terrain(t.Terrain)		
+Function CreateTerrain(t.Terrain)		
 	; create the noisemap
 	Dim noisemap#(t\width,t\depth)	
 	zoffset#=t\start_offset

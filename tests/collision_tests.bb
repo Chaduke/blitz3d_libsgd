@@ -3,42 +3,10 @@
 ; 20240711
 
 Include "../engine/testapp.bb"
+Include "../engine/assets/prefabs/ferris_wheel/ferris_wheel.bb"
+Include "../runner/turtle.bb"
+Include "../engine/environment.bb"
 
-Type Environment
-	Field gui.GUIWindow
-	Field btn_sky_texture.Widget
-	Field txt_sky_roughness.Widget	
-	Field lbl_dl.Widget
-	Field txt_dl_rx.Widget
-	Field txt_dl_ry.Widget
-	Field txt_amb_r.Widget
-	Field txt_amb_g.Widget
-	Field txt_amb_b.Widget
-	Field txt_amb_a.Widget	
-	Field btn_env_generate.Widget	
-	Field btn_env_load.Widget
-	Field btn_env_save.Widget
-	Field skybox
-End Type
-
-Function CreateEnvironment.Environment(font)
-	Local e.Environment = New Environment 
-	e\gui=CreateGUI(font,"Environment Settings",300,10)
-	e\gui\v = False
-	e\btn_sky_texture = AddWidget(e\gui,"Skybox Texture",2,"skybox_sunny.png")
-	e\txt_sky_roughness = AddWidget(e\gui,"Sky Roughness",0,0.0,0.0,1.0,70) 
-	e\lbl_dl = AddWidget(e\gui,"Directional Light",2,"")
-	e\txt_dl_rx = AddWidget(e\gui,"Rotation X",1,-107,-180,180,70)
-	e\txt_dl_ry = AddWidget(e\gui,"Rotation Y",1,-60,-180,180,70)
-	e\txt_amb_r = AddWidget(e\gui,"Ambient Red",0,0.38,0.0,1.0,70)
-	e\txt_amb_g = AddWidget(e\gui,"Ambient Green",0,0.33,0.0,1.0,70)
-	e\txt_amb_b = AddWidget(e\gui,"Ambient Blue",0,0.46,0.0,1.0,70)
-	e\txt_amb_a = AddWidget(e\gui,"Ambient Alpha",0,0.89,0.0,1.0,70)	
-	e\btn_env_generate = AddWidget(e\gui,"Generate",2,"")
-	e\btn_env_load = AddWidget(e\gui,"Load",2,"")
-	e\btn_env_save = AddWidget(e\gui,"Save",2,"")	
-	Return e
-End Function 
 
 ; animations are 
 
@@ -107,7 +75,7 @@ ground1_collider = CreateMeshCollider(ground1,0,GetModelMesh(ground1))
 AddTrees ground1
 AddRocks ground1
 ; AddGrass ground1
-AddTurtles ground1
+; AddTurtles ground1
 MoveEntity ground1,0,0,256
 
 ground2 = CreateGround()
@@ -115,22 +83,20 @@ ground2_collider = CreateMeshCollider(ground2,0,GetModelMesh(ground2))
 AddTrees ground2
 AddRocks ground2
 ; AddGrass ground2
-AddTurtles ground2
+; AddTurtles ground2
 
 ground3 = CreateGround()
 ground3_collider = CreateMeshCollider(ground3,0,GetModelMesh(ground3))
 AddTrees ground3
 AddRocks ground3
 ; AddGrass ground3
-AddTurtles ground3
+; AddTurtles ground3
 MoveEntity ground3,0,0,-256
 
 p.Player = CreatePlayer()
 SetEntityVisible p\collision_model,False
-
-; SetEntityParent t\pivot,p\pivot
-; SetEntityPosition t\pivot,0,0,0 : SetEntityRotation t\pivot,0,0,0 ; clear out any position and rotation inherited from parent
-
+f.FerrisWheel = CreateFerrisWheel()
+MoveEntity f\base_pivot,0,0,200
 EnableCollisions 1,0,2
 
 SetMouseZ -8
@@ -140,15 +106,12 @@ While t\loop
 	
 	If e\gui\v Then 
 		SetMouseCursorMode 1 
-		UpdateEnvironment t,e
+		UpdateEnvironment e
 	Else 
 		SetMouseCursorMode 3
 		ThirdPersonMouseInputEditor t\camera,t\pivot,1,0.02			
 	End If 
 		
-	; show/hide 
-	If IsKeyHit(KEY_F1) Then ShowHideGUIWindow e\gui	
-	
 	If (p\running Or p\jumping) Then 
 		AddToVec3 p\vel,p\acc ; add acceleration to velocity
 		MoveEntityVec3 p\pivot,p\vel	; move player according to its velocity
@@ -232,8 +195,12 @@ While t\loop
 			End If		
 		End If	
 	End If 		
-				
+	UpdateFerrisWheel f			
 	ProcessPlayerAnimation p
+	
+	For tt.Turtle = Each Turtle 
+		UpdateTurtle tt
+	Next 
 	CustomEndFrame t	
 
 	; collider stuff	
@@ -293,12 +260,14 @@ Function CustomEndFrame(t.TestApp)
 	Draw2DText msg$,5,GetWindowHeight() - 20		
 End Function
 
-Function AddGrassClump(ground,tree,images[4])
+Function AddGrassClump(ground,tree,images[5])
 	; create a clump of grass / weeds around it 
 	For j = 0 To 18	 
 		Local r# = Rnd(1)
-		If r# > 0.95 Then 
-			i = 4
+		If r# > 0.97 Then 
+			i = 5
+		Else If r# > 0.94 Then 
+			i = 4	
 		Else If r# > 0.9 Then 
 			i = 3	
 		Else If r# > 0.7 Then  	
@@ -325,12 +294,13 @@ Function AddTrees(ground)
 	Local birch_mesh = LoadMesh("../engine/assets/models/trees/birch_tree1.glb")
 	SetMeshShadowCastingEnabled birch_mesh,True
 	
-	Local images[4]	
+	Local images[5]	
 	images[0] = LoadImage("../engine/assets/textures/foliage/grass1.png",1)
 	images[1] = LoadImage("../engine/assets/textures/foliage/grass2.png",1)
 	images[2] = LoadImage("../engine/assets/textures/foliage/weeds.png",1)
 	images[3] = LoadImage("../engine/assets/textures/foliage/daisies.png",1)
 	images[4] = LoadImage("../engine/assets/textures/foliage/wildflower_blue.png",1)
+	images[5] = LoadImage("../engine/assets/textures/foliage/wildflower_red.png",1)
 	
 	; For i = 0 To 3
 	; 	SetImageSpriteViewMode images[i],3
@@ -367,19 +337,15 @@ Function AddTrees(ground)
 End Function
 
 Function AddTurtles(ground)
-	DisplayLoadingMessage "Adding Turtles..."	
-	Local turtle_mesh=LoadMesh("../engine/assets/models/runner/turtle.glb")	
-	SetMeshShadowCastingEnabled turtle_mesh,True
-	
-	Local turtle
+	DisplayLoadingMessage "Adding Turtles..."		
+	Local t.Turtle
 	Local i
-	For i = 0 To 10
-		turtle = CreateModel(turtle_mesh)	
-		SetEntityParent turtle,ground	
+	For i = 0 To 2
+		t = CreateTurtle(ground)			
 		SetEntityPosition turtle,Rnd(-64,64),0,Rnd(-128,128)
-		rs# = Rnd(1) + 0.5
-		SetEntityScale turtle,rs,rs,rs
-		TurnEntity turtle,0,Rand(360),0		
+		; rs# = Rnd(1) + 0.5
+		; SetEntityScale turtle,rs,rs,rs
+		; TurnEntity turtle,0,Rand(360),0		
 	Next		
 End Function  
 

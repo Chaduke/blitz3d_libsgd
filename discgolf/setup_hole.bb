@@ -1,35 +1,10 @@
 ; setup_hole.bb
 
-Function SetupHole(course,hole)
-	
-	ClearScene()
-	Delete Each Tree
-	Delete Each SolidTree	
-	; If NPCs Then Delete Each NPC
-		
-	SetCSMTextureSize 2048
-	SetCSMSplitDistances 8,32,64,128	
-	; No shadows after last distance, so set same as far clip if you want shadows everywhere.
-			
-	; load fonts
-	tahoma_font = LoadFont("c:\windows\fonts\tahomabd.ttf",120)
-	constan_font = LoadFont("c:\windows\fonts\constan.ttf",26)	
-	
-	Set2DFont constan_font 
+Function SetupHole(course,hole,b.BasicScene)	
+
 	DisplayLoadingMessage "Loading Hole " + hole + ", Please Wait...",loading_screen 
-	
-	; create a camera
-	pivot = CreateModel(O)
-	camera=CreatePerspectiveCamera()
-	SetEntityParent camera,pivot
-	
-	; setup collision material
-	collision_material = CreatePBRMaterial()
-	collision_texture = LoadTexture("../engine/assets/textures/misc/yellow_grid.png",3,20)
-	SetMaterialTexture collision_material,"albedoTexture",collision_texture
-	SetMaterialFloat collision_material,"roughnessFactor1f",0.2
-	SetMaterialBlendMode collision_material,2	
-	
+
+	d.Disc = CreateDisc()
 	disc_collision_mesh =  CreateCylinderMesh(0.2,0.2,16,collision_material)	
 	disc_collision_model = CreateModel(disc_collision_mesh)	
 	disc_mesh = LoadMesh("../engine/assets/models/disc_golf/disc.glb")
@@ -88,13 +63,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0.2
 					light_angle = -25
 					ambient# = 0.1
-					trn\material_path = "../engine/assets/materials/Ground054_1K-JPG"					
-					trn\width = 32
-					trn\height = 8
-					trn\depth = 128
-					trn\start_offset = 1111
-					trn\offset_inc = 0.02
-					trn\calc_normals = True
+					b\trn\material_path = "../engine/assets/materials/Ground054_1K-JPG"					
+					b\trn\width = 32
+					b\trn\height = 8
+					b\trn\depth = 128
+					b\trn\start_offset = 1111
+					b\trn\offset_inc = 0.02
+					b\trn\calc_normals = True
 					trees = 10
 					solidtrees = 25
 					rockfence = False
@@ -115,13 +90,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0.2
 					light_angle = -5
 					ambient# = 0.3
-					trn\material_path = "../engine/assets/materials/Ground037_1K-JPG"				
-					trn\width = 64
-					trn\height = 8
-					trn\depth = 128
-					trn\start_offset = 2222
-					trn\offset_inc = 0.03
-					trn\calc_normals = True
+					b\trn\material_path = "../engine/assets/materials/Ground037_1K-JPG"				
+					b\trn\width = 64
+					b\trn\height = 8
+					b\trn\depth = 128
+					b\trn\start_offset = 2222
+					b\trn\offset_inc = 0.03
+					b\trn\calc_normals = True
 					trees = 1
 					solidtrees = 50
 					rockfence = False	
@@ -141,13 +116,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0.2
 					light_angle = -45
 					ambient# = 0.3
-					trn\material_path = "../engine/assets/materials/Ground020_1K-JPG"				
-					trn\width = 128
-					trn\height = 16
-					trn\depth = 256
-					trn\start_offset = 3333
-					trn\offset_inc = 0.03
-					trn\calc_normals = True
+					b\trn\material_path = "../engine/assets/materials/Ground020_1K-JPG"				
+					b\trn\width = 128
+					b\trn\height = 16
+					b\trn\depth = 256
+					b\trn\start_offset = 3333
+					b\trn\offset_inc = 0.03
+					b\trn\calc_normals = True
 					solidtrees = 100
 					trees = 0
 					rockfence = True	
@@ -166,13 +141,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0.2
 					light_angle = -5
 					ambient# = 0.1
-					trn\material_path = "../engine/assets/materials/Ground075_1K-JPG"				
-					trn\width = 128
-					trn\height = 5
-					trn\depth = 128
-					trn\start_offset = 4444
-					trn\offset_inc = 0.01
-					trn\calc_normals = True
+					b\trn\material_path = "../engine/assets/materials/Ground075_1K-JPG"				
+					b\trn\width = 128
+					b\trn\height = 5
+					b\trn\depth = 128
+					b\trn\start_offset = 4444
+					b\trn\offset_inc = 0.01
+					b\trn\calc_normals = True
 					trees = 5
 					solidtrees = 30
 					rockfence = False	
@@ -191,13 +166,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0
 					light_angle = -65
 					ambient# = 0.1
-					trn\material_path = "sgd://materials/Gravel023_1K-JPG"					
-					trn\width = 64
-					trn\height = 5
-					trn\depth = 128
-					trn\start_offset = 5555
-					trn\offset_inc = 0.01
-					trn\calc_normals = True
+					b\trn\material_path = "sgd://materials/Gravel023_1K-JPG"					
+					b\trn\width = 64
+					b\trn\height = 5
+					b\trn\depth = 128
+					b\trn\start_offset = 5555
+					b\trn\offset_inc = 0.01
+					b\trn\calc_normals = True
 					trees = 0
 					solidtrees=45
 					rockfence = True
@@ -216,13 +191,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0.0
 					light_angle = -60
 					ambient# = 0.1
-					trn\material_path = "sgd://materials/PavingStones119_1K-JPG"					
-					trn\width = 128
-					trn\height = 5
-					trn\depth = 128
-					trn\start_offset = 6666
-					trn\offset_inc = 0.01
-					trn\calc_normals = True
+					b\trn\material_path = "sgd://materials/PavingStones119_1K-JPG"					
+					b\trn\width = 128
+					b\trn\height = 5
+					b\trn\depth = 128
+					b\trn\start_offset = 6666
+					b\trn\offset_inc = 0.01
+					b\trn\calc_normals = True
 					trees = 1
 					solidtrees = 30
 					rockfence = False	
@@ -241,13 +216,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0.2
 					light_angle = -5
 					ambient# = 0.1
-					trn\material_path = "sgd://materials/PavingStones131_1K-JPG"				
-					trn\width = 128
-					trn\height = 5
-					trn\depth = 128
-					trn\start_offset = 7777
-					trn\offset_inc = 0.01
-					trn\calc_normals = True
+					b\trn\material_path = "sgd://materials/PavingStones131_1K-JPG"				
+					b\trn\width = 128
+					b\trn\height = 5
+					b\trn\depth = 128
+					b\trn\start_offset = 7777
+					b\trn\offset_inc = 0.01
+					b\trn\calc_normals = True
 					trees = 1
 					solidtrees = 50
 					rockfence = False	
@@ -266,13 +241,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0.2
 					light_angle = -15
 					ambient# = 0.3
-					trn\material_path = "../engine/assets/materials/Ground075_1K-JPG"				
-					trn\width = 256
-					trn\height = 40
-					trn\depth = 256
-					trn\start_offset = 8888
-					trn\offset_inc = 0.04
-					trn\calc_normals = True
+					b\trn\material_path = "../engine/assets/materials/Ground075_1K-JPG"				
+					b\trn\width = 256
+					b\trn\height = 40
+					b\trn\depth = 256
+					b\trn\start_offset = 8888
+					b\trn\offset_inc = 0.04
+					b\trn\calc_normals = True
 					trees = 0
 					solidtrees = 50
 					rockfence = False	
@@ -291,13 +266,13 @@ Function SetupHole(course,hole)
 					sky_roughness = 0.2
 					light_angle = -45
 					ambient# = 0.1
-					trn\material_path = "../engine/assets/materials/Grass001_1K-JPG"					
-					trn\width = 256
-					trn\height = 32
-					trn\depth = 256
-					trn\start_offset = 9999
-					trn\offset_inc = 0.05
-					trn\calc_normals = True
+					b\trn\material_path = "../engine/assets/materials/Grass001_1K-JPG"					
+					b\trn\width = 256
+					b\trn\height = 32
+					b\trn\depth = 256
+					b\trn\start_offset = 9999
+					b\trn\offset_inc = 0.05
+					b\trn\calc_normals = True
 					trees = 0
 					solidtrees = 50
 					rockfence = True
@@ -315,44 +290,38 @@ Function SetupHole(course,hole)
 	
 	DisplayLoadingMessage "Loading Hole " + hole + ", Please Wait...",loading_screen 
 	
-	CreateTerrain trn
-	If rockfence Then GenerateRockFence(trn,"../engine/assets/models/disc_golf/rock.glb")
+	CreateTerrain b\trn
+	If rockfence Then GenerateRockFence(b\trn,"../engine/assets/models/disc_golf/rock.glb")
 	
-	If trees > 0 Then GenerateTrees trn,trees,treefence	
-	If solidtrees > 0 Then GenerateSolidTrees(trn,solidtrees,collision_material)
+	If trees > 0 Then GenerateTrees b\trn,trees,treefence	
+	If solidtrees > 0 Then GenerateSolidTrees(b\trn,solidtrees,collision_material)
 				
 	If grasses > 0 Then 		
-		GenerateGrass trn,grasses,"../engine/assets/textures/foliage/grass1.png"
-		GenerateGrass trn,grasses/2,"../engine/assets/textures/foliage/weeds.png"
+		GenerateGrass b\trn,grasses,"../engine/assets/textures/foliage/grass1.png"
+		GenerateGrass b\trn,grasses/2,"../engine/assets/textures/foliage/weeds.png"
 	End If		
 
 	DisplayLoadingMessage "Loading Hole " + hole + ", Please Wait...",loading_screen 
 	
 	; create lights
-	dl = CreateDirectionalLight()
-	SetLightShadowMappingEnabled dl,True
-	TurnEntity dl,light_angle,0,0
-	SetAmbientLightColor 1,1,1,ambient#
+	b\directional_light = CreateDirectionalLight()
+	SetLightShadowMappingEnabled b\directional_light,True
+	TurnEntity b\directional_light,light_angle,0,0
+	SetAmbientLightColor 1,1,1,ambient#	
 	
-	; teepad_light = CreatePointLight()	
-	; SetLightShadowMappingEnabled teepad_light,True
-	; basket_light = CreatePointLight()	
-	; SetLightShadowMappingEnabled basket_light,True	
+	PlaceEntityOnTerrain disc_pivot,b\trn,0,False,False,teepad_x,teepad_z-2
+	PlaceEntityOnTerrain teepad,b\trn,0,False,False,teepad_x,teepad_z	
+	PlaceEntityOnTerrain basket,b\trn,0,False,False,basket_x,basket_z	
 	
-	PlaceEntityOnTerrain disc_pivot,trn,0,False,False,teepad_x,teepad_z-2
-	PlaceEntityOnTerrain teepad,trn,0,False,False,teepad_x,teepad_z
-	; PlaceEntityOnTerrain teepad_light,trn,3,False,False,teepad_x,teepad_z
-	PlaceEntityOnTerrain basket,trn,0,False,False,basket_x,basket_z
-	; PlaceEntityOnTerrain basket_light,trn,3,False,False,basket_x,basket_z
-	If NPCs Then AddNPCs()
-	birdie = LoadModel("../engine/assets/models/disc_golf/birdie.glb")
-	PlaceEntityOnTerrain birdie,trn,1.55,False,False,basket_x,basket_z	
+	; If NPCs Then AddNPCs()
+	birdie = LoadModel("../engine/assets/models/npcs/birdie.glb")
+	PlaceEntityOnTerrain birdie,b\trn,1.55,False,False,basket_x,basket_z	
 	SetEntityVisible birdie,False
-	eagle = LoadModel("../engine/assets/models/disc_golf/eagle.glb")
-	PlaceEntityOnTerrain eagle,trn,1.55,False,False,basket_x,basket_z	
+	eagle = LoadModel("../engine/assets/models/npcs/eagle.glb")
+	PlaceEntityOnTerrain eagle,b\trn,1.55,False,False,basket_x,basket_z	
 	SetEntityVisible eagle,False
 	minidisc = LoadModel("../engine/assets/models/disc_golf/minidisc.glb")
-	PlaceEntityOnTerrain minidisc,trn,0.1,False,False,teepad_x-2,teepad_z		
+	PlaceEntityOnTerrain minidisc,b\trn,0.1,False,False,teepad_x-2,teepad_z		
 	hole_distance = Distance2D(teepad_x,teepad_z,basket_x,basket_z)	
 	Set2DTextColor 1,1,1,1
 End Function 

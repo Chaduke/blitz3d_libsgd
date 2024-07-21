@@ -65,21 +65,6 @@ Type Player
 	Field death_sound
 End Type	
 
-; Include "../engine/testing.bb" : Include "platforms.bb" : Global ta.TestApp : Global bs.BasicScene : TestPlayer()
-
-Function TestPlayer()
-	ta = CreateTestApp()
-	bs = CreateBasicScene()
-	p.Player = CreatePlayer(bs\trn)
-	AddPlatforms bs\trn
-	While ta\loop 
-		BeginFrame ta
-		UpdatePlayer p,bs\trn,bs\camera,bs\pivot
-		EndFrame ta
-	Wend 
-	End 
-End Function 
-
 ; check collsions with player and platform
 ; if collided return the platform
 ; if not return null

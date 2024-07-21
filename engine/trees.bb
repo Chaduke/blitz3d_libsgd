@@ -186,11 +186,11 @@ Function GenerateTrees(t.Terrain,numtrees,plus_fence = False)
 	Local tw=t\width
 	Local td=t\depth
 
-	treeMeshes(0) = LoadMesh("sgd://models/tree1.glb")
+	treeMeshes(0) = LoadMesh("../engine/assets/models/trees/low_poly.glb")
 	SetMeshShadowCastingEnabled treeMeshes(0),True
-	treeMeshes(1) = LoadMesh("sgd://models/tree1.glb")
+	treeMeshes(1) = LoadMesh("../engine/assets/models/trees/low_poly.glb")
 	SetMeshShadowCastingEnabled treeMeshes(1),True
-	treeMeshes(2) = LoadMesh("sgd://models/birch_tree1.glb")
+	treeMeshes(2) = LoadMesh("../engine/assets/models/trees/low_poly.glb")
 	SetMeshShadowCastingEnabled treeMeshes(2),True	
 	; randomly distribute trees on the terrain
 	For i=0 To numtrees			

@@ -22,10 +22,10 @@ Type Terrain
 End Type
 
 Function SetTerrainDefaults(t.Terrain)
-	t\material_path$ = "sgd://materials/PavingStones119_1K-JPG"
-	t\width# = 128
+	t\material_path$ = "../engine/assets/materials/Ground037_1K-JPG"
+	t\width# = 512
 	t\height# = 16
-	t\depth# = 128
+	t\depth# = 512
 	t\start_offset# = 777
 	t\offset_inc# = 0.02
 	t\calc_normals = True	

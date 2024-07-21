@@ -26,10 +26,17 @@ Const KEY_2 = 50
 Const KEY_3 = 51
 Const KEY_4 = 52
 Const KEY_5 = 53
+Const KEY_6 = 54
+Const KEY_7 = 55
+Const KEY_8 = 56
+Const KEY_9 = 57
  
-Const KEY_Y = 89 ; confirm quit
 Const KEY_L = 76 
 Const KEY_M = 77 ; minidisc / map
+Const KEY_P = 80
+Const KEY_T = 84
+Const KEY_X = 88
+Const KEY_Y = 89 ; confirm quit
 
 Const KEY_DOWN = 264
 Const KEY_UP = 265
@@ -42,15 +49,21 @@ Const KEY_S = 83
 Const KEY_D = 68
 
 Const	KEY_ENTER = 257
+Const KEY_TAB = 258
 Const	KEY_SPACE = 32
 Const	KEY_RIGHT_BRACKET = 93
 Const	KEY_LEFT_BRACKET = 91
+Const KEY_LEFT_SHIFT = 340
 Const KEY_LEFT_CONTROL = 341
+Const KEY_RIGHT_SHIFT = 344
 Const KEY_RIGHT_CONTROL = 345
 
 ; game states 
-Const GAME_STATE_START_MENU = 0
+Const GAME_STATE_MENU = 0
 Const GAME_STATE_STORY = 1
 Const GAME_STATE_SANDBOX = 2
 Const GAME_STATE_TUTORIAL = 3
 Const GAME_STATE_OPTIONS = 4
+Const GAME_STATE_PAUSED = 5
+Const GAME_STATE_LOADING = 6
+Global GAME_STATE_PREVIOUS

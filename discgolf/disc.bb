@@ -28,6 +28,7 @@ Function CreateDisc.Disc(name$,path$,speed#,glide#,turn#,fade#)
 	d\velocity = CreateVec3()
 	d\pivot = CreateModel(0)
 	d\model = LoadModel(path$)
+	SetEntityParent d\model,d\pivot
 	d\cyl = CreateCylinder(0.1,0.2)
 	
 	; flight numbers

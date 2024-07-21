@@ -19,7 +19,7 @@ Function CreateStory.Story(g.GameApp)
 End Function 
 
 Function RunStory(s.Story)
-	DisplayDialogueMessage(s\messages[0])
+	DisplayDialogueMessage(s\messages[0])	
 End Function 
 
 Data "This is a story about the game of Disc Golf."

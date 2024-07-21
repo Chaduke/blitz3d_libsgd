@@ -67,3 +67,9 @@ Function RemovePassenger(f.FerrisWheel,passenger,t.Terrain)
 	AimEntityAtEntity passenger,f\wheel_pivot,0
 End Function 
 
+Function RemovePassengerGround(f.FerrisWheel,passenger,ground)
+	SetEntityParent passenger,0
+	SetEntityPosition passenger,GetEntityX(ground),0,GetEntityZ(ground)	
+	AimEntityAtEntity passenger,f\wheel_pivot,0
+End Function 
+

@@ -26,12 +26,12 @@ End Function
 
 Function CreateHole.Hole(name$,number,par)
 	Local h.Hole = New Hole
-	Local t.Terrain = New Terrain
-	SetTerrainDefaults t
-	h\trn = CreateTerrain(t)	
-	h\teepad=LoadModel("../engine/assets/models/discgolf/teepad.glb")	
-	Local basket_model=LoadModel("../engine/assets/models/discgolf/basket.glb") 
-	h\bsk = CreateBasket(basket_model,h\trn,0,0)
+	h\trn = New Terrain
+	SetTerrainDefaults h\trn
+	CreateTerrain(h\trn)	
+	h\teepad=LoadModel("../engine/assets/models/disc_golf/teepad.glb")	
+	Local basket_mesh=LoadMesh("../engine/assets/models/disc_golf/basket.glb") 
+	h\bsk = CreateBasket(basket_mesh,h\trn,20,20)
 	For i=0 To 4
 		h\ob_areas[i] = CreateOBArea()
 	Next 

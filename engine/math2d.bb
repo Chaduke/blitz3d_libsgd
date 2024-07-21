@@ -49,7 +49,7 @@ Function DrawPolygon(p.Polygon)
 	If p\numpoints > 0 Then Draw2DLine p\points[p\numpoints-1]\x,p\points[p\numpoints-1]\y,p\points[0]\x,p\points[0]\y	
 End Function 
 
-Function PointCollidedPolygon(pt.Point,pg.Polygon)
+Function PointCollidedPolygon%(pt.Point,pg.Polygon)
 	Local r = False 
 	Local j = pg\numpoints - 1 
 	Local i
@@ -64,7 +64,7 @@ Function PointCollidedPolygon(pt.Point,pg.Polygon)
 	Return r
 End Function 
 
-Function MouseCollidedRect(l,t,r,b) ; left, top, right, bottom
+Function MouseCollidedRect%(l,t,r,b) ; left, top, right, bottom
 	Local c = False
 	If (GetMouseX() > l And GetMouseX() < r And GetMouseY() > t And GetMouseY() < b) Then c = True
 	Return c 	
@@ -94,7 +94,7 @@ Function RectsCollided(l1#,t1#,r1#,b1#,l2#,t2#,r2#,b2#)
 	Return (l1 < r2 And t1 < b2 And r1 > l2 And b1 > t2)
 End Function 
 
-Function GetCollisionType(l1#,t1#,r1#,b1#,l2#,t2#,r2#,b2#) ; left, top, right, bottom
+Function GetCollisionType%(l1#,t1#,r1#,b1#,l2#,t2#,r2#,b2#) ; left, top, right, bottom
 	; 0 = no collision 
 	; 1 = right / left collision 
 	; 2 = bottom / top collision 

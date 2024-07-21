@@ -1,0 +1,23 @@
+; keyhit_bug.bb
+; by Chaduke
+; 20240718
+
+; a code example demonstrating a bug in IsKeyHit() while running in debug mode 
+
+Const KEY_ESCAPE = 256
+
+CreateWindow 1280,720,"Keyhit Bug",0
+
+loop = True 
+
+; While (loop And IsKeyHit(KEY_ESCAPE) = False) ; this works
+
+While loop ; placing IsKeyHit() within the loop causes an issue
+	e = PollEvents()
+	If e = 1 Then loop = False 
+	If (IsMouseButtonHit(0)) Then loop = False ; this doesn't work in debug mode
+	
+	RenderScene()
+	Present()
+Wend 
+End 
