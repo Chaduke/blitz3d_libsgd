@@ -52,7 +52,7 @@ Function CreateGameApp.GameApp(title$="Game App",subtitle$="Programmer's",fullsc
 	g\title$ = title$
 	g\subtitle$ = subtitle$
 	CreateWindow g\ww,g\wh,g\subtitle$ + " " + g\title$,fullscreen
-	g\loading_screen = LoadImage("../engine/assets/textures/backgrounds/sphere_nothing.jpg",1)
+	g\loading_screen = LoadImage("../engine/assets/textures/backgrounds/background.png",1)
 	g\game_state = GAME_STATE_MENU
 	g\npcs = True 
 	g\loop = True 	
@@ -89,7 +89,7 @@ Function EndFrame(g.GameApp,call_present=True)
 	Clear2D()	
 	If g\game_state = GAME_STATE_QUIT Then 
 		; DrawTitle g
-		Set2DTextColor 0.72,.24,.24,1
+		Set2DTextColor 1,0,0,1
 		DisplayTextCenter "Quit? Y to confirm | ESC to Cancel",g\font
 	ElseIf g\game_state = GAME_STATE_PAUSED Then 		
 		DisplayTextCenter "Game Paused (P to toggle)",g\font
@@ -120,7 +120,7 @@ End Function
 
 Function DisplayLoadingMessageWithTitle(msg$,g.GameApp)	
 	Clear2D()	
-	DrawTitle g	
+	; DrawTitle g	
 	Set2DTextColor 1,1,0,1
 	DisplayTextCenter msg$,g\font
 	PollEvents()

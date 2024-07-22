@@ -40,13 +40,13 @@ Function CreateBasicScene.BasicScene(g.GameApp)
 	SetSkyboxRoughness b\skybox,b\sky_roughness
 	SeedRnd MilliSecs()
 	DisplayLoadingMessageWithTitle "Creating Terrain",g
-    b\trn = New Terrain	
+   b\trn = New Terrain	
 	SetTerrainDefaults b\trn			
 	CreateTerrain b\trn		
 	DisplayLoadingMessageWithTitle "Creating Rock Fence",g	
 	GenerateRockFence b\trn,"../engine/assets/models/runner/rock.glb"	
 	DisplayLoadingMessageWithTitle "Adding Trees", g
-	GenerateTrees b\trn,200
+	GenerateTrees b\trn,50
 	DisplayLoadingMessageWithTitle "Adding Grass",g
 	GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/grass1.png"
 	GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/weeds.png"		

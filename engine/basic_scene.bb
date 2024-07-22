@@ -29,7 +29,7 @@ Function CreateBasicScene.BasicScene(g.GameApp)
 	b\ambient_red = 0.7
 	b\ambient_green = 0.5
 	b\ambient_blue = 1.0
-	b\ambient_alpha = 0.8
+	b\ambient_alpha = 0.2
 	SetAmbientLightColor b\ambient_red,b\ambient_green,b\ambient_blue,b\ambient_alpha	
 	
 	DisplayLoadingMessageWithTitle "Creating Sky",g

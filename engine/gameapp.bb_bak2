@@ -52,7 +52,7 @@ Function CreateGameApp.GameApp(title$="Game App",subtitle$="Programmer's",fullsc
 	g\title$ = title$
 	g\subtitle$ = subtitle$
 	CreateWindow g\ww,g\wh,g\subtitle$ + " " + g\title$,fullscreen
-	g\loading_screen = LoadImage("../engine/assets/textures/backgrounds/sphere_nothing.jpg",1)
+	g\loading_screen = LoadImage("../engine/assets/textures/backgrounds/background.png",1)
 	g\game_state = GAME_STATE_MENU
 	g\npcs = True 
 	g\loop = True 	
@@ -78,7 +78,7 @@ Function BeginFrame(g.GameApp)
 			g\game_state=GAME_STATE_QUIT
 		End If				
 	End If 				
-	If (IsKeyHit(KEY_Y) And g\quit=True) Then g\loop = False		
+	If (IsKeyHit(KEY_Y) And g\game_state = GAME_STATE_QUIT) Then g\loop = False		
 	If IsKeyHit(KEY_P) Then 
 		If g\game_state=GAME_STATE_PAUSED Then g\game_state=GAME_STATE_STORY Else g\game_state=GAME_STATE_PAUSED
 	End If 	 		
@@ -88,7 +88,7 @@ Function EndFrame(g.GameApp,call_present=True)
 	RenderScene()
 	Clear2D()	
 	If g\game_state = GAME_STATE_QUIT Then 
-		DrawTitle g
+		; DrawTitle g
 		Set2DTextColor 0.72,.24,.24,1
 		DisplayTextCenter "Quit? Y to confirm | ESC to Cancel",g\font
 	ElseIf g\game_state = GAME_STATE_PAUSED Then 		
