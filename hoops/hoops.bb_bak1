@@ -13,12 +13,12 @@ Include "basketball.bb"
 Include "player.bb"
 
 
-g.GameApp = CreateGameApp()
+g.GameApp = CreateGameApp("Hoops","Chaduke's")
 bs.BasicScene = CreateBasicScene(g)
 b.Basketball = CreateBasketball(bs)
 p.Player = CreatePlayer(bs)
 
-hoop = LoadModel("../engine/assets/models/hoops/hoop.glb")
+hoop = LoadModel("../engine/assets/models/hoops/basketball_goal.glb")
 SetMeshShadowCastingEnabled GetModelMesh(hoop),True 
 PlaceEntityOnTerrain hoop,bs\trn
 hoop_collider = CreateMeshCollider(hoop,0,GetModelMesh(hoop))

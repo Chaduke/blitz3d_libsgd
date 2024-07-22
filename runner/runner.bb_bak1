@@ -6,6 +6,11 @@
 ; "Turtle Hurdler"
 
 Include "../engine/gameapp.bb"
+Include "../engine/terrain.bb"
+Include "../engine/navigation.bb"
+Include "../engine/noise.bb"
+Include "../engine/sprites.bb"
+
 Include "player.bb"
 Include "runner_scene.bb"
 
@@ -22,7 +27,7 @@ If ga\debug = False Then
 	SetMouseZ -10	
 End If 
 
-EnableCollisions 1,0,2
+; EnableCollisions 1,0,2
 ; EnableCollisions 0,1,1
 
 While ga\loop

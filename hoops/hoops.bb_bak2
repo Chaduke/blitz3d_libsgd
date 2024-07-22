@@ -13,7 +13,7 @@ Include "basketball.bb"
 Include "player.bb"
 
 
-g.GameApp = CreateGameApp()
+g.GameApp = CreateGameApp("Hoops","Chaduke's")
 bs.BasicScene = CreateBasicScene(g)
 b.Basketball = CreateBasketball(bs)
 p.Player = CreatePlayer(bs)
@@ -40,6 +40,8 @@ While g\loop
 	TurnEntity g\pivot,-GetMouseVY() * 0.1,0,0
 	SetEntityPosition g\camera,0,0,GetMouseZ()
 	UpdateColliders()
-	EndFrame g
-Wend 
+	EndFrame g,False 
+	If p\shooting Then DisplayTextCenter "Power : " + b\power,g\font
+	Present()
+	Wend 
 End 

@@ -6,6 +6,12 @@
 ; "Turtle Hurdler"
 
 Include "../engine/gameapp.bb"
+Include "../engine/terrain.bb"
+Include "../engine/navigation.bb"
+Include "../engine/noise.bb"
+Include "../engine/sprites.bb"
+Include "../engine/trees.bb"
+
 Include "player.bb"
 Include "runner_scene.bb"
 

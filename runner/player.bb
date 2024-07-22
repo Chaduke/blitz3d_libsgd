@@ -4,6 +4,15 @@
 
 ; player for endless runner game 
 
+; animations are 
+
+; 0 - dancing
+; 1 - falling
+; 2 - idle
+; 3 - jumping
+; 4 - running 
+; 5 - sliding 
+
 Type Player
 	Field model
 	Field pivot
@@ -30,7 +39,7 @@ Function CreatePlayer.Player()
 	p\acc = CreateVec3("Player Acceleration",0,0,0)
 	p\collider = CreateEllipsoidCollider(p\model,0,0.57,.91)
 	p\running = True 
-	p\anim = 1 ; running
+	p\anim = 4 ; running
 	p\anim_time = 0.0	
 	; p\light = CreatePointLight()
 	; SetLightShadowMappingEnabled p\light,True 
@@ -44,7 +53,7 @@ Function UpdatePlayer(p.Player,t.Terrain)
 
 	; Update player motion 
 	AddToVec3 p\vel,p\acc
-	MoveEntity p\pivot,p\vel\x,p\vel\y,p\vel\z
+	MoveEntityVec3 p\pivot,p\vel
 	
 	; turn when we come to an edge
 	If GetEntityZ(p\pivot) < 15 Then 
@@ -119,7 +128,7 @@ Function UpdatePlayer(p.Player,t.Terrain)
 			p\apex_reached = True 	
 		End If 			
 		If p\anim_time > 28 * 0.0333	Then 	
-			p\anim = 1
+			p\anim = 4
 			p\anim_time = 0.0
 			SetEntityPosition p\model,0,0,0	
 			p\vel\y = 0 ; zero out velocity
@@ -132,7 +141,7 @@ Function UpdatePlayer(p.Player,t.Terrain)
 	
 	; if sliding ends go back to running	
 	If (p\sliding And p\anim_time > 47 * 0.0333) Then 
-		p\anim = 1
+		p\anim = 4
 		p\anim_time = 0.0		
 		SetEntityPosition p\model,0,0,0	
 		p\sliding = False
@@ -158,7 +167,7 @@ End Function
 Function EndFrameCustom(g.GameApp,p.Player)			
 	RenderScene()
 	Clear2D()	
-	If g\quit Then 
+	If g\game_state = GAME_STATE_QUIT Then 
 		DrawTitle g
 		Set2DTextColor 1,0,0,1
 		DisplayTextCenter "Quit? Y to confirm | ESC to Cancel",g\font

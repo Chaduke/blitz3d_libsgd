@@ -10,6 +10,7 @@ Type Player
 	Field vel.Vec3	
 	Field acc.Vec3
 	Field collider
+	Field collider_model
 	Field anim
 	Field anim_time#
 	Field light
@@ -157,7 +158,7 @@ End Function
 Function EndFrameCustom(g.GameApp,p.Player)			
 	RenderScene()
 	Clear2D()	
-	If g\quit Then 
+	If g\game_state = GAME_STATE_QUIT Then 
 		DrawTitle g
 		Set2DTextColor 1,0,0,1
 		DisplayTextCenter "Quit? Y to confirm | ESC to Cancel",g\font

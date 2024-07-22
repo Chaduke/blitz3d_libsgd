@@ -56,7 +56,7 @@ Function CreateRunnerScene.RunnerScene(g.GameApp,blankscene=False)
 		GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/weeds.png"
 		
 		DisplayLoadingMessageWithTitle "Spawning Turtles!",g		
-		GenerateTurtles b\trn,15,"../engine/assets/models/runner/turtle.glb"
+		; GenerateTurtles b\trn,15,"../engine/assets/models/runner/turtle.glb"
 		; load a water plane 
 		water_plane = LoadModel("../engine/assets/models/runner/water_plane.glb")
 		MoveEntity water_plane,128,1,128
@@ -76,6 +76,8 @@ Function SetTerrainDefaultsRunner(t.Terrain)
 	t\falloff_width = 20
 	t\falloff_height = 0
 End Function 
+
+Dim treeMeshes(4)
 
 Function GenerateTreesRunner(t.Terrain) 
 
