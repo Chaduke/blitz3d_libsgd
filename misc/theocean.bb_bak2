@@ -8,7 +8,7 @@
 ; it doesn't really do much at this point
 ; press SPACE to cycle through messages
 
-Include "../platformer/noise.bb"
+Include "../engine/noise.bb"
 Include "../beginner/hextofloat.bb"
 Const segment_width# = 25
 
@@ -44,7 +44,7 @@ End Function
 
 Function TheOcean()	
 	CreateWindow(1920,1080,"The Ocean",1)  
-	CreateScene()	
+		
 	ocean_waves = LoadSound("oceanwaves.wav")	
 	blip = LoadSound("blipSelect.wav")
 	PlaySound ocean_waves	
@@ -69,9 +69,7 @@ Function TheOcean()
 		If KeyHit(32) Then 
 			If nextmessage$<>"END" Then 
 				Read nextmessage$
-				If 	nextmessage$<>"END" msgindex=0				
-			Else 
-				nexmessage$ = "Press ESCAPE to exit"	
+				If 	nextmessage$<>"END" msgindex=0			
 			End If					
 		End If	
 		start_offset# = start_offset# + 0.01
@@ -124,4 +122,5 @@ Data "Lot's of crabs walking on the shore and seagulls flying about.."
 Data "and what appears to be a LEMON PERSON wearing cowboy boots and a hat."
 Data "he greets you at the shore..." 
 Data "The End"
+Data "Press ESCAPE to Exit"
 Data "END"

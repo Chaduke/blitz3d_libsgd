@@ -22,9 +22,6 @@ Function CreateBubbleMaker.BubbleMaker()
 
 	SetImageBlendMode b\blue_bubble_image,3
 	SetImageBlendMode b\pink_bubble_image,3
-
-	SetImageSpriteViewMode b\blue_bubble_image,1	
-	SetImageSpriteViewMode b\pink_bubble_image,1
 	
 	b\running = True 
 	Return b	

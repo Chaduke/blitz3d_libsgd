@@ -4,27 +4,32 @@
 
 ; includes 
 Include "../engine/gameapp.bb"
+Include "../engine/navigation.bb"
+Include "../engine/gui.bb"
+Include "../engine/sound.bb"
+Include "../engine/noise.bb"
+Include "../engine/terrain.bb"
+Include "../engine/dialogue.bb"
+Include "../engine/file_browser.bb"
+Include "../engine/environment.bb"
+Include "../engine/trees.bb"
 Include "disc.bb"
 Include "player.bb"
 Include "course.bb"
 Include "basket.bb"
 Include "hole.bb"
-Include "editor.bb"
-; Include "../engine/basic_scene.bb"
 Include "load_save.bb"
-; Include "../engine/start_menu.bb"
 Include "minimap.bb"
 Include "display_text.bb" 
 Include "ob_area.bb"
 Include "story.bb"
 Include "tutorial.bb"
 Include "options.bb"
-Include "../engine/dialogue.bb"
 
-ga.GameApp = CreateGameApp("Disc Golf", "Chaduke's",0)
+ga.GameApp = CreateGameApp("Disc Golf", "Chaduke's",1)
 
-; music = LoadSound("../engine/assets/audio/disc_golf/disc_golf.mp3")
-; CueSound music 
+music = LoadSound("../engine/assets/audio/disc_golf/disc_golf.mp3")
+CueSound music 
 ; PlaySound music 
 ; SetAudioLooping music,True
 
@@ -37,36 +42,24 @@ While ga\loop
 	Select ga\game_state 
 		Case GAME_STATE_START_MENU		
 		; main menu		
-		If Not ga\quit Then DisplayStartMenu ga
+		DisplayStartMenu ga
 				
 		Case GAME_STATE_STORY
 		; story mode	
 		If Not ga\story_loaded Then			
-			st.Story = CreateStory(ga)
-			bs.BasicScene = CreateBasicScene(ga,True)
+			st.Story = CreateStory(ga)			
 			p.Player = CreatePlayer()
 			d.Disc = CreateDisc("Sidewinder","../engine/assets/models/disc_golf/disc.glb",9,5,-3,1)
-			h.Hole = CreateHole("Hole 1",1,3)			
-		Else 
-			If Not ga\quit Then 
-				RunStory(st)
-				UpdatePlayer p,d,h,ga
-				UpdateDisc d,h,p
-			End If 	
+			h.Hole = CreateHole("Hole 1",1,3)
+			SetEntityPosition d\pivot,GetEntityX(h\teepad),GetEntityY(h\teepad) + p\release_height#,GetEntityZ(h\teepad)		
+		Else 			
+			RunStory(st)
+			UpdatePlayer p,d,h,ga
+			UpdateDisc d,h,p			
 		End If
 		
 		Case GAME_STATE_SANDBOX
-		; sandbox mode
-		If Not ga\editor_loaded Then
-			; StopAudio music  
-			ed.Editor = CreateEditor(ga)			
-			bs.BasicScene = CreateBasicScene(ga,False)			
-		Else 
-			If Not ga\quit Then 
-				Local r = UpdateEditorGUIS(bs,ed)
-				If Not r Then UpdateEditorNavigation ga,bs
-			End If 		
-		End If			
+		; sandbox mode	
 		
 		Case GAME_STATE_TUTORIAL
 		; tutorial

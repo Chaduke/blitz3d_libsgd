@@ -7,7 +7,6 @@ Include "../engine/assets/prefabs/ferris_wheel/ferris_wheel.bb"
 Include "../runner/turtle.bb"
 Include "../engine/environment.bb"
 
-
 ; animations are 
 
 ; 0 - dancing
@@ -52,20 +51,6 @@ Function CreatePlayer.Player()
 	Return p
 End Function 
 
-Function UpdateEnvironment(t.TestApp,e.Environment)	
-	Local r = GuiDragCheck()
-	If r Then 
-		; check to see if a widget is dragged and update accordingly
-		If e\txt_sky_roughness\dragged Then SetSkyboxRoughness t\ts\skybox,e\txt_sky_roughness\val_float#		
-		If (e\txt_dl_rx\dragged Or e\txt_dl_ry\dragged) Then SetEntityRotation t\ts\directional_light,e\txt_dl_rx\val_float#,e\txt_dl_ry\val_float#,0
-		If (e\txt_amb_r\dragged Or e\txt_amb_g\dragged Or e\txt_amb_b\dragged Or e\txt_amb_a\dragged) Then 
-			SetAmbientLightColor e\txt_amb_r\val_float#,e\txt_amb_g\val_float#, e\txt_amb_b\val_float#,	e\txt_amb_a\val_float#
-		End If 	
-	End If 	
-	DrawAllGUIs()
-	Return r		
-End Function 
-
 ; Init
 t.TestApp = CreateTestApp(True,"Collision Tests")
 e.Environment = CreateEnvironment(t\gui_font)
@@ -104,9 +89,12 @@ SetMouseZ -8
 While t\loop
 	BeginFrame t	
 	
+	If IsKeyHit(KEY_F1) Then ShowHideGUIWindow e\gui
 	If e\gui\v Then 
 		SetMouseCursorMode 1 
-		UpdateEnvironment e
+		SetEntityPosition t\camera,0,0,GetMouseZ()
+		UpdateEnvironment e,GUIDragCheck()		
+		DrawAllGUIs()
 	Else 
 		SetMouseCursorMode 3
 		ThirdPersonMouseInputEditor t\camera,t\pivot,1,0.02			

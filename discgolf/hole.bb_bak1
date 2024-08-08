@@ -8,6 +8,7 @@
 Type Hole 
 	Field name$
 	Field number
+	Field env.Environment 
 	Field trn.Terrain
 	Field teepad ; static model 
 	Field bsk.Basket ; possible custom type 
@@ -26,9 +27,11 @@ End Function
 
 Function CreateHole.Hole(name$,number,par)
 	Local h.Hole = New Hole
-	Local t.Terrain = New Terrain
-	SetTerrainDefaults t
-	h\trn = CreateTerrain(t)	
+	Local font = LoadFont("../engine/assets/fonts/ds.ttf",16)
+	h\env = CreateEnvironment(font)
+	h\trn = New Terrain
+	SetTerrainDefaults h\trn
+	CreateTerrain h\trn	
 	h\teepad=LoadModel("../engine/assets/models/disc_golf/teepad.glb")	
 	Local basket_mesh=LoadMesh("../engine/assets/models/disc_golf/basket.glb") 
 	h\bsk = CreateBasket(basket_mesh,h\trn,20,20)

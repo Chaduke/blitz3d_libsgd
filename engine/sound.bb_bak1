@@ -76,7 +76,7 @@ Function PlaySoundByLetter(s.SoundEmitter,l$)
 		If c = 4 Then i = 1 ; low octave
 		If c = 5 Then i = 20 ; high fifth
 		If c = 6 Then i = 8 ; low fifth 
-		If c = 7 Then i = 9 ; flat 6 low
+		If c = 7 Then i = 22 ; 6th high
 		If c = 8 Then i = 16 ; minor third high
 		If c = 9 Then i = 4 ; minor third low
 		If c = 10 Then i = 17 ; major third high
@@ -91,7 +91,7 @@ Function PlaySoundByLetter(s.SoundEmitter,l$)
 		If c = 19 Then i = 11 ; flat 7th low
 		If c = 20 Then i = 19 ; tritone high
 		If c = 21 Then i = 7 ; tritone low 
-		If c = 22 Then i = 22 ; 6th high
+		If c = 22 Then i = 9 ; flat 6th low
 		If c = 23 Then i = 10  ; 6th low 
 		If c = 24 Then i = 21 ; flat 6
 		If c = 25 Then i = 14 ; minor 2nd high

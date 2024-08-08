@@ -22,10 +22,10 @@ Type Terrain
 End Type
 
 Function SetTerrainDefaults(t.Terrain)
-	t\material_path$ = "../engine/assets/materials/Ground037_1K-JPG"
-	t\width# = 128
-	t\height# = 4
-	t\depth# = 128
+	t\material_path$ = "../engine/assets/materials/Ground048_1K-JPG"
+	t\width# = 256
+	t\height# = 8
+	t\depth# = 256
 	t\start_offset# = 777
 	t\offset_inc# = 0.02
 	t\calc_normals = True	
@@ -39,8 +39,7 @@ Function PlaceEntityOnTerrain(e,t.Terrain,yoffset#=0,center=True,random=False,x#
 	If center Then 
 		ex = t\width/2
 		ez = t\depth/2
-	ElseIf random Then 
-		SeedRnd MilliSecs()
+	Else If random Then		
 		ex = Rand(2,t\width-2)
 		ez = Rand(2,t\depth-2)
 	Else 
@@ -185,7 +184,7 @@ Function CreateTerrain(t.Terrain)
 	Next
 	
 	If t\calc_normals = False Then UpdateMeshNormals t\mesh	
-	TFormMeshTexCoords t\mesh,t\width,t\depth,0,0	
+	TFormMeshTexCoords t\mesh,t\width/4,t\depth/4,0,0	
 	t\model = CreateModel(t\mesh)	
 End Function
 

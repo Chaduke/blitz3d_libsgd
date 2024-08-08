@@ -16,23 +16,21 @@ Type Player
 	Field shooting
 End Type 
 
-Function CreatePlayer.Player(bs.BasicScene)
+Function CreatePlayer.Player()
 	Local p.Player = New Player
 	Local mesh = CreateCylinderMesh(1.7,0.5,16,GetCollisionMaterial())	
 	SetMeshShadowCastingEnabled mesh,True 
 	p\model = CreateModel(mesh)
 	p\pivot = CreateModel(0)
-	SetEntityParent p\model,p\pivot
-	PlaceEntityOnTerrain p\pivot,bs\trn		
-	MoveEntity p\pivot,0,1,-3
+	SetEntityParent p\model,p\pivot	
 	p\vel = CreateVec3("Player Velocity")
-	p\acc = CreateVec3("Player Acceleration",0,-0.005,0)
+	p\acc = CreateVec3("Player Acceleration",0,-0.004,0)
 	p\rot = CreateVec3("Player Rotation")
 	p\collider = CreateEllipsoidCollider(p\pivot,1,0.5,1.7)	
 	Return p
 End Function 
 
-Function UpdatePlayer(p.Player,b.Basketball)	
+Function UpdatePlayer(g.GameApp,p.Player,b.Basketball)	
 
 	; get player keyboard input
 	If IsKeyDown(KEY_S) Then 
@@ -51,10 +49,12 @@ Function UpdatePlayer(p.Player,b.Basketball)
 	 p\vel\x = 0
 	End If 
 	
+	If (p\vel\z <> 0) Then SetEntityRotation(p\pivot,0,GetEntityRY(g\pivot),0)
+	
 	; jump
 	If IsKeyHit(KEY_SPACE) Then 
 		If p\jumping = False Then 
-			p\vel\y = 0.15
+			p\vel\y = 0.15			
 			p\jumping = True 
 		End If 
 	End If 
@@ -63,7 +63,7 @@ Function UpdatePlayer(p.Player,b.Basketball)
 	If IsKeyHit(KEY_B) Then 
 		p\carrying = True 
 		SetEntityParent b\pivot,p\pivot 
-		SetEntityPosition b\pivot,0,0.2,0.5
+		SetEntityPosition b\pivot,0,0.2,0.75
 		; clear out all motion 
 		b\acc\x = 0 : b\acc\y = 0 : b\acc\z = 0
 		b\vel\x = 0 : b\vel\y = 0 : b\vel\z = 0
@@ -71,7 +71,7 @@ Function UpdatePlayer(p.Player,b.Basketball)
 	End If 	
 
 	; mouse input
-	TurnEntity p\pivot,0,-GetMouseVX() * 0.1,0	
+	; TurnEntity p\pivot,0,-GetMouseVX() * 0.1,0	
 	
 	; shoot 
 	If IsMouseButtonDown(0) Then 
@@ -92,10 +92,9 @@ Function UpdatePlayer(p.Player,b.Basketball)
 			p\shooting = False
 			p\carrying = False  			
 			SetEntityParent b\pivot,0
-			b\vel\x = p\vel\x : b\vel\y = p\vel\y + 0.1 + b\power : b\vel\z = p\vel\z + b\power
-			b\acc\x = p\vel\x : b\acc\y = p\acc\y : b\acc\z = p\acc\z
+			b\vel\y = b\power * 1.5 : b\vel\z = b\power : b\acc\y=-0.004		
 			SetEntityRotation b\pivot,0,GetEntityRY(p\pivot),0
-			b\rot\x = 1
+			b\rot\x = 5
 			b\power = 0
 		End If 
 	End If 		
@@ -108,12 +107,12 @@ Function UpdatePlayer(p.Player,b.Basketball)
 	; collision check and response 
 	If GetCollisionCount(p\collider) > 0 Then 
 		; handle collision from bottom
-		If GetCollisionNX(p\collider,0) > 0 Then 		
-			If p\vel\y < 0 Then p\vel\y = 0	
-			p\jumping = False 
+		If (GetCollisionNY(p\collider,0) > 0) Then 		
+			; p\vel\y = 0	
+			p\jumping = False			
 		End If 
 		; handle bounce from top
-		If GetCollisionNX(p\collider,0) < 0 Then 		
+		If GetCollisionNY(p\collider,0) < 0 Then 		
 			If p\vel\y > 0 Then p\vel\y = -p\vel\y * 0.7		
 		End If 		
 	End If 

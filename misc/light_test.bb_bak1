@@ -1,5 +1,4 @@
 CreateWindow 1280,720,"Light Parent Test",0
-CreateScene()
 camera=CreatePerspectiveCamera()
 MoveEntity camera,0,1,-3
 
@@ -16,7 +15,7 @@ MoveEntity player,0,-1.77/2,0
 light=CreatePointLight()
 MoveEntity light,1,2,-2
 SetEntityParent light,player
-SetLightCastsShadow light,True
+SetLightShadowMappingEnabled light,True
 
 dl = CreateDirectionalLight()
 
@@ -31,7 +30,7 @@ While loop
 	e=PollEvents()
 	If e=1 Then loop = False
 	If KeyHit(256) Then loop = False
-	If KeyDown(32) Then 
+	If KeyHit(32) Then 
 		v = Not v
 		SetEntityVisible cyl_model,v
 	End If	
@@ -43,4 +42,3 @@ While loop
 	Present()
 Wend 
 End 
-

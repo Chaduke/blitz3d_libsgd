@@ -186,17 +186,17 @@ Function GenerateTrees(t.Terrain,numtrees,plus_fence = False)
 	Local tw=t\width
 	Local td=t\depth
 
-	treeMeshes(0) = LoadMesh("sgd://models/tree1.glb")
+	treeMeshes(0) = LoadMesh("../engine/assets/models/trees/tree1.glb")
 	SetMeshShadowCastingEnabled treeMeshes(0),True
-	treeMeshes(1) = LoadMesh("sgd://models/tree1.glb")
+	treeMeshes(1) = LoadMesh("../engine/assets/models/trees/TwistedTree_2.gltf")
 	SetMeshShadowCastingEnabled treeMeshes(1),True
-	treeMeshes(2) = LoadMesh("sgd://models/birch_tree1.glb")
+	treeMeshes(2) = LoadMesh("../engine/assets/models/trees/birch_tree1.glb")
 	SetMeshShadowCastingEnabled treeMeshes(2),True	
 	; randomly distribute trees on the terrain
 	For i=0 To numtrees			
 		tx# = Rand(2,tw-2)
 		tz# = Rand(2,td-2)	
-		ty# = GetTerrainHeight(tx,tz,t) - 0.3		
+		ty# = GetTerrainHeight(tx,tz,t) - 0.1		
 		rs# = Rnd(2) + 0.5		
 		
 		AddOneTree("Tree #" + i,treeMeshes(Rand(0,2)),tx,ty,tz,rs)		

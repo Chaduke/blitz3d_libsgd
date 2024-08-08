@@ -5,42 +5,7 @@
 Include "../engine/testapp.bb"
 Include "../engine/assets/prefabs/ferris_wheel/ferris_wheel.bb"
 Include "../runner/turtle.bb"
-
-Type Environment
-	Field gui.GUIWindow
-	Field btn_sky_texture.Widget
-	Field txt_sky_roughness.Widget	
-	Field lbl_dl.Widget
-	Field txt_dl_rx.Widget
-	Field txt_dl_ry.Widget
-	Field txt_amb_r.Widget
-	Field txt_amb_g.Widget
-	Field txt_amb_b.Widget
-	Field txt_amb_a.Widget	
-	Field btn_env_generate.Widget	
-	Field btn_env_load.Widget
-	Field btn_env_save.Widget
-	Field skybox
-End Type
-
-Function CreateEnvironment.Environment(font)
-	Local e.Environment = New Environment 
-	e\gui=CreateGUI(font,"Environment Settings",300,10)
-	e\gui\v = False
-	e\btn_sky_texture = AddWidget(e\gui,"Skybox Texture",2,"skybox_sunny.png")
-	e\txt_sky_roughness = AddWidget(e\gui,"Sky Roughness",0,0.0,0.0,1.0,70) 
-	e\lbl_dl = AddWidget(e\gui,"Directional Light",2,"")
-	e\txt_dl_rx = AddWidget(e\gui,"Rotation X",1,-107,-180,180,70)
-	e\txt_dl_ry = AddWidget(e\gui,"Rotation Y",1,-60,-180,180,70)
-	e\txt_amb_r = AddWidget(e\gui,"Ambient Red",0,0.38,0.0,1.0,70)
-	e\txt_amb_g = AddWidget(e\gui,"Ambient Green",0,0.33,0.0,1.0,70)
-	e\txt_amb_b = AddWidget(e\gui,"Ambient Blue",0,0.46,0.0,1.0,70)
-	e\txt_amb_a = AddWidget(e\gui,"Ambient Alpha",0,0.89,0.0,1.0,70)	
-	e\btn_env_generate = AddWidget(e\gui,"Generate",2,"")
-	e\btn_env_load = AddWidget(e\gui,"Load",2,"")
-	e\btn_env_save = AddWidget(e\gui,"Save",2,"")	
-	Return e
-End Function 
+Include "../engine/environment.bb"
 
 ; animations are 
 
@@ -86,20 +51,6 @@ Function CreatePlayer.Player()
 	Return p
 End Function 
 
-Function UpdateEnvironment(t.TestApp,e.Environment)	
-	Local r = GuiDragCheck()
-	If r Then 
-		; check to see if a widget is dragged and update accordingly
-		If e\txt_sky_roughness\dragged Then SetSkyboxRoughness t\ts\skybox,e\txt_sky_roughness\val_float#		
-		If (e\txt_dl_rx\dragged Or e\txt_dl_ry\dragged) Then SetEntityRotation t\ts\directional_light,e\txt_dl_rx\val_float#,e\txt_dl_ry\val_float#,0
-		If (e\txt_amb_r\dragged Or e\txt_amb_g\dragged Or e\txt_amb_b\dragged Or e\txt_amb_a\dragged) Then 
-			SetAmbientLightColor e\txt_amb_r\val_float#,e\txt_amb_g\val_float#, e\txt_amb_b\val_float#,	e\txt_amb_a\val_float#
-		End If 	
-	End If 	
-	DrawAllGUIs()
-	Return r		
-End Function 
-
 ; Init
 t.TestApp = CreateTestApp(True,"Collision Tests")
 e.Environment = CreateEnvironment(t\gui_font)
@@ -138,17 +89,16 @@ SetMouseZ -8
 While t\loop
 	BeginFrame t	
 	
+	If IsKeyHit(KEY_F1) Then ShowHideGUIWindow e\gui
 	If e\gui\v Then 
 		SetMouseCursorMode 1 
-		UpdateEnvironment t,e
+		UpdateEnvironment e,GUIDragCheck()		
+		DrawAllGUIs()
 	Else 
 		SetMouseCursorMode 3
 		ThirdPersonMouseInputEditor t\camera,t\pivot,1,0.02			
 	End If 
 		
-	; show/hide 
-	If IsKeyHit(KEY_F1) Then ShowHideGUIWindow e\gui	
-	
 	If (p\running Or p\jumping) Then 
 		AddToVec3 p\vel,p\acc ; add acceleration to velocity
 		MoveEntityVec3 p\pivot,p\vel	; move player according to its velocity

@@ -1,10 +1,7 @@
-
 CreateWindow(1280, 720, "Primitives", 2)
 
-CreateScene()
-
 env = LoadTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
-SetSceneEnvTexture env
+SetEnvTexture env
 
 Local skybox = CreateSkybox(env)
 SetSkyboxTexture skybox,env

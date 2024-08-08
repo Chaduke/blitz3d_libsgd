@@ -3,7 +3,6 @@
 ; 20240710 
 
 ; a quick endless runner for fun!
-; "Turtle Hurdler"
 
 Include "../engine/gameapp.bb"
 Include "../engine/terrain.bb"
@@ -14,9 +13,11 @@ Include "../engine/trees.bb"
 
 Include "player.bb"
 Include "runner_scene.bb"
+Include "rock.bb"
 
-ga.GameApp = CreateGameApp("Turtle Hurdler","Chaduke's")
+ga.GameApp = CreateGameApp("Endless Runner","Chaduke's")
 rs.RunnerScene = CreateRunnerScene(ga,False)
+
 p.Player = CreatePlayer() 
 ga\debug = False
 If ga\debug = False Then SetEntityParent ga\pivot,p\pivot 
@@ -28,8 +29,7 @@ If ga\debug = False Then
 	SetMouseZ -10	
 End If 
 
-; EnableCollisions 1,0,2
-; EnableCollisions 0,1,1
+EnableCollisions 0,1,1
 
 While ga\loop
 	BeginFrame ga	

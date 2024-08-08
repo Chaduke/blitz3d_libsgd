@@ -21,8 +21,8 @@ cursor_mesh =CreateSphereMesh(0.5,16,16,l\ground_material)
 cursor_model=CreateModel(cursor_mesh)
 SetEntityPosition cursor_model,-100,-100,0
 
-g\debug = True
-g\game_state = GAME_STATE_STORY
+g\debug = False
+g\game_state = GAME_STATE_SANDBOX
 
 While g\loop
 	BeginFrame g	
@@ -31,6 +31,7 @@ While g\loop
 	Case GAME_STATE_MENU 
 		DisplayStartMenu g
 	Case GAME_STATE_STORY
+		SetMouseCursorMode 1
 		If IsKeyHit(KEY_TAB) Then g\game_state = GAME_STATE_SANDBOX
 			
 		UpdatePlayer p,l	
@@ -56,15 +57,20 @@ While g\loop
 		End If 	
 	Case GAME_STATE_SANDBOX
 		If IsKeyHit(KEY_TAB) Then g\game_state = GAME_STATE_STORY
-		UpdateEnvironment l\env
-		If (GuiDraggedCheck()=False And WidgetDraggedCheck() = False) Then 
-			; SetMouseCursorMode 3
+		If IsKeyHit(KEY_F1) Then ShowHideGUIWindow l\env\gui
+		If l\env\gui\v Then	 
+			SetMouseCursorMode 1			
+			UpdateEnvironment l\env
+		End If 
+		
+		If (GuiDraggedCheck()=False And WidgetDraggedCheck() = False) Then 			
 			; translate mouseX and mouseY to 3D space
 			xunits = Abs(GetMouseZ()) * 1.6
-			yunits = GetMouseZ() * .93
-		   x# = GetMouseX() / GetWindowWidth() * xunits - GetEntityX(g\camera) - (xunits / 20)
-			y# = GetMouseY() / GetWindowHeight() * yunits - GetEntityY(g\camera) + (yunits / 20)
-			SetEntityPosition cursor_model,x,y,0
+		   yunits = GetMouseZ() * .93
+		   ; x# = GetMouseX() / GetWindowWidth() * xunits - GetEntityX(g\camera) - (xunits / 20)
+			; y# = GetMouseY() / GetWindowHeight() * yunits - GetEntityY(g\camera) + (yunits / 20)
+			; SetEntityPosition cursor_model,x,y,0
+			
 			Set2DTextColor 1,0,0,1
 			Draw2DText "Cursor X : " + GetEntityX(cursor_model),5,5
 			Draw2DText "Cursor Y : " + GetEntityY(cursor_model),5,25

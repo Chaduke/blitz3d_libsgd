@@ -13,6 +13,7 @@ ta.TestApp = CreateTestApp(True)
 trn.Terrain = New Terrain 
 SetTerrainDefaults trn
 CreateTerrain trn
+GenerateTrees trn,100,True
 
 test_particles = True 
 test_ferris_wheel = True 
@@ -36,14 +37,14 @@ End If
 If test_particles Then 
 	particle_image = LoadImage("../engine/assets/textures/misc/raindrop2.png",1)	
 	SetImageBlendMode particle_image,3
-	SetImageSpriteViewMode particle_image,1
+	SetImageViewMode particle_image,1
 End If 
 
 While ta\loop 
 	BeginFrame ta
 	UnrealMouseInput ta\pivot
-	KeyboardInputFirstPerson ta\pivot
-	KeepEntityAboveTerrain ta\pivot,ta\ts\trn
+	KeyboardInputFirstPerson ta\pivot	
+	KeepEntityAboveTerrain ta\pivot,trn
 	
 	; ferris wheel and bubble maker
 	If test_ferris_wheel Then 

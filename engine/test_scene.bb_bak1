@@ -22,7 +22,7 @@ Function CreateTestScene.TestScene()
 	t\directional_light = CreateDirectionalLight()
 	SetCSMDepthBias 0.0003
 	SetLightShadowMappingEnabled t\directional_light,True 
-	TurnEntity t\directional_light,-85,-51,0	
+	TurnEntity t\directional_light,-107,-60,0	
 	t\ambient_red = 0.38
 	t\ambient_green = 0.33
 	t\ambient_blue = 0.46

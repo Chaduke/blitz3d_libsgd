@@ -13,7 +13,8 @@ ta.TestApp = CreateTestApp(True)
 trn.Terrain = New Terrain 
 SetTerrainDefaults trn
 CreateTerrain trn
-
+GenerateTrees trn,100,True
+PlaceEntityOnTerrain ta\pivot,trn,1,False,True 
 test_particles = True 
 test_ferris_wheel = True 
 
@@ -36,7 +37,7 @@ End If
 If test_particles Then 
 	particle_image = LoadImage("../engine/assets/textures/misc/raindrop2.png",1)	
 	SetImageBlendMode particle_image,3
-	SetImageSpriteViewMode particle_image,1
+	SetImageViewMode particle_image,1
 End If 
 
 While ta\loop 

@@ -149,7 +149,7 @@ Function GetFileList(f.FileBrowser)
 			loop = False
 		Else 
 			If FileType(f\path$ + "\" + file$) <> 2 Then
-				ext$ = Right$(file$,3)	
+				ext$ = Right$(file$,Len(f\ext$))	
 				If ext$=f\ext$ Then					
 					file_list$(current) = file$
 					current = current + 1
@@ -218,14 +218,19 @@ Function FileBrowserInput(f.FileBrowser)
 	End If 	
 	
 	; ENTER KEY
-	If (IsKeyHit(32) Or IsMouseButtonHit(0)) Then 		
-		f\newfile = True 
-		f\filepath$ = f\path$ + "/" + file_list$(f\selected_file)
-		f\filename$ = file_list$(f\selected_file)
-		Clear2D()
-		Draw2DText "Loading file..." + f\filepath$,10,GetWindowHeight() - 30				
-		PollEvents()
-		RenderScene()		
-		Present()	
+	If (IsKeyDown(32) Or IsMouseButtonHit(0)) Then 		
+		If spacedown = False Then 
+			f\newfile = True 
+			f\filepath$ = f\path$ + "/" + file_list$(f\selected_file)
+			f\filename$ = file_list$(f\selected_file)
+			Clear2D()
+			Draw2DText "Loading file..." + f\filepath$,10,GetWindowHeight() - 30				
+			PollEvents()
+			RenderScene()		
+			Present()	
+			spacedown = True 
+		End If 	
+	Else 
+		spacedown = False 
 	End If 	
 End Function

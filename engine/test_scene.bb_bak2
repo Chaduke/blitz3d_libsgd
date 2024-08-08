@@ -18,24 +18,21 @@ Function CreateTestScene.TestScene()
 	
 	SetCSMTextureSize 4096
 	; SetCSMSplitDistances 8,32,64,128
-	; SetCSMClipRange 1024
-	
+	; SetCSMClipRange 1024	
 	t\directional_light = CreateDirectionalLight()
 	SetCSMDepthBias 0.0003
 	SetLightShadowMappingEnabled t\directional_light,True 
-	TurnEntity t\directional_light,-25,-10,0	
-	t\ambient_red = 0.5
-	t\ambient_green = 0.3
-	t\ambient_blue = 0.8
-	t\ambient_alpha = 0.3
+	TurnEntity t\directional_light,-85,-51,0	
+	t\ambient_red = 0.38
+	t\ambient_green = 0.33
+	t\ambient_blue = 0.46
+	t\ambient_alpha = 0.89
 	SetAmbientLightColor t\ambient_red,t\ambient_green,t\ambient_blue,t\ambient_alpha	
 	DisplayLoadingMessage "Creating Sky"
-	t\sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun5deg.png",4,56)	
-	
+	t\sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun5deg.png",4,56)		
 	SetEnvTexture t\sky_texture
 	t\skybox = CreateSkybox(t\sky_texture)	
-	t\sky_roughness = 0.2
-	SetSkyboxRoughness t\skybox,t\sky_roughness
-	
+	t\sky_roughness = 0.0
+	SetSkyboxRoughness t\skybox,t\sky_roughness	
 	Return t											
 End Function 

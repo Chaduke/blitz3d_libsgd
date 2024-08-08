@@ -9,9 +9,8 @@ Function Distance2D#(x1#,y1#,x2#,y2#)
 End Function 
 
 CreateWindow 1920,1080,"Grid Test", 1
-CreateScene()
-SetSceneClearColor 0,0,0,1
-Const gs = 8 ; gridcell size 
+SetClearColor 0,0,0,1
+Const gs = 4 ; gridcell size 
 SetMouseZ 200
 SetMouseCursorMode 3
 loop = True 
@@ -19,13 +18,13 @@ While loop
 	ms = MilliSecs()
 	e = PollEvents()
 	If e = 1 Then loop = False
-	If KeyHit(256) Then loop = False	
+	If IsKeyHit(256) Then loop = False	
 	RenderScene()
 	Clear2D()	
-	r# = MouseZ()
-	For y# = 0 To WindowHeight() Step gs 
-		For x# = 0 To WindowWidth() Step gs
-			d# = Distance2D(MouseX(),MouseY(),x#,y#)
+	r# = GetMouseZ()
+	For y# = 0 To GetWindowHeight() Step gs 
+		For x# = 0 To GetWindowWidth() Step gs
+			d# = Distance2D(GetMouseX(),GetMouseY(),x#,y#)
 			If d# < r Then 
 				shade# = 1 - d/r
 				Set2DFillColor shade,shade,shade,1

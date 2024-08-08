@@ -5,47 +5,42 @@
 Include "../engine/gameapp.bb"
 Include "../engine/gui.bb"
 Include "../engine/environment.bb"
+Include "../engine/noise.bb"
+Include "../engine/terrain.bb"
+Include "../engine/navigation.bb"
 Include "../engine/assets/prefabs/bubble_maker/bubble_maker.bb"
 
 g.GameApp = CreateGameApp()
-MoveEntity g\pivot,0,2,0
+g\game_state = GAME_STATE_STORY
+g\debug = True 
+
 e.Environment = CreateEnvironment(g\gui_font)
-ground = CreateGround()
+trn.Terrain = New Terrain
+SetTerrainDefaults trn
+CreateTerrain trn
+PlaceEntityOnTerrain g\pivot,trn,2
+
 b.BubbleMaker = CreateBubbleMaker()
+PlaceEntityOnTerrain b\model,trn,0.1
 MoveEntity b\model,-2,0,5
 
-tree_mesh = LoadMesh("../engine/assets/models/trees/tree1.glb")
+tree_mesh = LoadMesh("../engine/assets/models/trees/low_poly.glb")
 SetMeshShadowCastingEnabled tree_mesh,True 
 tree_model = CreateModel(tree_mesh)
+PlaceEntityOnTerrain tree_model,trn
 MoveEntity tree_model,0,0,8
 
 While g\loop
 	BeginFrame g
-	If (Not GUIDraggedCheck() And Not WidgetDraggedCheck()) Then UnrealMouseInput g\pivot	
-	UpdateEnvironment e
+	If IsKeyHit(KEY_F1) Then ShowHideGUIWindow e\gui
+	If (GUIDraggedCheck()=False And WidgetDraggedCheck()=False) Then 
+		NavigationMode g\pivot,trn
+	End If 
+		
+	UpdateEnvironment e,GuiDragCheck()
+	DrawAllGUIs()
+		
 	UpdateBubbleMaker b
 	EndFrame g
 Wend 
 End 
-
-Function UnrealMouseInput(e,move_speed#=0.02,turn_speed#=0.2)						
-	If IsMouseButtonDown(0) ; left mouse button down
-		SetMouseCursorMode 3 ; hide and lock the cursor
-		If IsMouseButtonDown(1) ; right mouse button down (both are held down now)
-			MoveEntity e, GetMouseVX() * move_speed, -GetMouseVY() * move_speed, 0	
-		Else ; only left mouse button is down
-			If value_adjust Then 
-				; adjust a slider type value
-			Else					
-				MoveEntity e, 0, 0, -GetMouseVY() * move_speed
-				TurnEntity e, 0, -GetMouseVX() * turn_speed, 0	
-			End If			
-		EndIf		
-	ElseIf IsMouseButtonDown(1) ; only right mouse button is down
-		SetMouseCursorMode 3
-		TurnEntity e, -GetMouseVY() * turn_speed, -GetMouseVX() * turn_speed, 0	
-	Else 
-		SetMouseCursorMode 1 ; set the mouse cursor to normal
-	End If	
-	If (GetEntityRZ(e) < 0 Or GetEntityRZ(e) > 0) Then SetEntityRotation e, GetEntityRX(e), GetEntityRY(e), 0	
-End Function

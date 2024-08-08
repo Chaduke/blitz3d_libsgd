@@ -29,7 +29,7 @@ Function CreateBasicScene.BasicScene(g.GameApp)
 	b\ambient_red = 0.7
 	b\ambient_green = 0.5
 	b\ambient_blue = 1.0
-	b\ambient_alpha = 0.8
+	b\ambient_alpha = 0.2
 	SetAmbientLightColor b\ambient_red,b\ambient_green,b\ambient_blue,b\ambient_alpha	
 	
 	DisplayLoadingMessageWithTitle "Creating Sky",g
@@ -46,10 +46,14 @@ Function CreateBasicScene.BasicScene(g.GameApp)
 	DisplayLoadingMessageWithTitle "Creating Rock Fence",g	
 	GenerateRockFence b\trn,"../engine/assets/models/runner/rock.glb"	
 	DisplayLoadingMessageWithTitle "Adding Trees", g
-	GenerateTrees b\trn,50
+	GenerateTrees b\trn,2000
 	DisplayLoadingMessageWithTitle "Adding Grass",g
-	GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/grass1.png"
-	GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/weeds.png"		
+	GenerateGrass b\trn,2000,"../engine/assets/textures/foliage/grass1.png"
+	GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/grass2.png"
+	GenerateGrass b\trn,2000,"../engine/assets/textures/foliage/weeds.png"	
+	GenerateGrass b\trn,200,"../engine/assets/textures/foliage/daisies.png"
+	GenerateGrass b\trn,200,"../engine/assets/textures/foliage/wildflower_blue.png"	
+	GenerateGrass b\trn,200,"../engine/assets/textures/foliage/wildflower_red.png"	
 	PlaceEntityOnTerrain g\pivot,b\trn,1	
 	 	
 	Return b												

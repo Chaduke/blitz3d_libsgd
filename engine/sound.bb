@@ -27,7 +27,7 @@ Function CreateSoundEmitter.SoundEmitter(name$,path$,ext$,count)
 End Function 
 
 Function AdjustVolumeByDistance(s.SoundEmitter,e) 
-	Local d# = Dist3D(GetEntityX(s\model), GetEntityY(s\model),GetEntityZ(s\model),GetEntityX(e),GetEntityY(e),GetEntityZ(e))	
+	Local d# = Distance3D(GetEntityX(s\model), GetEntityY(s\model),GetEntityZ(s\model),GetEntityX(e),GetEntityY(e),GetEntityZ(e))	
 	Local v# = 1.0
 	If (d > 0 And d < 10) Then 
 		v# = 1 - (d/10)		

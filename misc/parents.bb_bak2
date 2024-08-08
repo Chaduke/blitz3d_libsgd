@@ -8,8 +8,9 @@ CreateWindow 1366,768,"Entity / Camera Parenting Test",256
 CreateScene()
 camera = CreatePerspectiveCamera()
 pivot = CreateModel(0)
-TurnEntity camera,0,5,0
-TurnEntity pivot,0,30,0
+MoveEntity pivot,5,0,0
+; TurnEntity camera,0,5,0
+; TurnEntity pivot,0,30,0
 MoveEntity camera,5,0,0
 SetEntityParent camera,pivot
 loop = True

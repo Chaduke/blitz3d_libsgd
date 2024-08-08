@@ -61,7 +61,7 @@ Function SetSceneClearColorHex(h$)
 	r$ = Left$(h$,2)
 	g$ = Mid$(h$,3,2)
 	b$ = Mid$(h$,5,2)
-	SetSceneClearColor hf(r$),hf(g$),hf(b$),hf(a$)
+	SetClearColor hf(r$),hf(g$),hf(b$),hf(a$)
 End Function 
 
 Function Set2DTextColorHex(h$) 
@@ -110,8 +110,7 @@ Function Set2DOutlineColorHex(h$)
 End Function
 
 Function testhf()	
-	CreateWindow 640,480,"Test Hex to Float",0
-	CreateScene() 
+	CreateWindow 640,480,"Test Hex to Float",0	
 	Set2DOutlineEnabled True
 	Set2DOutlineWidth 5
 	Repeat 

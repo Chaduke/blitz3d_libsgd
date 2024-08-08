@@ -126,7 +126,7 @@ Function GetFileCount(f.FileBrowser)
 			loop = False
 		Else			
 			If FileType(f\path$ + "\" + file$) <> 2 Then 
-				ext$ = Right$(file$,3)					
+				ext$ = Right$(file$,Len(f\ext$))					
 				If ext$=f\ext$ Then count=count + 1
 			Else 
 				If f\ext$="dir" Then If (file$<> "." And file$<>"..") Then count=count + 1
@@ -149,7 +149,7 @@ Function GetFileList(f.FileBrowser)
 			loop = False
 		Else 
 			If FileType(f\path$ + "\" + file$) <> 2 Then
-				ext$ = Right$(file$,3)	
+				ext$ = Right$(file$,Len(f\ext$))	
 				If ext$=f\ext$ Then					
 					file_list$(current) = file$
 					current = current + 1

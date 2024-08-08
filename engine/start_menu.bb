@@ -25,6 +25,7 @@ Function StartMenuHover(s.StartMenu,num)
 End Function 
 
 Function DisplayStartMenu(g.Gameapp)
+	SetMouseCursorMode 1
 	DrawTitle g
 	If (MouseCollidedRect(400,g\wh / 2 - 60,g\ww-400,g\wh / 2 - 30)) Then
 		StartMenuHover g\start_menu,1
@@ -61,5 +62,15 @@ Function DisplayStartMenu(g.Gameapp)
 	Else 
 		Set2DTextColor 1,1,1,1
 	End If 
-	DisplayTextCenter "Options",g\start_menu\subtitle_font,30			
+	DisplayTextCenter "Options",g\start_menu\subtitle_font,30	
+	
+	If (MouseCollidedRect(400,g\wh / 2 + 60,g\ww-400,g\wh / 2 + 90)) Then 
+		StartMenuHover g\start_menu,5
+		If IsMouseButtonHit(0) Then g\game_state = GAME_STATE_QUIT
+		Set2DTextColor 1,1,0,1 
+	Else 
+		Set2DTextColor 1,1,1,1
+	End If 
+	DisplayTextCenter "Quit",g\start_menu\subtitle_font,60
+			
 End Function 

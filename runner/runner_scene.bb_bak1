@@ -77,6 +77,8 @@ Function SetTerrainDefaultsRunner(t.Terrain)
 	t\falloff_height = 0
 End Function 
 
+Dim treeMeshes(4)
+
 Function GenerateTreesRunner(t.Terrain) 
 
 	Local tw#=t\width

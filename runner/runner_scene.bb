@@ -4,8 +4,6 @@
 
 ; a special scene setup for an endless runner game 
 
-Include "turtle.bb"
-
 Type RunnerScene	
 	Field directional_light	
 	Field ambient_red# 
@@ -55,7 +53,8 @@ Function CreateRunnerScene.RunnerScene(g.GameApp,blankscene=False)
 		GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/grass1.png"
 		GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/weeds.png"
 		
-		DisplayLoadingMessageWithTitle "Spawning Turtles!",g		
+		DisplayLoadingMessageWithTitle "Placing Rocks to Jump Over",g
+		GenerateRocks b\trn	,15	
 		; GenerateTurtles b\trn,15,"../engine/assets/models/runner/turtle.glb"
 		; load a water plane 
 		water_plane = LoadModel("../engine/assets/models/runner/water_plane.glb")

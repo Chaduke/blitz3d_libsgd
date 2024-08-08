@@ -9,7 +9,7 @@ Include "../engine/math2d.bb"
 
 CreateWindow 1920,1080,"Voronoi and Worley",1
 
-Const cellsize = 2
+Const cellsize = 10
 Const drawpoints = False 
 
 ; Set2DOutlineEnabled True : Set2DOutlineColor 1,1,1,0.5 : Set2DOutlineWidth 1

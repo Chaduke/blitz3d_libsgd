@@ -1,5 +1,4 @@
 CreateWindow 1280,720,"Light Parent Test",0
-CreateScene()
 camera=CreatePerspectiveCamera()
 MoveEntity camera,0,1,-3
 
@@ -43,4 +42,3 @@ While loop
 	Present()
 Wend 
 End 
-

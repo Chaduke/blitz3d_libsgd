@@ -8,7 +8,7 @@
 ; it doesn't really do much at this point
 ; press SPACE to cycle through messages
 
-Include "../platformer/noise.bb"
+Include "../engine/noise.bb"
 Include "../beginner/hextofloat.bb"
 Const segment_width# = 25
 
@@ -44,7 +44,7 @@ End Function
 
 Function TheOcean()	
 	CreateWindow(1920,1080,"The Ocean",1)  
-	CreateScene()	
+		
 	ocean_waves = LoadSound("oceanwaves.wav")	
 	blip = LoadSound("blipSelect.wav")
 	PlaySound ocean_waves	
@@ -52,21 +52,21 @@ Function TheOcean()
 	; boat 
 	boatWidth# = 100
 	boatHeight# = 30
-	boatX# = WindowWidth() / 2 - boatWidth / 2
+	boatX# = GetWindowWidth() / 2 - boatWidth / 2
 	
 	; player 
 	player_head_size = 15	
 	
 	start_offset# = 777		
-	segments = WindowWidth() / segment_width
+	segments = GetWindowWidth() / segment_width
 	start_millisecs = MilliSecs()
 	Read nextmessage$		
 	loop = True	
 	While loop
 		e=PollEvents()
 		If e=1 Then loop = False
-		If KeyHit(256) Then loop = False
-		If KeyHit(32) Then 
+		If IsKeyHit(256) Then loop = False
+		If IsKeyHit(32) Then 
 			If nextmessage$<>"END" Then 
 				Read nextmessage$
 				If 	nextmessage$<>"END" msgindex=0			
@@ -76,17 +76,17 @@ Function TheOcean()
 		offset# = start_offset#		
 		RenderScene()
 		Clear2D()
-		For x=0 To WindowWidth()+segment_width Step segment_width
+		For x=0 To GetWindowWidth()+segment_width Step segment_width
 			offset = offset + 0.02
-			y# = noise(offset) * WindowHeight()/2 + WindowHeight()/2
+			y# = noise(offset) * GetWindowHeight()/2 + GetWindowHeight()/2
 			; draw the sky
 			DrawVerticalLineWithSquares segment_width,x,0,y,0.6,0.8,0.9	
 			; draw the water
-			DrawVerticalLineWithSquares segment_width,x,y,WindowHeight(),0.2,0.3,1			
+			DrawVerticalLineWithSquares segment_width,x,y,GetWindowHeight(),0.2,0.3,1			
 		Next	
 		offset# = start_offset	
 		offset = offset + (segments / 2) * 0.02
-		boatY# = 	(noise(offset) * WindowHeight()/2 + WindowHeight()/2) - boatHeight
+		boatY# = 	(noise(offset) * GetWindowHeight()/2 + GetWindowHeight()/2) - boatHeight
 		
 		; draw the player		
 		Set2DFillColorHex("623A18")

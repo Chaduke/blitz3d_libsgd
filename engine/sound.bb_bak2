@@ -59,14 +59,14 @@ Function PlaySoundByLetter(s.SoundEmitter,l$)
 	; english sentences.  Then we have a sequence of 26 musical notes 
 	; ordered by the frequency in which we deem them common 
 	; and we will map these notes to the letters 
-	; my first guess would be since the 26 would cover 3 octaves 
-	; to use roots, fifths and 3rds (major and minor) then 
-	; 4ths, tritones, 7ths (flat and major), then 6th, 2nd 
+
 	; letters by commonality 
 	Local common$ = "eariotnslcudpmhgbfywkvxzjq"
+	
 	; find out how common l$ is 
 	l$ = Lower(l$)
 	Local c = Instr(common$,l$)
+	
 	; convert to the note commonality
 	Local i = 0
 	If c>0 Then 
@@ -76,7 +76,7 @@ Function PlaySoundByLetter(s.SoundEmitter,l$)
 		If c = 4 Then i = 1 ; low octave
 		If c = 5 Then i = 20 ; high fifth
 		If c = 6 Then i = 8 ; low fifth 
-		If c = 7 Then i = 25 ; highest fifth
+		If c = 7 Then i = 9 ; flat 6 low
 		If c = 8 Then i = 16 ; minor third high
 		If c = 9 Then i = 4 ; minor third low
 		If c = 10 Then i = 17 ; major third high

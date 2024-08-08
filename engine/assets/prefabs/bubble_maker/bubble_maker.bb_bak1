@@ -38,6 +38,7 @@ Function UpdateBubbleMaker(b.BubbleMaker)
 			CreateBubble b\pink_bubble_image,b\model
 		End If 
 	End If	
+	UpdateBubbles()
 End Function 
 
 Function UpdateBubbleMakers()

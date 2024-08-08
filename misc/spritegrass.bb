@@ -1,13 +1,12 @@
 
-CreateWindow(1280, 720, "Helmet", 0)
+CreateWindow(1280, 720, "SpriteGrass", 0)
 
-CreateScene()
 
 env = LoadTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
 
-SetSceneEnvTexture env
+SetEnvTexture env
 
-skybox = CreateSkybox()
+skybox = CreateSkybox(env)
 SetSkyboxTexture skybox,env
 SetSkyboxRoughness skybox,.3
 

@@ -2,6 +2,8 @@
 ; by Chaduke
 ; 20240704
 
+; a quick scene that includes terrain, static models and sprites 
+
 Type BasicScene	
 	Field directional_light	
 	Field ambient_red# 
@@ -14,11 +16,11 @@ Type BasicScene
 	Field trn.Terrain	
    Field trees	
 	Field rockfence
-	Field grasses	
+	Field grass
 	Field camera_mode 	
 End Type
 
-Function CreateBasicScene.BasicScene(g.GameApp)
+Function CreateBasicScene.BasicScene(g.GameApp,trees=True,rockfence=True,grass=True)
 	Local b.BasicScene = New BasicScene
 	
 	SetCSMTextureSize 2048
@@ -43,13 +45,27 @@ Function CreateBasicScene.BasicScene(g.GameApp)
    b\trn = New Terrain	
 	SetTerrainDefaults b\trn			
 	CreateTerrain b\trn		
-	DisplayLoadingMessageWithTitle "Creating Rock Fence",g	
-	GenerateRockFence b\trn,"../engine/assets/models/runner/rock.glb"	
-	DisplayLoadingMessageWithTitle "Adding Trees", g
-	GenerateTrees b\trn,20
-	DisplayLoadingMessageWithTitle "Adding Grass",g
-	GenerateGrass b\trn,100,"../engine/assets/textures/foliage/grass1.png"
-	GenerateGrass b\trn,100,"../engine/assets/textures/foliage/weeds.png"		
+	
+	If rockfence Then 
+		DisplayLoadingMessageWithTitle "Creating Rock Fence",g	
+		GenerateRockFence b\trn,"../engine/assets/models/runner/rock.glb"	
+	End If 
+	
+	If trees Then 	
+		DisplayLoadingMessageWithTitle "Adding Trees", g
+		GenerateTrees b\trn,1000
+	End If 
+	
+	If grass Then 	
+		DisplayLoadingMessageWithTitle "Adding Grass",g
+		GenerateGrass b\trn,2000,"../engine/assets/textures/foliage/grass1.png"
+		GenerateGrass b\trn,1000,"../engine/assets/textures/foliage/grass2.png"
+		GenerateGrass b\trn,2000,"../engine/assets/textures/foliage/weeds.png"	
+		GenerateGrass b\trn,200,"../engine/assets/textures/foliage/daisies.png"
+		GenerateGrass b\trn,200,"../engine/assets/textures/foliage/wildflower_blue.png"	
+		GenerateGrass b\trn,200,"../engine/assets/textures/foliage/wildflower_red.png"	
+	End If 
+		
 	PlaceEntityOnTerrain g\pivot,b\trn,1	
 	 	
 	Return b												

@@ -14,11 +14,6 @@ Const drawpoints = False
 
 ; Set2DOutlineEnabled True : Set2DOutlineColor 1,1,1,0.5 : Set2DOutlineWidth 1
 
-Type Point 
-	Field x#
-	Field y#	
-End Type 
-
 Const numpoints = 200
 Dim points.Point(numpoints)
 

@@ -61,15 +61,6 @@ Function CreateTestApp.TestApp(fullscreen = False,name$="Test App")
 	Return t
 End Function 
 
-Function CreateGround()
-	DisplayLoadingMessage "Creating Ground"
-	Local ground_material = LoadPBRMaterial("../engine/assets/materials/Ground048_1K-JPG")
-	Local ground_mesh = CreateBoxMesh(-128,-0.1,-128,128,0,128,ground_material)
-	TFormMeshTexCoords ground_mesh,32,32,0,0
-	Local ground_model = CreateModel(ground_mesh)
-	Return ground_model
-End Function 
-
 Function GetColliderMaterial()
 	Local collider_texture = LoadTexture("../engine/assets/textures/misc/yellow_grid.png",4,18)
 	Local collider_material = CreatePBRMaterial()

@@ -5,6 +5,22 @@
 ; helper functions for 2D math and also called from math3d.bb
 ; testDistance2D()
 
+Type Vec2 
+	Field x#,y#
+End Type 
+
+Function CreateVec2.Vec2(x#=0,y#=0)
+	Local v.Vec2 = New Vec2
+	v\x# = x#
+	v\y# = y#	
+	Return v
+End Function
+
+Function AddToVec2(v1.Vec2,v2.Vec2)
+	v1\x = v1\x + v2\x
+	v1\y = v1\y + v2\y
+End Function 
+
 Type Point
 	Field x#
 	Field y#
@@ -40,10 +56,10 @@ Function AddPolygonPoint(pg.Polygon,pt.Point)
 	End If 	
 End Function 
 
-Function DrawPolygon(p.Polygon)	
+Function DrawPolygon(p.Polygon,with_points=False)	
 	Local i
 	For i = 0 To p\numpoints-1
-		Draw2DOval p\points[i]\x-2,p\points[i]\y-2,p\points[i]\x+2,p\points[i]\y+2
+		If with_points Then Draw2DOval p\points[i]\x-2,p\points[i]\y-2,p\points[i]\x+2,p\points[i]\y+2
 		If i > 0 Draw2DLine p\points[i-1]\x,p\points[i-1]\y,p\points[i]\x,p\points[i]\y
 	Next 
 	If p\numpoints > 0 Then Draw2DLine p\points[p\numpoints-1]\x,p\points[p\numpoints-1]\y,p\points[0]\x,p\points[0]\y	
@@ -82,6 +98,10 @@ Function GetEntityDistanceFlat#(e1,e2)
 	Return d
 End Function 
 
+Function Draw2DCircle(x#,y#,radius#)
+	Draw2DOval x-radius,y-radius,x+radius,y+radius
+End Function
+
 Function CirclesCollided(x1#,y1#,r1#,x2#,y2#,r2#) 
 	If Distance2D(x1,y1,x2,y2) < r1 + r2 Then 
 		Return True 
@@ -94,6 +114,7 @@ Function RectsCollided(l1#,t1#,r1#,b1#,l2#,t2#,r2#,b2#)
 	Return (l1 < r2 And t1 < b2 And r1 > l2 And b1 > t2)
 End Function 
 
+; for rect collision response
 Function GetCollisionType%(l1#,t1#,r1#,b1#,l2#,t2#,r2#,b2#) ; left, top, right, bottom
 	; 0 = no collision 
 	; 1 = right / left collision 
