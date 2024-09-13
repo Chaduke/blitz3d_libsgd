@@ -15,7 +15,7 @@ SetTerrainDefaults trn
 CreateTerrain trn
 GenerateTrees trn,100,True
 PlaceEntityOnTerrain ta\pivot,trn,1,False,True 
-test_particles = True 
+test_particles = False
 test_ferris_wheel = True 
 
 If test_ferris_wheel Then
@@ -64,13 +64,7 @@ While ta\loop
 		UpdateBubbles()
 	End If 	
 	
-	; basic particles 	
-	If test_particles Then 
-		For i = 0 To 5
-			CreateParticle particle_image
-		Next 	
-		UpdateParticles()
-	End If 		
+	
 	EndFrame ta
 	Present()
 Wend

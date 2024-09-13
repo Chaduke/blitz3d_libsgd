@@ -32,7 +32,7 @@ Function CreatePlayer.Player()
 	Local p.Player = New Player
 	p\model = LoadBonedModel("../engine/assets/models/runner/aj_animated.glb",True)
 	Local mesh= GetModelMesh(p\model)
-	SetMeshShadowCastingEnabled mesh,True
+	SetMeshShadowsEnabled mesh,True
 	p\pivot = CreateModel(0)
 	SetEntityParent p\model,p\pivot 	
 	p\vel = CreateVec3("Player Velocity",0,0,-0.1)
@@ -42,7 +42,7 @@ Function CreatePlayer.Player()
 	p\anim = 4 ; running
 	p\anim_time = 0.0	
 	; p\light = CreatePointLight()
-	; SetLightShadowMappingEnabled p\light,True 
+	; SetLightShadowsEnabled p\light,True 
 	; SetEntityParent p\light,p\pivot	
 	; MoveEntity p\light,0,3,0	
 	; SetLightRange p\light,10

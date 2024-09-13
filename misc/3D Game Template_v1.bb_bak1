@@ -44,7 +44,7 @@ Set2DFont constan_font
 LoadingMessage "Loading Please Wait",constan_font
 
 ; create sky environment 
-sky_texture = LoadTexture("C:\Users\chadu\OneDrive\Projects\blitz3d\platformer\assets\images\skyboxsun25degtest.png",4,56)
+sky_texture = Load2DTexture("C:\Users\chadu\OneDrive\Projects\blitz3d\platformer\assets\images\skyboxsun25degtest.png",4,56)
 SetSceneEnvTexture sky_texture
 skybox = CreateSkybox(sky_texture)
 SetSkyboxRoughness skybox,0.2

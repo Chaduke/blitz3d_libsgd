@@ -26,7 +26,7 @@ Include "story.bb"
 Include "tutorial.bb"
 Include "options.bb"
 
-ga.GameApp = CreateGameApp("Disc Golf", "Chaduke's",1)
+ga.GameApp = CreateGameApp("Disc Golf", "Chaduke's",256)
 
 music = LoadSound("../engine/assets/audio/disc_golf/disc_golf.mp3")
 CueSound music 
@@ -42,8 +42,7 @@ While ga\loop
 	Select ga\game_state 
 		Case GAME_STATE_START_MENU		
 		; main menu		
-		DisplayStartMenu ga
-				
+		DisplayStartMenu ga				
 		Case GAME_STATE_STORY
 		; story mode	
 		If Not ga\story_loaded Then			

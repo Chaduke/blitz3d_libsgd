@@ -51,7 +51,7 @@ Function CreatePlayer.Player()
 	Local p.Player = New Player	
 	Local material = LoadPBRMaterial("sgd://materials/Fabric048_1K-JPG")
 	Local mesh = CreateSphereMesh(0.5,16,16,material)
-	SetMeshShadowCastingEnabled mesh,True 
+	SetMeshShadowsEnabled mesh,True 
 	p\model = CreateModel(mesh)
 	p\pivot = CreateModel(0)
 	SetEntityParent p\model,p\pivot 
@@ -122,7 +122,7 @@ p.Player = CreatePlayer()
 
 camera = CreatePerspectiveCamera()
 light = CreateDirectionalLight()
-SetLightShadowMappingEnabled light,True 
+SetLightShadowsEnabled light,True 
 TurnEntity light,-25,-35,0
 SetAmbientLightColor 1,1,1,0.1
 

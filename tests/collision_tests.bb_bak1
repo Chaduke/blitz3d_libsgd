@@ -4,7 +4,7 @@
 
 Include "../engine/testapp.bb"
 Include "../engine/assets/prefabs/ferris_wheel/ferris_wheel.bb"
-Include "../runner/turtle.bb"
+; Include "../runner/turtle.bb"
 Include "../engine/environment.bb"
 
 ; animations are 
@@ -35,7 +35,7 @@ Function CreatePlayer.Player()
 	Local p.Player = New Player
 	p\pivot = CreateModel(0)
 	p\view_model = LoadBonedModel("../engine/assets/models/runner/aj_animated.glb",True)
-	SetMeshShadowCastingEnabled GetModelMesh(p\view_model),True	
+	SetMeshShadowsEnabled GetModelMesh(p\view_model),True	
 	SetEntityParent p\view_model,p\pivot 	
 	Local collision_mesh = CreateSphereMesh(0.5,16,16,GetCollisionMaterial())	
 	p\collision_model = CreateModel(collision_mesh)
@@ -85,7 +85,6 @@ MoveEntity f\base_pivot,0,0,200
 EnableCollisions 1,0,2
 
 SetMouseZ -8
-ThirdPersonMouseInputEditor t\camera,t\pivot,1,0.02		
 
 While t\loop
 	BeginFrame t	
@@ -93,6 +92,7 @@ While t\loop
 	If IsKeyHit(KEY_F1) Then ShowHideGUIWindow e\gui
 	If e\gui\v Then 
 		SetMouseCursorMode 1 
+		SetEntityPosition t\camera,0,0,GetMouseZ()
 		UpdateEnvironment e,GUIDragCheck()		
 		DrawAllGUIs()
 	Else 
@@ -186,9 +186,10 @@ While t\loop
 	UpdateFerrisWheel f			
 	ProcessPlayerAnimation p
 	
-	For tt.Turtle = Each Turtle 
-		UpdateTurtle tt
-	Next 
+	; For tt.Turtle = Each Turtle 
+	; 	UpdateTurtle tt
+	; Next
+	 
 	CustomEndFrame t	
 
 	; collider stuff	
@@ -278,9 +279,9 @@ End Function
 Function AddTrees(ground)
 	DisplayLoadingMessage "Adding Trees ..."
 	Local tree_mesh = LoadMesh("../engine/assets/models/trees/tree1.glb")
-	SetMeshShadowCastingEnabled tree_mesh,True
+	SetMeshShadowsEnabled tree_mesh,True
 	Local birch_mesh = LoadMesh("../engine/assets/models/trees/birch_tree1.glb")
-	SetMeshShadowCastingEnabled birch_mesh,True
+	SetMeshShadowsEnabled birch_mesh,True
 	
 	Local images[5]	
 	images[0] = LoadImage("../engine/assets/textures/foliage/grass1.png",1)
@@ -326,11 +327,11 @@ End Function
 
 Function AddTurtles(ground)
 	DisplayLoadingMessage "Adding Turtles..."		
-	Local t.Turtle
+	; Local t.Turtle
 	Local i
 	For i = 0 To 2
-		t = CreateTurtle(ground)			
-		SetEntityPosition turtle,Rnd(-64,64),0,Rnd(-128,128)
+		; t = CreateTurtle(ground)			
+		; SetEntityPosition turtle,Rnd(-64,64),0,Rnd(-128,128)
 		; rs# = Rnd(1) + 0.5
 		; SetEntityScale turtle,rs,rs,rs
 		; TurnEntity turtle,0,Rand(360),0		
@@ -340,7 +341,7 @@ End Function
 Function AddRocks(ground)
 	DisplayLoadingMessage "Adding Rocks..."	
 	Local rock_mesh=LoadMesh("../engine/assets/models/runner/rock.glb")	
-	SetMeshShadowCastingEnabled rock_mesh,True
+	SetMeshShadowsEnabled rock_mesh,True
 	
 	Local rock
 	For z = -128 To 128 Step 4			

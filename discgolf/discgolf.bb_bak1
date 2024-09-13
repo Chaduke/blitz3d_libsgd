@@ -26,12 +26,12 @@ Include "story.bb"
 Include "tutorial.bb"
 Include "options.bb"
 
-ga.GameApp = CreateGameApp("Disc Golf", "Chaduke's",1)
+ga.GameApp = CreateGameApp("Disc Golf", "Chaduke's",256)
 
 music = LoadSound("../engine/assets/audio/disc_golf/disc_golf.mp3")
 CueSound music 
-PlaySound music 
-SetAudioLooping music,True
+; PlaySound music 
+; SetAudioLooping music,True
 
 debug = True 
 

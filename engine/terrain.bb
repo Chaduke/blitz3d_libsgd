@@ -23,12 +23,14 @@ End Type
 
 Function SetTerrainDefaults(t.Terrain)
 	t\material_path$ = "../engine/assets/materials/Ground048_1K-JPG"
-	t\width# = 256
-	t\height# = 8
-	t\depth# = 256
+	t\width# = 128
+	t\height# = 16
+	t\depth# = 128
 	t\start_offset# = 777
 	t\offset_inc# = 0.02
-	t\calc_normals = True	
+	t\calc_normals = True
+	t\falloff_width = 16
+	t\falloff_height = 8	
 End Function 
 
 Function PlaceEntityOnTerrain(e,t.Terrain,yoffset#=0,center=True,random=False,x#=0,z#=0)
@@ -160,9 +162,9 @@ Function CreateTerrain(t.Terrain)
 		For x = 0 To t\width		  
 			; Add the vertex
 			If t\calc_normals Then 
-				AddMeshVertex t\mesh, x, noisemap(x, z), z, normals(i)\x, normals(i)\y, normals(i)\z, x * u, (t\depth - z) * v
+				AddVertex t\mesh, x, noisemap(x, z), z, normals(i)\x, normals(i)\y, normals(i)\z, x * u, (t\depth - z) * v
 			Else 
-				AddMeshVertex t\mesh, x, noisemap(x, z), z, 0,1,0, x * u, (t\depth - z) * v
+				AddVertex t\mesh, x, noisemap(x, z), z, 0,1,0, x * u, (t\depth - z) * v
 			End If
 			i = i + 1
 		Next
@@ -170,7 +172,7 @@ Function CreateTerrain(t.Terrain)
 	
 	; create the surface and triangles
 	Local material = LoadPBRMaterial(t\material_path$)
-	Local surf = CreateSurface(t\mesh,0,material)	
+	Local surf = CreateSurface(t\mesh,material,0)	
 	
 	For z=0 To t\depth - 1
 		For x = 0 To t\width-1			
@@ -178,8 +180,8 @@ Function CreateTerrain(t.Terrain)
 			Local v1 = v0 + 1
       		Local v2 = v0 + t\width + 1
      		Local v3 = v2 + 1
-			AddSurfaceTriangle surf, v0, v1, v2
-			AddSurfaceTriangle surf, v1, v3, v2
+			AddTriangle surf, v0, v1, v2
+			AddTriangle surf, v1, v3, v2
 		Next
 	Next
 	

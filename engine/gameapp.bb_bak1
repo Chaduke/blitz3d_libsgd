@@ -30,18 +30,25 @@ Type GameApp
 	Field story_loaded 
 	Field tutorial_loaded
 	Field start_menu.StartMenu
+	Field show_start_menu
+	Field info$
 End Type 
 
-Function CreateGameApp.GameApp(title$="Game App",subtitle$="Programmer's",fullscreen=1)
+Function CreateGameApp.GameApp(title$="Game App",subtitle$="Programmer's",fullscreen=1,show_start_menu=True)
 	Local g.GameApp = New GameApp
-	g\debug = False 
+	g\debug = True
 	g\ww = GetDesktopWidth()
 	g\wh = GetDesktopHeight()
 	g\title$ = title$
 	g\subtitle$ = subtitle$
-	CreateWindow g\ww,g\wh,g\subtitle$ + " " + g\title$,fullscreen
+	If fullscreen = 0 Then 	
+		CreateWindow 1280,720,g\subtitle$ + " " + g\title$,fullscreen
+	Else 
+		CreateWindow g\ww,g\wh,g\subtitle$ + " " + g\title$,fullscreen
+	End If 
+			
 	g\loading_screen = LoadImage("../engine/assets/textures/backgrounds/background.png",1)
-	g\game_state = GAME_STATE_MENU
+	g\game_state = GAME_STATE_STORY
 	g\npcs = True 
 	g\loop = True 	
 	g\font = LoadFont("../engine/assets/fonts/ds.ttf",24)
@@ -51,7 +58,12 @@ Function CreateGameApp.GameApp(title$="Game App",subtitle$="Programmer's",fullsc
 	g\camera=CreatePerspectiveCamera()
 	SetEntityParent g\camera,g\pivot	
 	g\editor_loaded = False
+	g\options_loaded = False
+	g\story_loaded = False
+	g\tutorial_loaded = False
 	g\start_menu = CreateStartMenu()
+	g\show_start_menu = show_start_menu
+	g\info$ = "This is an informational message!"
 	Return g
 End Function 
 
@@ -63,7 +75,7 @@ Function BeginFrame(g.GameApp)
 			g\game_state=GAME_STATE_PREVIOUS 
 		Else 
 			GAME_STATE_PREVIOUS = g\game_state
-			g\game_state=GAME_STATE_MENU
+			If g\show_start_menu Then g\game_state=GAME_STATE_MENU Else g\game_state=GAME_STATE_QUIT
 		End If				
 	End If 				
 	If (IsKeyHit(KEY_Y) And g\game_state = GAME_STATE_QUIT) Then g\loop = False		
@@ -74,20 +86,22 @@ Function BeginFrame(g.GameApp)
 			If g\game_state = GAME_STATE_STORY Then g\game_state=GAME_STATE_PAUSED
 		End If 	
 	End If 		
-	If g\game_state = GAME_STATE_MENU Then DisplayStartMenu g	
+	If g\game_state = GAME_STATE_MENU Then DisplayStartMenu g	 		
 End Function
 
 Function EndFrame(g.GameApp,call_present=True,call_clear2d=True,call_render=True)			
 	If call_render Then RenderScene()	
 	If call_clear2d Then Clear2D()	
 	If g\game_state = GAME_STATE_QUIT Then 
-		DrawTitle g
+		DrawTitle g,True
 		Set2DTextColor 1,1,0,1
 		DisplayTextCenter "Quit? Y to confirm | ESC to Cancel",g\font
 	ElseIf g\game_state = GAME_STATE_PAUSED Then 		
 		DisplayTextCenter "Game Paused (P to toggle)",g\font
 	End If 	
-
+	
+	DisplayTextCenter g\info$,g\font,-GetWindowHeight() / 2
+	
 	If g\debug Then 
 		Set2DTextColor 1,0,0,1 
 		Set2DFont g\gui_font	
@@ -100,8 +114,8 @@ Function EndFrame(g.GameApp,call_present=True,call_clear2d=True,call_render=True
 End Function
 
 Function DrawTitle(g.GameApp,center_image=False)
-	Local w = (GetWindowWidth() - 1024) / 2
-	Local h = (GetWindowHeight() - 1024) / 2
+	Local w = (GetWindowWidth() / 2)
+	Local h = (GetWindowHeight() /2)
 	If center_image = True Then 
 		Draw2DImage g\loading_screen,w,h,1	
 	Else 
@@ -126,3 +140,35 @@ Function DisplayLoadingMessageWithTitle(msg$,g.GameApp)
 	RenderScene()
 	Present()
 End Function
+
+Function SimpleNavigation(g.GameApp)
+	Local e = g\pivot
+	Local camspeed# = 0.2
+	Local move_speed# = 0.02
+	Local turn_speed# = 0.2
+	
+	If (IsKeyDown(340) Or IsKeyDown(344)) Then sprint#=0.3 Else sprint#=0.0 ; SHIFT to sprint
+	If (IsKeyDown(87) Or IsKeyDown(265)) Then MoveEntity e, 0, 0, camspeed + sprint ; w or up
+	If (IsKeyDown(83) Or IsKeyDown(264)) Then MoveEntity e, 0, 0, -(camspeed + sprint) ; s or down 
+   	If (IsKeyDown(65) Or IsKeyDown(263)) Then MoveEntity e, -(camspeed + sprint), 0, 0 ; a or left
+	If (IsKeyDown(68) Or IsKeyDown(262)) Then MoveEntity e, camspeed+sprint, 0, 0 ; d or right
+	
+	If (IsKeyDown(81) Or IsKeyDown(266)) Then MoveEntity e, 0, camspeed + sprint, 0 ; Q or Pageup
+	If (IsKeyDown(69) Or IsKeyDown(267)) Then MoveEntity e, 0, -(camspeed+sprint), 0 ; E or Pagedown
+	
+	If IsMouseButtonDown(0) ; left mouse button down
+		SetMouseCursorMode 3 ; hide and lock the cursor
+		If IsMouseButtonDown(1) ; right mouse button down (both are held down now)
+			MoveEntity e, GetMouseVX() * move_speed, -GetMouseVY() * move_speed, 0	
+		Else ; only left mouse button is down			
+			MoveEntity e, 0, 0, -GetMouseVY() * move_speed
+			TurnEntity e, 0, -GetMouseVX() * turn_speed, 0		
+		EndIf		
+	ElseIf IsMouseButtonDown(1) ; only right mouse button is down
+		SetMouseCursorMode 3
+		TurnEntity e, -GetMouseVY() * turn_speed, -GetMouseVX() * turn_speed, 0	
+	Else 
+		SetMouseCursorMode 1 ; set the mouse cursor to normal
+	End If	
+	If (GetEntityRZ(e) < 0 Or GetEntityRZ(e) > 0) Then SetEntityRotation e, GetEntityRX(e), GetEntityRY(e), 0
+End Function 

@@ -19,7 +19,7 @@ End Function
 
 Function GenerateRocks(t.Terrain,density)
 	Local mesh = LoadMesh("../engine/assets/models/runner/rock_small.glb")
-	SetMeshShadowCastingEnabled mesh,True 
+	SetMeshShadowsEnabled mesh,True 
 	Local r.Rock
 	For i = 0 To density
 		r=CreateRock(mesh)	

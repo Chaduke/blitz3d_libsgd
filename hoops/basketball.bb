@@ -15,7 +15,7 @@ End Type
 Function CreateBasketball.Basketball()
 	Local b.Basketball = New Basketball
 	b\model = LoadModel("../engine/assets/models/hoops/basketball.glb")
-	SetMeshShadowCastingEnabled GetModelMesh(b\model),True 
+	SetMeshShadowsEnabled GetModelMesh(b\model),True 
 	b\pivot = CreateModel(0)
 	SetEntityParent b\model,b\pivot	
 	MoveEntity b\pivot,0,4,0	

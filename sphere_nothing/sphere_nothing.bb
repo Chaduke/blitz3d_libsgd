@@ -21,8 +21,8 @@ cursor_mesh =CreateSphereMesh(0.5,16,16,l\ground_material)
 cursor_model=CreateModel(cursor_mesh)
 SetEntityPosition cursor_model,-100,-100,0
 
-g\debug = False
-g\game_state = GAME_STATE_SANDBOX
+g\debug = True
+g\game_state = GAME_STATE_STORY
 
 While g\loop
 	BeginFrame g	
@@ -90,6 +90,7 @@ While g\loop
 		End If
 		Draw2DText "Player Velocity Y : " + p\vel\y,5,45
 		Draw2DText "Distance from Checkpoint 0 : " + Distance2D(GetEntityX(p\pivot),GetEntityY(p\pivot),l\checkpoints[0]\x,l\checkpoints[0]\y),5,65
+		Draw2DText "Jumping : " + p\jumping,5,85
 	End If 
 	Present()
 Wend 

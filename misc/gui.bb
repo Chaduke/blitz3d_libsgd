@@ -136,7 +136,7 @@ Function TestGUI()
 	TurnEntity sunlight,-25,0,0
 	
 	; create sky environment 
-	sky_texture = LoadTexture("../platformer/assets/images/skyboxsun25degtest.png",4,56)
+	sky_texture = Load2DTexture("../platformer/assets/images/skyboxsun25degtest.png",4,56)
 	SetSceneEnvTexture sky_texture
 	skybox = CreateSkybox(sky_texture)
 	SetSkyboxRoughness skybox,0.2	

@@ -16,7 +16,7 @@ SetLightCastsShadow point_light,True
 SetSceneAmbientLightColor 1,1,1,0.1
 
 ; create environment and skybox
-env = LoadTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
+env = Load2DTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
 SetSceneEnvTexture env
 skybox = CreateSkybox(env)
 SetSkyboxRoughness skybox,.3

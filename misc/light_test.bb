@@ -15,7 +15,7 @@ MoveEntity player,0,-1.77/2,0
 light=CreatePointLight()
 MoveEntity light,1,2,-2
 SetEntityParent light,player
-SetLightShadowMappingEnabled light,True
+SetLightShadowsEnabled light,True
 
 dl = CreateDirectionalLight()
 

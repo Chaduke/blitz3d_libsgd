@@ -123,7 +123,7 @@ CreateWindow 1920,1080,"Model Browser",1
 CreateScene()
 
 ; setup night scene 
-env = LoadTexture("sgd://envmaps/grimmnight-cube.jpg", 4, 56)
+env = Load2DTexture("sgd://envmaps/grimmnight-cube.jpg", 4, 56)
 SetSceneEnvTexture env
 skybox = CreateSkybox(env)	
 

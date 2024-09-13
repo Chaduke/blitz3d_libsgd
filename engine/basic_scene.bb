@@ -26,7 +26,7 @@ Function CreateBasicScene.BasicScene(g.GameApp,trees=True,rockfence=True,grass=T
 	SetCSMTextureSize 2048
 	SetCSMSplitDistances 8,32,64,128
 	b\directional_light = CreateDirectionalLight()
-	SetLightShadowMappingEnabled b\directional_light,True 
+	SetLightShadowsEnabled b\directional_light,True 
 	TurnEntity b\directional_light,-25,-15,0	
 	b\ambient_red = 0.7
 	b\ambient_green = 0.5
@@ -35,7 +35,7 @@ Function CreateBasicScene.BasicScene(g.GameApp,trees=True,rockfence=True,grass=T
 	SetAmbientLightColor b\ambient_red,b\ambient_green,b\ambient_blue,b\ambient_alpha	
 	
 	DisplayLoadingMessageWithTitle "Creating Sky",g
-	b\sky_texture = LoadTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
+	b\sky_texture = Load2DTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
 	SetEnvTexture b\sky_texture
 	b\skybox = CreateSkybox(b\sky_texture)	
 	b\sky_roughness = 0.2
@@ -53,7 +53,7 @@ Function CreateBasicScene.BasicScene(g.GameApp,trees=True,rockfence=True,grass=T
 	
 	If trees Then 	
 		DisplayLoadingMessageWithTitle "Adding Trees", g
-		GenerateTrees b\trn,1000
+		GenerateTrees b\trn,2000
 	End If 
 	
 	If grass Then 	

@@ -14,7 +14,7 @@ CreateWindow 1280,720,"Terrain Test",0
 CreateScene()
 
 ; create sky environment 
-sky_texture = LoadTexture("assets\images\skyboxsun25degtest.png",4,56)
+sky_texture = Load2DTexture("assets\images\skyboxsun25degtest.png",4,56)
 SetSceneEnvTexture sky_texture
 skybox = CreateSkybox(sky_texture)
 SetSkyboxRoughness skybox,0.2

@@ -13,7 +13,7 @@ Function CreateBall.Ball(material)
 	Local b.Ball = New Ball	
 	size# = Rnd(0.2,1.0)
 	Local mesh = CreateSphereMesh(size,16,16,material)
-	SetMeshShadowCastingEnabled mesh,True
+	SetMeshShadowsEnabled mesh,True
 	b\model = CreateModel(mesh)
 	MoveEntity b\model,Rnd(-14,14),size,Rnd(-10,14)
 	b\turn_speed# = Rnd(-5,5)
@@ -23,12 +23,12 @@ End Function
 CreateWindow 1280,720,"Crash Bug",0
 
 ; create environment 
-env_texture = LoadTexture("sgd://envmaps/sunnysky-cube.png",4,56)
+env_texture = Load2DTexture("sgd://envmaps/sunnysky-cube.png",4,56)
 SetEnvTexture env_texture
 skybox = CreateSkybox(env_texture)
 
 light = CreateDirectionalLight()
-SetLightShadowMappingEnabled light,True 
+SetLightShadowsEnabled light,True 
 TurnEntity light,-25,45,0
 SetAmbientLightColor 0.5,0.4,0.5,0.4
 

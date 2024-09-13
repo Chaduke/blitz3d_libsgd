@@ -22,7 +22,7 @@ End Type
 
 Function CreateEnvironment.Environment(font)
 	Local e.Environment = New Environment 	
-	e\gui=CreateGUI(font,"Environment Settings",GetWindowWidth()-300,5)
+	e\gui=CreateGUI(font,"Environment Settings",GetWindowWidth()-290,GetWindowHeight()-300)
 	e\gui\v = True 
 	e\btn_sky_texture = AddWidget(e\gui,"Skybox Texture",2,"skybox_sunny.png")
 	e\txt_sky_roughness = AddWidget(e\gui,"Sky Roughness",0,0.0,0.0,1.0,70) 
@@ -36,13 +36,13 @@ Function CreateEnvironment.Environment(font)
 	e\btn_env_generate = AddWidget(e\gui,"Generate",2,"")
 	e\btn_env_load = AddWidget(e\gui,"Load",2,"")
 	e\btn_env_save = AddWidget(e\gui,"Save",2,"")	
-	Local sky_texture = LoadTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
+	Local sky_texture = Load2DTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
 	SetEnvTexture sky_texture
 	e\skybox = CreateSkybox(sky_texture)			
 	e\dl = CreateDirectionalLight() 
 	turnentity e\dl,-107,-60,0
 	SetAmbientLightColor 0.38,0.33,0.46,0.50
-	SetLightShadowMappingEnabled e\dl,True 
+	SetLightShadowsEnabled e\dl,True 
 	Return e
 End Function 
 
@@ -52,7 +52,7 @@ Function UpdateEnvironment(e.Environment,r=False)
 		If e\txt_sky_roughness\dragged Then SetSkyboxRoughness e\skybox,e\txt_sky_roughness\val_float#		
 		If (e\txt_dl_rx\dragged Or e\txt_dl_ry\dragged) Then SetEntityRotation e\dl,e\txt_dl_rx\val_float#,e\txt_dl_ry\val_float#,0
 		If (e\txt_amb_r\dragged Or e\txt_amb_g\dragged Or e\txt_amb_b\dragged Or e\txt_amb_a\dragged) Then 
-			SetAmbientLightColor e\txt_amb_r\val_float#,e\txt_amb_g\val_float#, e\txt_amb_b\val_float#,	e\txt_amb_a\val_float#
+			SetAmbientLightColor e\txt_amb_r\val_float#,e\txt_amb_g\val_float#, e\txt_amb_b\val_float#,	 e\txt_amb_a\val_float#
 		End If 	
 	End If 
 		
@@ -65,7 +65,7 @@ Function UpdateEnvironment(e.Environment,r=False)
 		SaveEnvironment e,"env.txt"
 		e\btn_env_save\click_handled = True 
 	End If 	
-	DrawGui e\gui
+	
 	Return r		
 End Function
 
@@ -82,7 +82,9 @@ Function LoadEnvironment(e.Environment,path$)
 	e\txt_amb_a\val_float# = ReadFloat(infile)
 	
 	CloseFile infile
-	; UpdateEnvironment e,True
+	SetSkyboxRoughness e\skybox,e\txt_sky_roughness\val_float#	
+	SetEntityRotation e\dl,e\txt_dl_rx\val_float#,e\txt_dl_ry\val_float#,0
+	SetAmbientLightColor e\txt_amb_r\val_float#,e\txt_amb_g\val_float#, e\txt_amb_b\val_float#, e\txt_amb_a\val_float#
 End Function 
 
 Function SaveEnvironment(e.Environment,path$)

@@ -19,7 +19,7 @@ End Type
 
 Function GetCollisionMaterial%()
 	Local collision_material = CreatePBRMaterial()
-	collision_texture = LoadTexture("../engine/assets/textures/misc/yellow_grid.png",3,20)
+	collision_texture = Load2DTexture("../engine/assets/textures/misc/yellow_grid.png",3,20)
 	SetMaterialTexture collision_material,"albedoTexture",collision_texture
 	SetMaterialFloat collision_material,"roughnessFactor1f",0.2
 	SetMaterialBlendMode collision_material,2	

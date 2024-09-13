@@ -13,8 +13,9 @@ ta.TestApp = CreateTestApp(True)
 trn.Terrain = New Terrain 
 SetTerrainDefaults trn
 CreateTerrain trn
-
-test_particles = True 
+GenerateTrees trn,100,True
+PlaceEntityOnTerrain ta\pivot,trn,1,False,True 
+test_particles = False
 test_ferris_wheel = True 
 
 If test_ferris_wheel Then

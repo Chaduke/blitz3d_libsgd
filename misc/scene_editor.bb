@@ -10,21 +10,38 @@ Include "../engine/terrain.bb"
 Include "../engine/navigation.bb"
 Include "../engine/file_browser.bb"
 
-ga.GameApp = CreateGameApp("Scene Editor","Chaduke's")
+Type SceneEditor
+	Field current_brush
+	Field edit_mode
+End Type
+
+Function CreateSceneEditor.SceneEditor()
+	Local se.SceneEditor = New SceneEditor
+	se\edit_mode = 0	
+	Return se	
+End Function 
+
+ga.GameApp = CreateGameApp("Scene Editor","Chaduke's",1,False)
 e.Environment = CreateEnvironment(ga\gui_font)
 trn.Terrain = New Terrain
 SetTerrainDefaults trn
+trn\calc_normals = False
 CreateTerrain trn
 PlaceEntityOnTerrain ga\pivot,trn,1 
 fb.FileBrowser = CreateFileBrowser("Nature Pack","d:\blender\nature_pack\gltf","gltf",ga\browser_font)
 
 ga\debug = True 
+se.SceneEditor = CreateSceneEditor()
 
 While ga\loop
-	BeginFrame ga
+	BeginFrame ga	
+	; show / hide environment gui
 	If IsKeyHit(KEY_F1) Then ShowHideGUIWindow e\gui
 	
-	; toggle model browser visiblity 	
+	; draw file browsers if visible 
+	fbc = FileBrowserCheck(trn,se)
+	
+	; toggle model browser visiblity 		
 	If (IsKeyHit(KEY_1)) Then 
 		If Not fbc Then 
 			fb\visible = True
@@ -32,23 +49,28 @@ While ga\loop
 		Else 
 			fb\visible = False	
 		End If 
-	End If 		
+	End If		
 	
-	fbc = FileBrowserCheck(trn)	
-
+	; update guis if intereacted with
+	; else process normal mouse and keyboard input
+	; to navigate the scene
 	If GUIDragCheck() Then 		
 		UpdateEnvironment e,True
 	Else 
-		NavigationMode ga\pivot,trn
+		If se\edit_mode = 0 Then 
+			NavigationMode ga\pivot,trn
+		Else 
+			ThirdPersonMouseInputEditor ga\camera,ga\pivot
+			KeyboardInputThirdPerson se\current_brush,ga\pivot
+		End If	
 	End If 
 				
-	DrawAllGUIs()
-	
+	DrawAllGUIs()	
 	EndFrame ga
 Wend 
 End 
 
-Function FileBrowserCheck(trn.Terrain)
+Function FileBrowserCheck(trn.Terrain,se.SceneEditor)
 	Local r = False 
 	For f.FileBrowser = Each FileBrowser 
 		If f\visible Then 
@@ -59,14 +81,10 @@ Function FileBrowserCheck(trn.Terrain)
 				; handle the file based on its type
 				If (f\ext$ = "gltf") Then	
 					Local mesh = LoadMesh(f\filepath$)
-					SetMeshShadowCastingEnabled mesh,True
-					For i = 0 To 10							
-						Local model = CreateModel(mesh)
-						PlaceEntityOnTerrain model,trn,0,False,True	
-						sc# = Rnd(2) + 0.5
-						SetEntityScale model,sc,sc,sc
-						TurnEntity model,0,Rand(0,360),0
-					Next 								
+					SetMeshShadowsEnabled mesh,True
+					Local model = CreateModel(mesh)
+					se\current_brush = model
+					se\edit_mode = 1
 				End If 
 				f\visible = False
 				f\newfile = False	

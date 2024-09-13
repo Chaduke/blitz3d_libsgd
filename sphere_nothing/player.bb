@@ -23,7 +23,9 @@ Type Player
 	Field position_max
 	Field level_finished 
 	Field advancing
-	field current_level
+	Field current_level
+	Field jumping 
+	Field jump_strength
 End Type 
 
 Type Position
@@ -35,7 +37,7 @@ Function CreatePlayer.Player()
 	Local p.Player = New Player		
 	Local material = LoadPBRMaterial("../engine/assets/materials/Marble012_1K-JPG")
 	Local mesh=CreateSphereMesh(0.5,16,16,material)
-	SetMeshShadowCastingEnabled mesh,True
+	SetMeshShadowsEnabled mesh,True
 	p\model = CreateModel(mesh)	
 	p\pivot = CreateModel(0)
 	SetEntityParent p\model,p\pivot 	
@@ -45,7 +47,7 @@ Function CreatePlayer.Player()
 	p\rot = CreateVec3("Player Rotation",0,0,0)
 	p\collider = CreateSphereCollider(p\pivot,0,0.49)
 	p\light = CreatePointLight()
-	SetLightShadowMappingEnabled p\light,True 
+	SetLightShadowsEnabled p\light,True 
 	SetEntityParent p\light,p\pivot	
 	MoveEntity p\light,0,3,0	
 	SetLightRange p\light,10	
@@ -57,6 +59,8 @@ Function CreatePlayer.Player()
 	p\level_finished = False 
 	p\advancing = False 
 	p\current_level = 0
+	p\jumping = False
+	p\jump_strength# = 0.1
 	Return p
 End Function
 
@@ -92,11 +96,22 @@ Function UpdatePlayer(p.Player,l.Level)
 			p\acc\y = -0.001
 		End If 		
 		
+		; jump!
+		If (IsKeyHit(KEY_W) Or IsKeyHit(KEY_UP)) Then 
+			If p\jumping = False Then 
+				p\vel\y = p\jump_strength
+				p\jumping = True
+			End If 	
+		End If 	
+		
 		AddToVec3 p\vel,p\acc
 		MoveEntityVec3 p\pivot,p\vel
 		TurnEntityVec3 p\model,p\rot	
 		
 		If c > 0 Then 
+			If p\jumping = True 
+				If (p\vel\y < p\jump_strength - p\acc\y) Then p\jumping = False
+			End If 	
 			If p\vel\y < 0 Then p\vel\y = -p\vel\y * p\damping
 			if GetCollisionNY(p\collider, 0) < 0 then 
 				if p\vel\y > 0 then p\vel\y = -p\vel\y * p\damping

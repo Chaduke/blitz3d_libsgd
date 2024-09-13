@@ -28,7 +28,7 @@ Function CreateRunnerScene.RunnerScene(g.GameApp,blankscene=False)
 	SetCSMTextureSize 2048
 	SetCSMSplitDistances 8,32,64,128
 	b\directional_light = CreateDirectionalLight()
-	SetLightShadowMappingEnabled b\directional_light,True 
+	SetLightShadowsEnabled b\directional_light,True 
 	TurnEntity b\directional_light,-25,-15,0	
 	b\ambient_red = 0.7
 	b\ambient_green = 0.5
@@ -37,7 +37,7 @@ Function CreateRunnerScene.RunnerScene(g.GameApp,blankscene=False)
 	SetAmbientLightColor b\ambient_red,b\ambient_green,b\ambient_blue,b\ambient_alpha
 	If blankscene = False Then 
 		DisplayLoadingMessageWithTitle "Creating Sky",g
-		b\sky_texture = LoadTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
+		b\sky_texture = Load2DTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
 		SetEnvTexture b\sky_texture
 		b\skybox = CreateSkybox(b\sky_texture)	
 		b\sky_roughness = 0.0
@@ -83,15 +83,15 @@ Function GenerateTreesRunner(t.Terrain)
 	Local td#=t\depth
 
 	treeMeshes(0) = LoadMesh("../engine/assets/models/trees/palm_tree1.glb")
-	SetMeshShadowCastingEnabled treeMeshes(0),True
+	SetMeshShadowsEnabled treeMeshes(0),True
 	treeMeshes(1) = LoadMesh("../engine/assets/models/trees/palm_tree2.glb")
-	SetMeshShadowCastingEnabled treeMeshes(1),True
+	SetMeshShadowsEnabled treeMeshes(1),True
 	treeMeshes(2) = LoadMesh("../engine/assets/models/trees/palm_tree3.glb")
-	SetMeshShadowCastingEnabled treeMeshes(2),True	
+	SetMeshShadowsEnabled treeMeshes(2),True	
 	treeMeshes(3) = LoadMesh("../engine/assets/models/trees/palm_tree4.glb")
-	SetMeshShadowCastingEnabled treeMeshes(3),True
+	SetMeshShadowsEnabled treeMeshes(3),True
 	treeMeshes(4) = LoadMesh("../engine/assets/models/trees/palm_tree5.glb")
-	SetMeshShadowCastingEnabled treeMeshes(4),True	
+	SetMeshShadowsEnabled treeMeshes(4),True	
 	
 	; randomly distribute trees on the terrain
 	; keep trees between 15 and 30 units from edge 	

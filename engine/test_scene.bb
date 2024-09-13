@@ -21,7 +21,7 @@ Function CreateTestScene.TestScene()
 	; SetCSMClipRange 1024	
 	t\directional_light = CreateDirectionalLight()
 	SetCSMDepthBias 0.0003
-	SetLightShadowMappingEnabled t\directional_light,True 
+	SetLightShadowsEnabled t\directional_light,True 
 	TurnEntity t\directional_light,-35,-20,0	
 	t\ambient_red = 0.38
 	t\ambient_green = 0.33
@@ -29,7 +29,7 @@ Function CreateTestScene.TestScene()
 	t\ambient_alpha = 0.40
 	SetAmbientLightColor t\ambient_red,t\ambient_green,t\ambient_blue,t\ambient_alpha	
 	DisplayLoadingMessage "Creating Sky"
-	t\sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun5deg.png",4,56)		
+	t\sky_texture = Load2DTexture("../engine/assets/textures/skybox/skyboxsun5deg.png",4,56)		
 	SetEnvTexture t\sky_texture
 	t\skybox = CreateSkybox(t\sky_texture)	
 	t\sky_roughness = 0.0

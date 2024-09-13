@@ -10,7 +10,7 @@ SetAmbientLightColor 1,1,1,0.2
 
 light = CreatePointLight()
 MoveEntity light, 0,3,0
-SetLightShadowMappingEnabled light,True
+SetLightShadowsEnabled light,True
 
 ground_material = LoadPBRMaterial("../engine/assets/materials/Concrete031_1K-JPG")
 ground_mesh = CreateBoxMesh(-16,-0.1,-16,16,0,16,ground_material)
@@ -19,7 +19,7 @@ ground_model = CreateModel(ground_mesh)
 
 cube_material = LoadPBRMaterial("../engine/assets/materials/Planks037B_1K-JPG")
 cube_mesh = CreateBoxMesh(-0.5,0,-0.5,0.5,1,0.5,cube_material)
-SetMeshShadowCastingEnabled cube_mesh,True
+SetMeshShadowsEnabled cube_mesh,True
 cube_model = CreateModel(cube_mesh)
 
 Global constan_font = LoadFont("c:\windows\fonts\constan.ttf",26)

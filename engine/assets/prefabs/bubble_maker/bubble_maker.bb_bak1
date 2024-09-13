@@ -14,7 +14,7 @@ End Type
 Function CreateBubbleMaker.BubbleMaker()
 	Local b.BubbleMaker = New BubbleMaker 
 	Local bm_mesh = LoadMesh("../engine/assets/models/theme_park/bubble_maker.glb")
-	SetMeshShadowCastingEnabled bm_mesh,True
+	SetMeshShadowsEnabled bm_mesh,True
 	b\model = CreateModel(bm_mesh)
 	
 	b\blue_bubble_image = LoadImage("../engine/assets/textures/misc/blue_bubble.png",1)
@@ -22,9 +22,6 @@ Function CreateBubbleMaker.BubbleMaker()
 
 	SetImageBlendMode b\blue_bubble_image,3
 	SetImageBlendMode b\pink_bubble_image,3
-
-	SetImageSpriteViewMode b\blue_bubble_image,1	
-	SetImageSpriteViewMode b\pink_bubble_image,1
 	
 	b\running = True 
 	Return b	

@@ -10,9 +10,7 @@ Include "../engine/terrain.bb"
 Include "../engine/navigation.bb"
 Include "../engine/assets/prefabs/bubble_maker/bubble_maker.bb"
 
-g.GameApp = CreateGameApp()
-g\game_state = GAME_STATE_STORY
-g\debug = True 
+g.GameApp = CreateGameApp("Environment Test","Chaduke's",1,False)
 
 e.Environment = CreateEnvironment(g\gui_font)
 trn.Terrain = New Terrain
@@ -25,10 +23,12 @@ PlaceEntityOnTerrain b\model,trn,0.2
 MoveEntity b\model,-2,0,5
 
 tree_mesh = LoadMesh("../engine/assets/models/trees/low_poly.glb")
-SetMeshShadowCastingEnabled tree_mesh,True 
+SetMeshShadowsEnabled tree_mesh,True 
 tree_model = CreateModel(tree_mesh)
 PlaceEntityOnTerrain tree_model,trn
 MoveEntity tree_model,0,0,8
+
+LoadEnvironment e,"env.txt"
 
 While g\loop
 	BeginFrame g

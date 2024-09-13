@@ -62,7 +62,7 @@ Function CreateTestApp.TestApp(fullscreen = False,name$="Test App")
 End Function 
 
 Function GetColliderMaterial()
-	Local collider_texture = LoadTexture("../engine/assets/textures/misc/yellow_grid.png",4,18)
+	Local collider_texture = Load2DTexture("../engine/assets/textures/misc/yellow_grid.png",4,18)
 	Local collider_material = CreatePBRMaterial()
 	SetMaterialTexture collider_material,"albedoTexture",collider_texture
 	SetMaterialBlendMode collider_material,3

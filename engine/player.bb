@@ -114,7 +114,7 @@ Function CreatePlayer.Player(t.Terrain)
 	p\face_forward=False	
 	; p\light=CreatePointLight()	
 	; SetEntityParent p\light,p\view_model
-	; SetLightShadowMappingEnabled p\light,True		 
+	; SetLightShadowsEnabled p\light,True		 
 	; MoveEntity p\light,0,5,1
 	; SetLightRange p\light,10	
 	p\start_y_high=0

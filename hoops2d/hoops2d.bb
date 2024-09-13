@@ -16,6 +16,8 @@ gl.Goal = CreateGoal(1520,225)
 p.Player = CreatePlayer(100,700)
 b.Ball = CreateBall(200,GetWindowHeight()-800,0,0,0,0.98,0,0.1,20,0.9,0.9,0.5,0.03,1)
 
+g\info$ = "LeBron James practices in the park on a warm summer afternoon, right after his HGH shot."
+
 While g\loop
 	BeginFrame g		
 	; update 3D here

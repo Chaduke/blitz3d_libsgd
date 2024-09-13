@@ -2,7 +2,7 @@
 CreateWindow(1280, 720, "SpriteGrass", 0)
 
 
-env = LoadTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
+env = Load2DTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
 
 SetEnvTexture env
 

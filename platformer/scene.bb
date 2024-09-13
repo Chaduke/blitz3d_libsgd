@@ -73,7 +73,7 @@ Function GenerateScene()
 	
 	DisplayLoadingMessage "Setting up scene and skybox"	
 	; setup the scene	
-	env = LoadTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
+	env = Load2DTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
 	SetEnvTexture env
 	skybox = CreateSkybox(env)	
 	SetSkyboxRoughness skybox, .3

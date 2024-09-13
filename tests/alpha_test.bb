@@ -6,11 +6,11 @@ g.GameApp = CreateGameApp()
 g\game_state = GAME_STATE_STORY
 
 light = CreateDirectionalLight()
-SetLightShadowMappingEnabled light,True 
+SetLightShadowsEnabled light,True 
 TurnEntity light,-35,0,0
 
 test_cube_mesh = LoadMesh("alpha_test.glb")
-SetMeshShadowCastingEnabled test_cube_mesh,True 
+SetMeshShadowsEnabled test_cube_mesh,True 
 test_cube = CreateModel(test_cube_mesh)
 
 plane_material = LoadPBRMaterial("sgd://materials/Bricks076C_1K-JPG")

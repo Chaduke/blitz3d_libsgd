@@ -570,12 +570,12 @@ Function GUITest3D()
 	
 	sunlight = CreateDirectionalLight()
 	TurnEntity sunlight,-25,0,0
-	SetLightShadowMappingEnabled sunlight,True 	
+	SetLightShadowsEnabled sunlight,True 	
 	
 	font = LoadFont("c:\windows\fonts\consola.ttf",18)
 
 	; create sky environment 
-	sky_texture = LoadTexture("sgd://envmaps/sunnysky-cube.png",4,56)
+	sky_texture = LoadCubeTexture("sgd://envmaps/sunnysky-cube.png",4,56)
 	SetEnvTexture sky_texture
 	skybox = CreateSkybox(sky_texture)
 	SetSkyboxRoughness skybox,0.2	
@@ -590,7 +590,7 @@ Function GUITest3D()
 	radius = 10 ; circle radius 
 	sphere_material = LoadPBRMaterial("sgd://materials/Fabric048_1K-JPG")	
 	sphere_mesh = CreateSphereMesh(1,32,32,sphere_material)
-	SetMeshShadowCastingEnabled sphere_mesh,True 
+	SetMeshShadowsEnabled sphere_mesh,True 
 	
 	For angle = 0 To 360 Step 36
 		sphere_model = CreateModel(sphere_mesh)

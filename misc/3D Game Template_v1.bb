@@ -43,7 +43,7 @@ Set2DFont constan_font
 LoadingMessage "Loading Please Wait",constan_font
 
 ; create sky environment 
-sky_texture = LoadTexture("C:\Users\chadu\OneDrive\Projects\blitz3d\engine\assets\textures\skybox\skyboxsun25degtest.png",4,56)
+sky_texture = Load2DTexture("C:\Users\chadu\OneDrive\Projects\blitz3d\engine\assets\textures\skybox\skyboxsun25degtest.png",4,56)
 SetEnvTexture sky_texture
 skybox = CreateSkybox(sky_texture)
 
@@ -58,7 +58,7 @@ SetAmbientLightColor 1,1,1,0.2
 
 light = CreatePointLight()
 MoveEntity light, 0,3,0
-SetLightShadowMappingEnabled light,True
+SetLightShadowsEnabled light,True
 
 LoadingMessage "Loading Please Wait",constan_font
 

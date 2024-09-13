@@ -30,13 +30,24 @@ Const KEY_6 = 54
 Const KEY_7 = 55
 Const KEY_8 = 56
 Const KEY_9 = 57
- 
+
+Const KEY_F = 70
+Const KEY_G = 71
+Const KEY_H = 72
+Const KEY_I = 73 
+Const KEY_J = 74 
+Const KEY_K = 75  
 Const KEY_L = 76 
 Const KEY_M = 77 ; minidisc / map
+Const KEY_N = 78
+Const KEY_O = 79
 Const KEY_P = 80
 Const KEY_T = 84
+Const KEY_U = 85
+
 Const KEY_X = 88
 Const KEY_Y = 89 ; confirm quit
+Const KEY_B = 66 ; get the basketball
 
 Const KEY_DOWN = 264
 Const KEY_UP = 265

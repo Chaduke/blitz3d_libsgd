@@ -158,7 +158,7 @@ Function LoadScene(g.GameApp,e.Editor,bs.BasicScene,load_objects=True)
 		
 	; generate environment 
 	tex_path$ = e\sky_path$ + "/" + e\btn_sky_texture\val_string$	
-	bs\sky_texture = LoadTexture(tex_path$,4,56)			
+	bs\sky_texture = Load2DTexture(tex_path$,4,56)			
 	SetEnvTexture bs\sky_texture
 	bs\skybox = CreateSkybox(bs\sky_texture)	
 	bs\sky_roughness = e\txt_sky_roughness\val_float#

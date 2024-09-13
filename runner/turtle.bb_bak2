@@ -12,7 +12,7 @@ End Type
 Function CreateTurtle.Turtle(mesh)
 	Local t.Turtle = New Turtle 
 	t\model = CreateModel(mesh)
-	t\collider = CreateEllipsoidCollider(t\model, 2,1.6, 1.5)
+	t\collider = CreateEllipsoidCollider(t\model,1,1.6, 1.5)
 	Return t		
 End Function 	
 
@@ -62,7 +62,7 @@ End Function
 Function GenerateTurtles(t.Terrain,numturtles,path$)
 
 	Local mesh = LoadMesh(path$)
-	SetMeshShadowCastingEnabled mesh,True
+	SetMeshShadowsEnabled mesh,True
 	Local x#,z#
 	Local tt.Turtle
 	

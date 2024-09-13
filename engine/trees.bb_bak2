@@ -173,7 +173,7 @@ End Function
 
 Function GenerateSolidTrees(t.Terrain,numtrees,material)
 	tree_mesh = LoadMesh("../engine/assets/models/trees/tree1.glb")
-	SetMeshShadowCastingEnabled tree_mesh,True
+	SetMeshShadowsEnabled tree_mesh,True
 	For i = 0 To numtrees 
 		Local tx# = Rand(2,t\width-2)
 		Local tz# = Rand(2,t\depth-2)		
@@ -187,11 +187,11 @@ Function GenerateTrees(t.Terrain,numtrees,plus_fence = False)
 	Local td=t\depth
 
 	treeMeshes(0) = LoadMesh("../engine/assets/models/trees/tree1.glb")
-	SetMeshShadowCastingEnabled treeMeshes(0),True
-	treeMeshes(1) = LoadMesh("../engine/assets/models/trees/low_poly.glb")
-	SetMeshShadowCastingEnabled treeMeshes(1),True
+	SetMeshShadowsEnabled treeMeshes(0),True
+	treeMeshes(1) = LoadMesh("../engine/assets/models/trees/fall_tree.glb")
+	SetMeshShadowsEnabled treeMeshes(1),True
 	treeMeshes(2) = LoadMesh("../engine/assets/models/trees/birch_tree1.glb")
-	SetMeshShadowCastingEnabled treeMeshes(2),True	
+	SetMeshShadowsEnabled treeMeshes(2),True	
 	; randomly distribute trees on the terrain
 	For i=0 To numtrees			
 		tx# = Rand(2,tw-2)

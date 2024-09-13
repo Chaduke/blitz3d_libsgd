@@ -33,7 +33,7 @@ depth = 1024
 height = 8
 
 ; create sky environment 
-sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun25degtest.png",4,56)
+sky_texture = Load2DTexture("../engine/assets/textures/skybox/skyboxsun25degtest.png",4,56)
 SetEnvTexture sky_texture
 skybox = CreateSkybox(sky_texture)
 SetSkyboxRoughness skybox,0.2

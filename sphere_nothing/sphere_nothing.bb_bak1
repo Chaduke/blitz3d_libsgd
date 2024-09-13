@@ -22,7 +22,7 @@ cursor_model=CreateModel(cursor_mesh)
 SetEntityPosition cursor_model,-100,-100,0
 
 g\debug = False
-g\game_state = GAME_STATE_SANDBOX
+g\game_state = GAME_STATE_STORY
 
 While g\loop
 	BeginFrame g	
@@ -31,7 +31,7 @@ While g\loop
 	Case GAME_STATE_MENU 
 		DisplayStartMenu g
 	Case GAME_STATE_STORY
-		SetMouseCursorMode 1
+		SetMouseCursorMode 3
 		If IsKeyHit(KEY_TAB) Then g\game_state = GAME_STATE_SANDBOX
 			
 		UpdatePlayer p,l	

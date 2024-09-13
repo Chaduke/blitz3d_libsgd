@@ -28,12 +28,12 @@ End Function
 CreateWindow 1280,720,"Bounce Demo",0
 
 ; create environment 
-env_texture = LoadTexture("sgd://envmaps/sunnysky-cube.png",4,56)
+env_texture = Load2DTexture("sgd://envmaps/sunnysky-cube.png",4,56)
 SetEnvTexture env_texture
 skybox = CreateSkybox(env_texture)
 
 light = CreateDirectionalLight()
-SetLightShadowMappingEnabled light,True 
+SetLightShadowsEnabled light,True 
 TurnEntity light,-25,45,0
 SetAmbientLightColor 0.5,0.4,0.5,0.4
 
@@ -59,7 +59,7 @@ Dim balls.Ball(numballs-1)
 
 For i = 1 To numballs	
 	mesh = CreateSphereMesh(0.5,16,16,materials(i-1))
-	SetMeshShadowCastingEnabled mesh,True
+	SetMeshShadowsEnabled mesh,True
 	balls(i-1) = CreateBall(mesh,Float(i)/5,(i * 2) - 5) 
 Next	
 
@@ -88,6 +88,5 @@ While loop
 	Present()
 Wend 
 End 
-
 
 

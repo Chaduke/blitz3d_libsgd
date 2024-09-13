@@ -67,7 +67,7 @@ Function EditBillboards(t.Terrain)
 	Local tw = t\width
 	Local td = t\depth		
 			
-	ThirdPersonMouseInputEditor()
+	ThirdPersonMouseInputEditor(camera,pivot)
 	ClampEntityPitch(pivot,70,-70)
 	KeepBillboardInsideLevel(t)
 	KeyboardInputThirdPerson(current_billboard\sprite,0.05)	

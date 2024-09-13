@@ -28,8 +28,8 @@ Include "options.bb"
 
 ga.GameApp = CreateGameApp("Disc Golf", "Chaduke's",1)
 
-; music = LoadSound("../engine/assets/audio/disc_golf/disc_golf.mp3")
-; CueSound music 
+music = LoadSound("../engine/assets/audio/disc_golf/disc_golf.mp3")
+CueSound music 
 ; PlaySound music 
 ; SetAudioLooping music,True
 

@@ -56,7 +56,7 @@ Function TestEditor()
 		If (ta\ed\btn_env_generate\clicked And ta\ed\btn_env_generate\click_handled = False) Then 
 			If ta\bs\skybox <> 0 DestroyEntity ta\bs\skybox	
 			tex_path$ = ta\ed\sky_path$ + "/" + ta\ed\btn_sky_texture\val_string$
-			ta\bs\sky_texture = LoadTexture(tex_path$,4,56)	
+			ta\bs\sky_texture = Load2DTexture(tex_path$,4,56)	
 			SetEnvTexture ta\bs\sky_texture
 			ta\bs\skybox = CreateSkybox(ta\bs\sky_texture)	
 			ta\bs\sky_roughness = ta\ed\txt_sky_roughness\val_float#

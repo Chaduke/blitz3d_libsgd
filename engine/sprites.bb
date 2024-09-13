@@ -55,7 +55,7 @@ Function AddOneBillboard(name$,image,x#,y#,z#,scale#)
 	b.Billboard = New Billboard
 	b\name$ = name$
 	b\sprite = CreateSprite(image)
-	b\height = GetImageHeight(image)		
+	; b\height = GetSpriteHeight(image)		
 	; SetEntityScale b\sprite,scale,scale,scale
 	SetEntityPosition b\sprite,x,y+0.4,z
 	b\scale# = scale		

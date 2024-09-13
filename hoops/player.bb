@@ -20,7 +20,7 @@ End Type
 Function CreatePlayer.Player()
 	Local p.Player = New Player
 	Local mesh = CreateCylinderMesh(1.7,0.5,16,GetCollisionMaterial())	
-	SetMeshShadowCastingEnabled mesh,True 
+	SetMeshShadowsEnabled mesh,True 
 	p\model = CreateModel(mesh)
 	p\pivot = CreateModel(0)
 	SetEntityParent p\model,p\pivot	

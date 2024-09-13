@@ -41,7 +41,7 @@ While t\loop
 				trees(i) = temp_point 
 			Next 
 			
-			b\sky_texture = LoadTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
+			b\sky_texture = Load2DTexture("../engine/assets/textures/skybox/skybox_sunny.png",4,56)	
 			SetEnvTexture b\sky_texture
 			b\skybox = CreateSkybox(b\sky_texture)	
 			b\sky_roughness = 0.2
@@ -53,7 +53,7 @@ While t\loop
 			b\trn\depth = td
 			CreateTerrain b\trn					
 			tree_mesh = LoadMesh("../engine/assets/models/trees/tree1.glb")
-			SetMeshShadowCastingEnabled tree_mesh,True
+			SetMeshShadowsEnabled tree_mesh,True
 			 			
 			For i = 0 To numtrees
 				model = CreateModel(tree_mesh)

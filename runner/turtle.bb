@@ -20,7 +20,7 @@ End Type
 Function CreateTurtle.Turtle(parent)
 	Local t.Turtle = New Turtle 
 	t\view_model = LoadModel("../engine/assets/models/runner/turtle.glb")
-	SetMeshShadowCastingEnabled GetModelMesh(t\view_model),True 
+	SetMeshShadowsEnabled GetModelMesh(t\view_model),True 
 	t\pivot  = CreateModel(0)
 	SetEntityParent t\view_model,t\pivot 		
 	Local collision_mesh = CreateSphereMesh(1.6,8,8,GetCollisionMaterial())

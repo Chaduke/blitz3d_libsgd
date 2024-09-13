@@ -9,7 +9,7 @@ SetMaterialCullMode shape_material,1
 
 shape_mesh = CreateCube(-0.5,-0.5,-0.5,0.5,0.5,0.5,shape_material)
 
-SetMeshShadowCastingEnabled shape_mesh,True 
+SetMeshShadowsEnabled shape_mesh,True 
 shape_model = CreateModel(shape_mesh)
 
 MoveEntity t\bs\pivot,0,0,-2

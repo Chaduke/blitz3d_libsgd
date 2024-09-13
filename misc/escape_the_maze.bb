@@ -47,7 +47,7 @@ End Function
 
 ; initialize a game window 
 CreateWindow 1920,1080,"Escape the Maze", 1
-env = LoadTexture("sgd://envmaps/grimmnight-cube.jpg", 4, 56)
+env = Load2DTexture("sgd://envmaps/grimmnight-cube.jpg", 4, 56)
 SetEnvTexture env
 skybox = CreateSkybox(env)	
 
@@ -91,7 +91,7 @@ cube_material1 = LoadPBRMaterial("sgd://materials/Bricks076C_1K-JPG")
 cube_mesh1 = CreateBoxMesh(0,0,0,1,1,1,cube_material1)
 
 cube_material_start = CreatePBRMaterial()
-SetMeshShadowCastingEnabled cube_mesh1,True
+SetMeshShadowsEnabled cube_mesh1,True
 
 ; create the cubes 
 For x = 0 To cubes
@@ -121,7 +121,7 @@ For x = 0 To cubes Step 2.5
 	For z = 0 To cubes Step 2.5
 		plight = CreatePointLight()
 		MoveEntity plight,x,3,z
-		SetLightShadowMappingEnabled plight,True
+		SetLightShadowsEnabled plight,True
 		SetLightRange plight,7
 		SetLightColor plight,1,1,1,0.2
 	Next 

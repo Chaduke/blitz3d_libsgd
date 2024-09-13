@@ -7,10 +7,7 @@
 ; most of these functions should be generic enough to be used
 ; in all the modes and even in different games / programs
 
-; the more specialized input should go in places like 
-; platforms.bb to edit platforms - Function EditPlatforms()
-; trees.bb to edit trees - Function EditPlatforms()
-; I may change this in the future, not sure yet
+; NOTE this depends on terrain
 
 Global cam_turn_speed# = 0.2
 Global cam_move_speed_keyboard# = 0.2
@@ -164,6 +161,20 @@ Function ThirdPersonMouseInputEditor(cam,piv,mz#=1.0,ts#=0.2)
 	; or playing descent, remember that game?
 	CorrectEntityRoll(piv)	
 End Function
+
+Function MoveEntityKeyboard(e,camspeed#=0.2)
+	
+	If (IsKeyDown(KEY_I)) Then MoveEntity e, 0, 0, camspeed ; w or up
+	If (IsKeyDown(KEY_K)) Then MoveEntity e, 0, 0, -(camspeed) ; s or down 
+   	If (IsKeyDown(KEY_J)) Then MoveEntity e, -(camspeed), 0, 0 ; a or left
+	If (IsKeyDown(KEY_L)) Then MoveEntity e, camspeed, 0, 0 ; d or right
+	
+	; add support for moving cam up / down with the keys Q / E or Pageup / Pagedown	
+	If (IsKeyDown(KEY_U)) Then MoveEntity e, 0, camspeed, 0 ; Q or Pageup
+	If (IsKeyDown(KEY_O)) Then MoveEntity e, 0, -(camspeed), 0 ; E or Pagedown
+	Draw2DText GetEntityX(e) + "," + GetEntityY(e) + "," + GetEntityZ(e),5,5
+
+End Function 
 
 Function NavigationMode(e,t.Terrain)
 	

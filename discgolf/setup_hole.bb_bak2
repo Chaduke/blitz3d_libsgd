@@ -25,7 +25,7 @@ Function SetupHole(course,hole,b.BasicScene)
 	
 	; setup collision material
 	collision_material = CreatePBRMaterial()
-	collision_texture = LoadTexture("../engine/assets/textures/misc/yellow_grid.png",3,20)
+	collision_texture = Load2DTexture("../engine/assets/textures/misc/yellow_grid.png",3,20)
 	SetMaterialTexture collision_material,"albedoTexture",collision_texture
 	SetMaterialFloat collision_material,"roughnessFactor1f",0.2
 	SetMaterialBlendMode collision_material,2	
@@ -33,7 +33,7 @@ Function SetupHole(course,hole,b.BasicScene)
 	disc_collision_mesh =  CreateCylinderMesh(0.2,0.2,16,collision_material)	
 	disc_collision_model = CreateModel(disc_collision_mesh)	
 	disc_mesh = LoadMesh("../engine/assets/models/disc_golf/disc.glb")
-	SetMeshShadowCastingEnabled disc_mesh,True
+	SetMeshShadowsEnabled disc_mesh,True
 	disc_pivot = CreateModel(0)
 	disc_model=CreateModel(disc_mesh)		
 	SetEntityParent disc_collision_model,disc_pivot
@@ -41,11 +41,11 @@ Function SetupHole(course,hole,b.BasicScene)
 	
 	; load collision trees 
 	tree_mesh = LoadMesh("../engine/assets/models/trees/tree1.glb")
-	SetMeshShadowCastingEnabled tree_mesh,True
+	SetMeshShadowsEnabled tree_mesh,True
 	
 	; setup basket
 	basket_mesh=LoadMesh("../engine/assets/models/disc_golf/basket.glb")
-	SetMeshShadowCastingEnabled basket_mesh,True
+	SetMeshShadowsEnabled basket_mesh,True
 	basket= CreateModel(basket_mesh)
 	
 	basket_collision_mesh =  CreateCylinderMesh(1.5,0.5,16,collision_material)
@@ -84,7 +84,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 8
 					basket_z = 120
 					ob_padding = 3
-					sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun25degtest.png",4,56)
+					sky_texture = Load2DTexture("../engine/assets/textures/skybox/skyboxsun25degtest.png",4,56)
 					sky_roughness = 0.2
 					light_angle = -25
 					ambient# = 0.1
@@ -111,7 +111,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 16
 					basket_z = 120
 					ob_padding = 2
-					sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun5deg.png",4,56)
+					sky_texture = Load2DTexture("../engine/assets/textures/skybox/skyboxsun5deg.png",4,56)
 					sky_roughness = 0.2
 					light_angle = -5
 					ambient# = 0.3
@@ -137,7 +137,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 20
 					basket_z = 240
 					ob_padding = 5
-					sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun45deg.png",4,56)
+					sky_texture = Load2DTexture("../engine/assets/textures/skybox/skyboxsun45deg.png",4,56)
 					sky_roughness = 0.2
 					light_angle = -45
 					ambient# = 0.3
@@ -162,7 +162,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 64
 					basket_z = 120
 					ob_padding = 2
-					sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun5deg2.png",4,56)
+					sky_texture = Load2DTexture("../engine/assets/textures/skybox/skyboxsun5deg2.png",4,56)
 					sky_roughness = 0.2
 					light_angle = -5
 					ambient# = 0.1
@@ -187,7 +187,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 20
 					basket_z = 120
 					ob_padding = 2
-					sky_texture = LoadTexture("sgd://envmaps/nightsky-cube.png",4,56)
+					sky_texture = Load2DTexture("sgd://envmaps/nightsky-cube.png",4,56)
 					sky_roughness = 0
 					light_angle = -65
 					ambient# = 0.1
@@ -212,7 +212,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 64
 					basket_z = 120
 					ob_padding = 2
-					sky_texture = LoadTexture("sgd://envmaps/grimmnight-cube.jpg",4,56)
+					sky_texture = Load2DTexture("sgd://envmaps/grimmnight-cube.jpg",4,56)
 					sky_roughness = 0.0
 					light_angle = -60
 					ambient# = 0.1
@@ -237,7 +237,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 64
 					basket_z = 120
 					ob_padding = 2
-					sky_texture = LoadTexture("sgd://envmaps/stormy-cube.jpg",4,56)
+					sky_texture = Load2DTexture("sgd://envmaps/stormy-cube.jpg",4,56)
 					sky_roughness = 0.2
 					light_angle = -5
 					ambient# = 0.1
@@ -262,7 +262,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 128
 					basket_z = 250
 					ob_padding = 2
-					sky_texture = LoadTexture("sgd://envmaps/sunnysky-cube.png",4,56)
+					sky_texture = Load2DTexture("sgd://envmaps/sunnysky-cube.png",4,56)
 					sky_roughness = 0.2
 					light_angle = -15
 					ambient# = 0.3
@@ -287,7 +287,7 @@ Function SetupHole(course,hole,b.BasicScene)
 					basket_x = 64
 					basket_z = 250
 					ob_padding = 2
-					sky_texture = LoadTexture("../engine/assets/textures/skybox/skyboxsun45deg.png",4,56)
+					sky_texture = Load2DTexture("../engine/assets/textures/skybox/skyboxsun45deg.png",4,56)
 					sky_roughness = 0.2
 					light_angle = -45
 					ambient# = 0.1
@@ -330,7 +330,7 @@ Function SetupHole(course,hole,b.BasicScene)
 	
 	; create lights
 	b\directional_light = CreateDirectionalLight()
-	SetLightShadowMappingEnabled b\directional_light,True
+	SetLightShadowsEnabled b\directional_light,True
 	TurnEntity b\directional_light,light_angle,0,0
 	SetAmbientLightColor 1,1,1,ambient#	
 	

@@ -41,7 +41,7 @@ ground_model = CreateModel(ground_mesh)
 
 cube_material = CreatePBRMaterial()
 ; SetMaterialVector4f cube_material, "albedoColor4f",1,0,0,0.1
-cube_texture = LoadTexture("assets/materials/test_material/test_albedo.png",3,20)
+cube_texture = Load2DTexture("assets/materials/test_material/test_albedo.png",3,20)
 SetMaterialTexture cube_material,"albedoTexture",cube_texture
 SetMaterialFloat cube_material,"roughnessFactor1f",0.2
 SetMaterialBlendMode cube_material,2

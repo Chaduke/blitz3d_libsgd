@@ -6,13 +6,13 @@ CreateWindow 1280,720,"Camera Tests",0
 
 camera = CreatePerspectiveCamera()
 light = CreateDirectionalLight()
-SetLightShadowMappingEnabled light,True 
+SetLightShadowsEnabled light,True 
 TurnEntity light,-25,-35,0
 SetAmbientLightColor 1,1,1,0.1
 
 sphere_material = LoadPBRMaterial("sgd://materials/Bricks076C_1K-JPG")
 sphere_mesh = CreateSphereMesh(0.5,16,16,sphere_material)
-SetMeshShadowCastingEnabled sphere_mesh,True 
+SetMeshShadowsEnabled sphere_mesh,True 
 sphere_model = CreateModel(sphere_mesh)
 SetMouseZ -150
 

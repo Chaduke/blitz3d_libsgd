@@ -2,104 +2,70 @@
 ; by Chaduke 
 ; 20240711
 
-; turtle character for Turtle Hurdler
+; turtle character for runner / platformer
 
-Type Turtle 
-	Field model 
+Type Turtle
+	Field view_model
+	Field pivot 
+	Field collision_model
 	Field collider
-End Type 
+	Field acc.Vec3
+	Field vel.Vec3	
+	Field walking,idle
+	Field seq,time#,timeStep#	
+	Field destx# 
+	Field destz#	
+End Type
 
-Function CreateTurtle.Turtle(mesh)
+Function CreateTurtle.Turtle(parent)
 	Local t.Turtle = New Turtle 
-	t\model = CreateModel(mesh)
-	t\collider = CreateEllipsoidCollider(t\model,1,1.6, 1.5)
+	t\view_model = LoadModel("../engine/assets/models/runner/turtle.glb")
+	SetMeshShadowsEnabled GetModelMesh(t\view_model),True 
+	t\pivot  = CreateModel(0)
+	SetEntityParent t\view_model,t\pivot 		
+	Local collision_mesh = CreateSphereMesh(1.6,8,8,GetCollisionMaterial())
+	t\collision_model = CreateModel(collision_mesh)
+	SetEntityParent t\collision_model,t\pivot
+	SetEntityPosition t\collision_model,0,.8,0
+	SetEntityParent t\pivot,parent 
+	SetEntityPosition t\pivot,Rnd(-64,64),0,Rnd(-128,128)
+	
+	t\collider = CreateEllipsoidCollider(t\collision_model,2,1.6, 1.5)
+	t\acc = CreateVec3("Turtle Acceleration",0,-0.006,0) ; Y value is gravity
+	t\vel = CreateVec3("Turtle Velocity",0,0,-0.01) ; Z value is run speed
+	t\walking = False
+	t\idle = True 
+	t\seq = 0 ; idle
+	t\time = 0.0
+	t\timeStep = 0.02
 	Return t		
 End Function 	
 
-Function GetRandomX#(t.Turtle,rangelow#,rangehigh#,z#)
-	Local loop = True 
-	Local i.Turtle = First Turtle
-	Local x# =  Rnd(rangelow#,rangehigh#)
-	If i = Null Then Return x#		
-	While loop
-		; check the distance between the passed in turtle and the indexed one 
-		; also make sure they aren't the same		 
-		If (Abs(Distance2D(x,z,GetEntityX(i\model),GetEntityZ(i\model)) < 6 And i <> t)) Then 
-			; we need to repick x
-			; AND restart the loop
-			x# = Rnd(rangelow#,rangehigh#)
-			i = First turtle
-		Else 
-			; move on to the next turtle 
-			i = After i
-			If i = Null Then loop = False
-		End If			
-	Wend 	
-	Return x#
-End Function 
-
-Function GetRandomZ#(t.Turtle,rangelow#,rangehigh#,x#)
-	Local loop = True 
-	Local i.Turtle = First Turtle
-	Local z# =  Rnd(rangelow#,rangehigh#)
-	If i = Null Then Return z#		
-	While loop
-		; check the distance between the passed in turtle and the indexed one 
-		; also make sure they aren't the same		 
-		If (Abs(Distance2D(x,z,GetEntityX(i\model),GetEntityZ(i\model)) < 6 And i <> t)) Then 
-			; we need to repick z
-			z# = Rnd(rangelow#,rangehigh#)
-			i = First turtle
-		Else 
-			; move on to the next turtle 
-			i = After i
-			If i = Null Then loop = False
-		End If			
-	Wend
-	Return z#
-End Function
-
-Function GenerateTurtles(t.Terrain,numturtles,path$)
-
-	Local mesh = LoadMesh(path$)
-	SetMeshShadowCastingEnabled mesh,True
-	Local x#,z#
-	Local tt.Turtle
+Function UpdateTurtle(t.Turtle)	
+	If t\walking Then 
+		AddToVec3 t\vel,t\acc
+		MoveEntityVec3 t\pivot,t\vel
+		If (distance2D(GetEntityX(t\pivot),GetEntityZ(t\pivot),t\destx#,t\destz#) < 5)
+			t\walking = False
+			t\idle = True 
+			t\seq = 0
+			t\time = 0.0		
+		End If	
+	End If 	
 	
-	; line along the front side 
-	For i = 0 To numturtles
-		tt = CreateTurtle(mesh)	
-		z = 16
-		x# = GetRandomX(tt,20,t\width-20,z)		
-		
-		PlaceEntityOnTerrain tt\model,t,0,False,False,x,z
-		TurnEntity tt\model,0,-90,0
-	Next 	
+	AnimateModel t\view_model,t\seq,t\time,2,1
+	t\time=t\time + t\timeStep
 	
-	; line along the back side
-	For i = 0 To numturtles
-		tt = CreateTurtle(mesh)	
-		z = 239
-		x = GetRandomX(tt,20,t\width-20,z) 		
-		PlaceEntityOnTerrain tt\model,t,0,False,False,x,z
-		TurnEntity tt\model,0,90,0
-	Next 	
+	If (t\idle And t\time > 0.0333  * 250) Then
+		t\idle = False
+		t\walking = True 
+		t\seq = 1 ; walking 
+		t\time = 0.0
+		; pick a new destination		
+		t\destx# = GetEntityX(GetEntityParent(t\pivot)) + Rand(-64,64)
+		t\destz# = GetEntityZ(GetEntityParent(t\pivot)) + Rand(-128,128)
+		; face that destination		
+		EntityFaceLocation(t\pivot,t\destx,t\destz)	; navigation.bb		
+	End If 
 	
-	; line aling the left side 
-	For i = 0 To numturtles
-		tt = CreateTurtle(mesh)	
-		x = 16
-		z = GetRandomZ(tt,20,t\depth-20,x) 
-		PlaceEntityOnTerrain tt\model,t,0,False,False,x,z
-		TurnEntity tt\model,0,180,0
-	Next 	
-	
-	; line along the right side 
-	For i = 0 To numturtles
-		tt = CreateTurtle(mesh)	
-		x = 239
-		z = GetRandomZ(tt,20,t\depth-20,x)
-		PlaceEntityOnTerrain tt\model,t,0,False,False,x,z		
-	Next 	
-
 End Function 

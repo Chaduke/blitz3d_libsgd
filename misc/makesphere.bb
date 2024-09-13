@@ -51,7 +51,7 @@ CreateWindow(1280, 720, "Custom mesh demo", 0)
 
 CreateScene()
 
-env = LoadTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
+env = Load2DTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
 
 SetSceneEnvTexture env
 

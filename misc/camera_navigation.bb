@@ -37,7 +37,7 @@ light = CreateDirectionalLight()
 TurnEntity light,-30,0,0
 
 ; create environment and skybox
-env = LoadTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
+env = Load2DTexture("sgd://envmaps/sunnysky-cube.png", 4, 56)
 SetSceneEnvTexture env
 skybox = CreateSkybox(env)
 SetSkyboxRoughness skybox,.3

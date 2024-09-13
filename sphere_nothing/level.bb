@@ -28,12 +28,12 @@ Function ClearLevel(g.GameApp,p.Player)
 	g\start_menu = CreateStartMenu()	
 	Local material = LoadPBRMaterial("../engine/assets/materials/Marble012_1K-JPG")
 	Local mesh=CreateSphereMesh(0.5,16,16,material)
-	SetMeshShadowCastingEnabled mesh,True
+	SetMeshShadowsEnabled mesh,True
 	p\model = CreateModel(mesh)	
 	p\pivot = CreateModel(0)
 	SetEntityParent p\model,p\pivot 	
 	p\light = CreatePointLight()
-	SetLightShadowMappingEnabled p\light,True 
+	SetLightShadowsEnabled p\light,True 
 	SetEntityParent p\light,p\pivot	
 	MoveEntity p\light,0,3,0	
 	SetLightRange p\light,10	
