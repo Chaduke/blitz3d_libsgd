@@ -24,7 +24,7 @@ CreateTerrain t
 ga\info$ = "Basic Construct created..."
 
 SeedRnd MilliSecs()
-For i = 0 To 500
+For i = 0 To 50
 	h.Human = CreateHuman()
 	PlaceEntityOnTerrain h\pivot,t,1,False,True
 	h\destx# = Rnd(t\width)
@@ -46,7 +46,6 @@ While ga\loop
 Wend 
 End 
 	
-
 
 
 

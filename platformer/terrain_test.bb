@@ -5,17 +5,16 @@
 ; new terrain testing to make it more modular
 ; adding in a terrain type
 
-Include "vec3.bb"
-Include "noise.bb" 
-Include "terrain.bb"
-Include "navigation.bb"
+Include "../engine/vec3.bb"
+Include "../engine/noise.bb" 
+Include "../engine/terrain.bb"
+Include "../engine/navigation.bb"
 
 CreateWindow 1280,720,"Terrain Test",0
-CreateScene()
 
 ; create sky environment 
-sky_texture = Load2DTexture("assets\images\skyboxsun25degtest.png",4,56)
-SetSceneEnvTexture sky_texture
+sky_texture = LoadCubeTexture("../engine/assets/textures/skybox/skyboxsun25degtest.png",4,56)
+SetEnvTexture sky_texture
 skybox = CreateSkybox(sky_texture)
 SetSkyboxRoughness skybox,0.2
 
@@ -26,7 +25,7 @@ camera = CreatePerspectiveCamera()
 ; lights 
 light = CreateDirectionalLight()
 TurnEntity light,-60,0,0
-SetSceneAmbientLightColor 1,1,1,0.5
+SetAmbientLightColor 1,1,1,0.5
 
 ; terrain
 t.Terrain = New Terrain
@@ -38,9 +37,9 @@ loop = True
 While loop 
 	e = PollEvents()
 	If e = 1 Then loop = False 
-	If KeyHit(256) Then loop = False
-	If KeyHit(32) Then PlaceEntityOnTerrain camera,t,1,False,True
-	NavigationMode t
+	If IsKeyHit(256) Then loop = False
+	If IsKeyHit(32) Then PlaceEntityOnTerrain camera,t,1,False,True
+	NavigationMode camera,t
 	RenderScene()	
 	Clear2D()	
 	Present()
